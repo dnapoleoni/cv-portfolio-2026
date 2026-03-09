@@ -1,14 +1,16 @@
-# Dan Napoleoni — Portfolio
+# Dan Napoleoni — Portfolio & CV
 
-A developer who thinks like a designer and communicates like a human.
+> A developer who thinks like a designer and communicates like a human.
 
 ## Tech Stack
 
-- **Next.js 14** with App Router
-- **TypeScript**
-- **Modern CSS** (custom properties, fluid typography, container queries-ready)
+- **Next.js 14** (App Router)
+- **React 18** with proper component architecture
+- **TypeScript** throughout
+- **Modern CSS** (custom properties, fluid typography, CSS Grid equal-height cards)
 - **Google Fonts**: Outfit, JetBrains Mono, Cormorant Garamond, Caveat
-- **Static export** — deployable to Vercel, Netlify, or any static host
+- **6 color themes** with light/dark modes, all AAA-accessible
+- **No external CSS frameworks** — pure modern CSS
 
 ## Getting Started
 
@@ -19,64 +21,73 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Structure
+## Architecture
 
 ```
 app/
-  layout.tsx        — Root layout, fonts, header/footer
-  page.tsx          — Landing page with hero + role navigation
-  globals.css       — Full CSS system (custom properties, fluid type, dark mode)
-  not-found.tsx     — Custom 404
-  cv/
-    page.tsx        — Full CV/resume page
-  role/
-    [slug]/
-      page.tsx      — Dynamic role detail pages
+  layout.tsx              — Root layout, fonts, ThemeProvider wrapper
+  page.tsx                — Home: Hero + RoleGrid + Testimonials + Contact
+  globals.css             — Full CSS design system
+  not-found.tsx           — Custom 404
+  cv/page.tsx             — Full CV with timeline
+  role/[slug]/page.tsx    — Dynamic role detail pages
 
-components/         — (Add shared components here)
+components/
+  ThemeProvider.tsx        — Client: theme + mode context, localStorage
+  Header.tsx              — Client: route-aware, theme controls, PDF download
+  Footer.tsx              — Server: minimal footer links
+  Hero.tsx                — Server: landing page hero with 3-font tagline
+  RoleCard.tsx            — Server: individual role card with tech icons
+  RoleGrid.tsx            — Server: "Which Dan?" grid layout
+  SkillTags.tsx           — Server: skill tag list
+  Timeline.tsx            — Server: experience timeline with role types
+  TestimonialCarousel.tsx — Client: auto-rotating testimonial carousel
+  RoleCrossNav.tsx        — Server: links to other roles from detail pages
+  ContactSection.tsx      — Server: reusable CTA block
+  TechIcons.tsx           — Server: inline SVG tech icons
 
 data/
-  roles.ts          — Role definitions, skills, timeline, case studies
+  roles.ts                — Role definitions, skills, timelines, case studies
+  testimonials.ts         — Placeholder testimonials (replace with real ones)
+  themes.ts               — 6 AAA-compliant color themes
+
+types/
+  css.d.ts                — CSS module type declarations
 ```
 
-## Pages
+## Client vs Server Strategy
 
-- `/` — Landing page with "What brings you here?" navigation
-- `/role/frontend-developer` — Frontend dev focused experience
-- `/role/digital-marketing-specialist` — eDM/banner/Salesforce experience
-- `/role/ux-engineer` — UX advocacy & process
-- `/role/chief-vibes-officer` — Culture, events, social clubs
-- `/cv` — Full timeline CV with PDF download
+Most components are server-rendered. Only these need client-side JS:
+- **ThemeProvider** — manages theme/mode state, localStorage, system preference
+- **Header** — needs `usePathname()` for active state, theme controls
+- **TestimonialCarousel** — interactive carousel with auto-rotation
 
-## Design Principles
+## Themes
 
-- **Typography-first**: Four fonts, each with purpose
-- **Semantic HTML**: Readable without styles
-- **Accessible**: Skip links, ARIA labels, focus styles, reduced motion
-- **Modern CSS**: Fluid type/spacing, custom properties, dark mode
-- **Minimal**: Clean, warm, editorial aesthetic
+All themes are WCAG AAA compliant (7:1 normal text, 4.5:1 large text):
+- **Warm** — Terracotta & warm neutrals
+- **Ink** — Pure monochrome (Vercel/Notion-inspired)
+- **Midnight** — Deep blue-gray (GitHub-inspired)
+- **Forest** — Earthy greens
+- **Ocean** — Calm blues (Linear-inspired)
+- **Sunset** — Warm oranges
 
 ## Deployment
 
-Static export is configured. Deploy to Vercel:
-
+Deploy to Vercel:
 ```bash
 npx vercel
 ```
 
-Or build and deploy the `out/` directory anywhere:
-
-```bash
-npm run build
-# Deploy contents of ./out/
-```
-
 ## Next Steps
 
-- [ ] Add real email address and links
+- [ ] Replace placeholder testimonials with real references (get consent!)
+- [ ] Add actual email address
 - [ ] Add CV PDF to `/public/Dan-Napoleoni-CV.pdf`
-- [ ] Flesh out case studies with real examples
+- [ ] Flesh out CVO case studies with real examples/photos
 - [ ] Add "How this site was built" page
 - [ ] Add AI chat widget (future feature)
-- [ ] Add framework-switching feature (future feature)
-- [ ] Lighthouse audit and optimisation
+- [ ] Add framework-switching on role pages (future)
+- [ ] References page with contact functionality
+- [ ] OG image
+- [ ] Lighthouse audit

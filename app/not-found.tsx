@@ -12,18 +12,7 @@ export default function NotFound() {
         and not find it. Let's get you back on track.
       </p>
       <div style={{ marginTop: 'var(--space-lg)' }}>
-        <Link
-          href="/"
-          style={{
-            display: 'inline-block',
-            padding: 'var(--space-sm) var(--space-lg)',
-            border: '1px solid var(--color-border)',
-            borderRadius: '6px',
-            textDecoration: 'none',
-            color: 'var(--color-text)',
-            fontSize: 'var(--text-base)',
-          }}
-        >
+        <Link href="/" className="cv-download">
           ← Back to the start
         </Link>
       </div>
