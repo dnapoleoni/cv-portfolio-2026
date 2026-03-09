@@ -11,8 +11,8 @@ export default function Home() {
     <>
       <Hero />
       <RoleGrid />
-      <TestimonialCarousel testimonials={testimonials} />
       <ContactSection />
+      <TestimonialCarousel testimonials={testimonials} />
     </>
   )
 }

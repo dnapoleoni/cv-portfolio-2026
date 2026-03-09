@@ -15,23 +15,32 @@ export function ContactSection({
     <section className="contact-section" aria-labelledby="contact-heading">
       <h2 id="contact-heading">{heading}</h2>
       <p>{description}</p>
-      <div className="contact-links">
-        <a href="mailto:hello@danielnapoleoni.dev" className="contact-link">
-          hello@danielnapoleoni.dev
+      <div className="link-group">
+        <Link className="link-mono" href='/contact'>
+          Contact
+        </Link>
+        {showCV && (
+          <Link href="/cv" className="link-mono">
+            View full CV
+          </Link>
+        )}
+       
+        <a
+          href="https://github.com/dnapoleoni/cv-portfolio-2026"
+          target="_blank"
+          className='link-mono'
+          rel="noopener noreferrer"
+        >
+          Github ↗
         </a>
         <a
           href="https://www.linkedin.com/in/daniel-napoleoni"
-          className="contact-link"
+          className="link-mono"
           target="_blank"
           rel="noopener noreferrer"
         >
           LinkedIn ↗
         </a>
-        {showCV && (
-          <Link href="/cv" className="contact-link">
-            View full CV →
-          </Link>
-        )}
       </div>
     </section>
   )

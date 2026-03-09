@@ -41,7 +41,13 @@ export default function RolePage({ params }: { params: { slug: string } }) {
           <TechIconRow icons={role.icons} size={22} />
         </h1>
         <p className="role-page-subtitle">{role.subtitle}</p>
+         <div style={{ marginTop: 'var(--space-md)' }}>
+          <a href={`/Dan-Napoleoni-CV-${role.slug}.pdf`} download className="btn-outline">
+            <span aria-hidden="true">↓</span> Download CV - { role.title } (PDF)
+          </a>
+        </div>
       </header>
+      
 
       {/* Intro */}
       <section className="role-section">

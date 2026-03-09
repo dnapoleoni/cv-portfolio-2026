@@ -2,7 +2,9 @@ import { roles } from '@/data/roles'
 import { Timeline } from '@/components/Timeline'
 import { SkillTags } from '@/components/SkillTags'
 import { ContactSection } from '@/components/ContactSection'
+import { TestimonialCarousel } from '@/components'
 import Link from 'next/link'
+import { getFeaturedTestimonials } from '@/data/testimonials'
 
 function getAllTimelineEntries() {
   const seen = new Set<string>()
@@ -43,6 +45,7 @@ export const metadata = {
 export default function CVPage() {
   const timeline = getAllTimelineEntries()
   const skills = getAllSkills()
+  const testimonials = getFeaturedTestimonials(5);
 
   return (
     <article className="cv-page">
@@ -56,8 +59,8 @@ export default function CVPage() {
           Dan Napoleoni · Frontend Developer · Melbourne, Australia
         </p>
         <div style={{ marginTop: 'var(--space-md)' }}>
-          <a href="/Dan-Napoleoni-CV.pdf" download className="cv-download">
-            <span aria-hidden="true">↓</span> Download PDF
+          <a href="/Dan-Napoleoni-CV.pdf" download className="btn-outline">
+            <span aria-hidden="true">↓</span> Download CV - Complete (PDF)
           </a>
         </div>
       </header>
@@ -99,6 +102,7 @@ export default function CVPage() {
       </section>
 
       <ContactSection />
+      <TestimonialCarousel testimonials={testimonials} />
     </article>
   )
 }

@@ -12,7 +12,7 @@ export default function NotFound() {
         and not find it. Let's get you back on track.
       </p>
       <div style={{ marginTop: 'var(--space-lg)' }}>
-        <Link href="/" className="cv-download">
+        <Link href="/" className="btn-outline">
           ← Back to the start
         </Link>
       </div>
