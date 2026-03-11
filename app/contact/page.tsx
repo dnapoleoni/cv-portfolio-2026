@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getRoleBySlug } from '@/data/roles'
 import { EmailLink } from '@/components/EmailLink'
+import { ContactForm } from '@/components/ContactForm'
 
 export const metadata = {
   title: 'Contact — Dan Napoleoni',
@@ -38,42 +39,7 @@ export default function ContactPage({
         </h1>
       </header>
 
-      <form
-        name="contact"
-        method="POST"
-        action='/contact/success'
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        className="contact-form"
-      >
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>
-            Don't fill this out: <input name="bot-field" />
-          </label>
-        </p>
-
-        <label>
-          Name
-          <input type="text" name="name" required autoComplete="name" />
-        </label>
-
-        <label>
-          Email
-          <input type="email" name="email" required autoComplete="email" />
-        </label>
-
-        <label>
-          Message
-          <textarea name="message" required rows={6} />
-        </label>
-
-        <div>
-          <button type="submit" className="btn-solid-accent">
-            Send message →
-          </button>
-        </div>
-      </form>
+      <ContactForm subject={subject} />
 
       <aside className="contact-aside">
         <div className="link-group">
