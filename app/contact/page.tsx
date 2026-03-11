@@ -1,54 +1,11 @@
-'use client';
-
-import Link from 'next/link';
-import { getRoleBySlug } from '@/data/roles';
-import { EmailLink } from '@/components/EmailLink';
-import { ContactForm } from '@/components/ContactForm';
-import { useFromContext } from '@/hooks/useFromContext';
+import { ContactPageContent } from '@/components/ContactPageContent';
+import { Loading } from '@/components/Loading';
+import { Suspense } from 'react';
 
 export default function ContactPage() {
-  const { value: from, backHref } = useFromContext();
-  const fromRole = from ? getRoleBySlug(from) : null;
-
-  const heading = fromRole
-    ? `Interested in a ${fromRole.title.toLowerCase()}?`
-    : 'Keen to know more?';
-
-  const subheading = fromRole
-    ? "Drop a message below and I'll be in touch to organise a proper catchup."
-    : "Fill out the form below and I'll be in touch.";
-
-  const subject = fromRole
-    ? `Hi Dan — interested in your ${fromRole.title} background`
-    : 'Hi Dan — I came across your portfolio';
-
   return (
-    <article className="role-page">
-      <Link href={backHref} className="back-link">
-        <span aria-hidden="true">←</span> Back
-      </Link>
-
-      <header className="page-header">
-        <h1 className="page-heading">{heading}</h1>
-        <p className="page-subheading">{subheading}</p>
-      </header>
-
-      <ContactForm subject={subject} />
-
-      <aside className="contact-aside">
-        <div className="link-group">
-          <EmailLink subject={subject} />
-          <a
-            href="https://www.linkedin.com/in/daniel-napoleoni"
-            className="link-mono"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn ↗
-          </a>
-        </div>
-        <p>I typically reply within a day.</p>
-      </aside>
-    </article>
+    <Suspense fallback={<Loading message="Loading contact form..." />}>
+      <ContactPageContent />
+    </Suspense>
   );
 }

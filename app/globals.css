@@ -124,6 +124,14 @@ ol {
   list-style: none;
 }
 
+/* Loader */
+.loading {
+  padding: var(--space-2xl) 0;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--text-lg);
+}
+
 /* Skip link */
 .skip-link {
   position: absolute;
@@ -601,16 +609,17 @@ span.site-wordmark {
   color: var(--color-text);
   background: transparent;
   transition:
-    background-color var(--duration-base) var(--ease-out),
-    border-color var(--duration-base) var(--ease-out),
-    transform var(--duration-base) var(--ease-out);
+    background-color var(--duration-slow) var(--ease-out),
+    border-color var(--duration-slow) var(--ease-out);
 }
 
 .role-card:hover {
   background-color: var(--color-bg-elevated);
   border-color: var(--color-text-tertiary);
-  transform: translateY(-2px);
   color: var(--color-text);
+  transition:
+    background-color var(--duration-slow) var(--ease-out),
+    border-color var(--duration-slow) var(--ease-out);
 }
 
 .role-card:focus-visible {
