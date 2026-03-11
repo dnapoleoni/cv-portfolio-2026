@@ -1,15 +1,15 @@
-export { Header } from './Header'
-export { Footer } from './Footer'
-export { Hero } from './Hero'
-export { RoleCard } from './RoleCard'
-export { RoleGrid } from './RoleGrid'
-export { RoleHero } from './RoleHero'
-export { RolePageView } from './RolePageView'
-export { SkillTags } from './SkillTags'
-export { Timeline } from './Timeline'
-export { TestimonialCarousel } from './TestimonialCarousel'
-export { RoleCrossNav } from './RoleCrossNav'
-export { ContactSection } from './ContactSection'
-export { EmailLink } from './EmailLink'
-export { ThemeProvider } from './ThemeProvider'
-export { TechIcon, TechIconRow } from './TechIcons'
+export { Header } from './Header';
+export { Footer } from './Footer';
+export { Hero } from './Hero';
+export { RoleCard } from './RoleCard';
+export { RoleGrid } from './RoleGrid';
+export { RoleHero } from './RoleHero';
+export { RolePageView } from './RolePageView';
+export { SkillTags } from './SkillTags';
+export { Timeline } from './Timeline';
+export { TestimonialCarousel } from './TestimonialCarousel';
+export { RoleCrossNav } from './RoleCrossNav';
+export { ContactSection } from './ContactSection';
+export { EmailLink } from './EmailLink';
+export { ThemeProvider } from './ThemeProvider';
+export { TechIcon, TechIconRow } from './TechIcons';

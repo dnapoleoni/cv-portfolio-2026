@@ -1,50 +1,50 @@
-import { roles } from '@/data/roles'
-import { Timeline } from '@/components/Timeline'
-import { SkillTags } from '@/components/SkillTags'
-import { ContactSection } from '@/components/ContactSection'
-import { TestimonialCarousel } from '@/components'
-import Link from 'next/link'
-import { getFeaturedTestimonials } from '@/data/testimonials'
+import { roles } from '@/data/roles';
+import { Timeline } from '@/components/Timeline';
+import { SkillTags } from '@/components/SkillTags';
+import { ContactSection } from '@/components/ContactSection';
+import { TestimonialCarousel } from '@/components';
+import Link from 'next/link';
+import { getFeaturedTestimonials } from '@/data/testimonials';
 
 function getAllTimelineEntries() {
-  const seen = new Set<string>()
-  const entries: typeof roles[0]['timeline'] = []
+  const seen = new Set<string>();
+  const entries: (typeof roles)[0]['timeline'] = [];
 
   for (const role of roles) {
     for (const entry of role.timeline) {
-      const key = `${entry.date}-${entry.company}`
+      const key = `${entry.date}-${entry.company}`;
       if (!seen.has(key) && entry.date !== 'Ongoing' && entry.date !== 'Throughout career') {
-        seen.add(key)
-        entries.push(entry)
+        seen.add(key);
+        entries.push(entry);
       }
     }
   }
 
   return entries.sort((a, b) => {
-    const yearA = parseInt(a.date.split(' ')[0], 10) || 0
-    const yearB = parseInt(b.date.split(' ')[0], 10) || 0
-    return yearB - yearA
-  })
+    const yearA = parseInt(a.date.split(' ')[0], 10) || 0;
+    const yearB = parseInt(b.date.split(' ')[0], 10) || 0;
+    return yearB - yearA;
+  });
 }
 
 function getAllSkills() {
-  const skills = new Set<string>()
+  const skills = new Set<string>();
   for (const role of roles) {
     for (const skill of role.skills) {
-      skills.add(skill)
+      skills.add(skill);
     }
   }
-  return Array.from(skills)
+  return Array.from(skills);
 }
 
 export const metadata = {
   title: 'CV — Dan Napoleoni',
   description: 'Full curriculum vitae for Dan Napoleoni, frontend developer in Melbourne.',
-}
+};
 
 export default function CVPage() {
-  const timeline = getAllTimelineEntries()
-  const skills = getAllSkills()
+  const timeline = getAllTimelineEntries();
+  const skills = getAllSkills();
   const testimonials = getFeaturedTestimonials(5);
 
   return (
@@ -94,15 +94,14 @@ export default function CVPage() {
       <section className="role-section">
         <h2>Also</h2>
         <p>
-          Beyond the day job: game design enthusiast, puzzle creator, ARG designer,
-          social club organiser, creative writer, and self-appointed Chief Vibes Officer
-          at every workplace I've been part of. I believe culture isn't a perk — it's
-          infrastructure.
+          Beyond the day job: game design enthusiast, puzzle creator, ARG designer, social club
+          organiser, creative writer, and self-appointed Chief Vibes Officer at every workplace I've
+          been part of. I believe culture isn't a perk — it's infrastructure.
         </p>
       </section>
 
       <ContactSection />
       <TestimonialCarousel testimonials={testimonials} />
     </article>
-  )
+  );
 }

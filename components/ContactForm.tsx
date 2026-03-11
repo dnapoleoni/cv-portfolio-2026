@@ -1,28 +1,28 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function ContactForm({ subject }: { subject?: string }) {
-  const router = useRouter()
-  const [submitting, setSubmitting] = useState(false)
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setSubmitting(true)
+  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitting(true);
 
-    const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget);
 
     try {
       await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
-      })
-      router.push('/contact/success')
+      });
+      router.push('/contact/success');
     } catch {
-      alert('Something went wrong — try emailing me directly.')
-      setSubmitting(false)
+      alert('Something went wrong — try emailing me directly.');
+      setSubmitting(false);
     }
   }
 
@@ -31,7 +31,9 @@ export function ContactForm({ subject }: { subject?: string }) {
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="subject" value={subject || 'General enquiry'} />
       <p hidden>
-        <label>Don't fill this out: <input name="bot-field" /></label>
+        <label>
+          Don't fill this out: <input name="bot-field" />
+        </label>
       </p>
 
       <label>
@@ -55,5 +57,5 @@ export function ContactForm({ subject }: { subject?: string }) {
         </button>
       </div>
     </form>
-  )
+  );
 }

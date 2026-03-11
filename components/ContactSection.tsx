@@ -1,11 +1,18 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { ContextLink } from './ContextLink';
 
 interface ContactSectionProps {
-  heading?: string
-  description?: string
-  showCV?: boolean
-  slug?: string
+  heading?: string;
+  description?: string;
+  showCV?: boolean;
+  slug?: string;
 }
+
+const ContactLink = () => (
+  <ContextLink href="/contact" className="link-mono">
+    Get in touch
+  </ContextLink>
+);
 
 export function ContactSection({
   heading = "Let's talk",
@@ -18,16 +25,12 @@ export function ContactSection({
     return (
       <section className="contact-section" aria-labelledby="contact-heading">
         <h2 id="contact-heading">{heading}</h2>
-        <p>
-          If this sounds like the kind of person you need, let's have a conversation.
-        </p>
+        <p>If this sounds like the kind of person you need, let's have a conversation.</p>
         <div style={{ marginTop: 'var(--space-md)' }}>
-          <Link href={`/contact?from=/${slug}`} className="btn-solid-accent">
-            Get in touch →
-          </Link>
+          <ContactLink />
         </div>
       </section>
-    )
+    );
   }
 
   // Home page variant — full link group
@@ -36,9 +39,7 @@ export function ContactSection({
       <h2 id="contact-heading">{heading}</h2>
       <p>{description}</p>
       <div className="link-group">
-        <Link className="link-mono" href="/contact">
-          Contact
-        </Link>
+        <ContactLink />
         {showCV && (
           <Link href="/cv" className="link-mono">
             View full CV
@@ -62,5 +63,5 @@ export function ContactSection({
         </a>
       </div>
     </section>
-  )
+  );
 }

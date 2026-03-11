@@ -1,4 +1,4 @@
-import type { TechIconId } from '@/data/roles'
+import type { TechIconId } from '@/data/roles';
 
 /**
  * Small inline SVG icons for technologies.
@@ -77,17 +77,17 @@ const iconPaths: Record<TechIconId, { viewBox: string; d: string; title: string 
     title: 'Community & Team',
     d: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
   },
-}
+};
 
 interface TechIconProps {
-  id: TechIconId
-  size?: number
-  className?: string
+  id: TechIconId;
+  size?: number;
+  className?: string;
 }
 
 export function TechIcon({ id, size = 20, className }: TechIconProps) {
-  const icon = iconPaths[id]
-  if (!icon) return null
+  const icon = iconPaths[id];
+  if (!icon) return null;
 
   return (
     <svg
@@ -103,22 +103,22 @@ export function TechIcon({ id, size = 20, className }: TechIconProps) {
       <title>{icon.title}</title>
       <path d={icon.d} />
     </svg>
-  )
+  );
 }
 
 interface TechIconRowProps {
-  icons: TechIconId[]
-  size?: number
+  icons: TechIconId[];
+  size?: number;
 }
 
 export function TechIconRow({ icons, size = 18 }: TechIconRowProps) {
   return (
     <div className="tech-icon-row" role="list" aria-label="Technologies">
-      {icons.map(id => (
+      {icons.map((id) => (
         <span key={id} role="listitem">
           <TechIcon id={id} size={size} />
         </span>
       ))}
     </div>
-  )
+  );
 }

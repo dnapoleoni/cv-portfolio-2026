@@ -1,7 +1,7 @@
-import type { Tagline } from '@/data/roles'
+import type { Tagline } from '@/data/roles';
 
 interface RoleHeroProps {
-  tagline: Tagline
+  tagline: Tagline;
 }
 
 export function RoleHero({ tagline }: RoleHeroProps) {
@@ -13,5 +13,5 @@ export function RoleHero({ tagline }: RoleHeroProps) {
         <span className="tagline-human">{tagline.hand}</span>
       </h1>
     </section>
-  )
+  );
 }

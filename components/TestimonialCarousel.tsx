@@ -1,30 +1,33 @@
-'use client'
+'use client';
 
-import { useState, useEffect, useCallback } from 'react'
-import type { Testimonial } from '@/data/testimonials'
+import { useState, useEffect, useCallback } from 'react';
+import type { Testimonial } from '@/data/testimonials';
 
 interface TestimonialCarouselProps {
-  testimonials: Testimonial[]
-  heading?: string
+  testimonials: Testimonial[];
+  heading?: string;
 }
 
-export function TestimonialCarousel({ testimonials, heading = 'What people say' }: TestimonialCarouselProps) {
-  const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
+export function TestimonialCarousel({
+  testimonials,
+  heading = 'What people say',
+}: TestimonialCarouselProps) {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const next = useCallback(() => {
-    setCurrent(c => (c + 1) % testimonials.length)
-  }, [testimonials.length])
+    setCurrent((c) => (c + 1) % testimonials.length);
+  }, [testimonials.length]);
 
   useEffect(() => {
-    if (paused || testimonials.length <= 1) return
-    const timer = setInterval(next, 6000)
-    return () => clearInterval(timer)
-  }, [paused, next, testimonials.length])
+    if (paused || testimonials.length <= 1) return;
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [paused, next, testimonials.length]);
 
-  if (testimonials.length === 0) return null
+  if (testimonials.length === 0) return null;
 
-  const t = testimonials[current]
+  const t = testimonials[current];
 
   return (
     <section
@@ -33,13 +36,17 @@ export function TestimonialCarousel({ testimonials, heading = 'What people say' 
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <h2 id="testimonial-heading" className="section-heading">{heading}</h2>
+      <h2 id="testimonial-heading" className="section-heading">
+        {heading}
+      </h2>
       <blockquote className="testimonial-quote" aria-live="polite">
         <p className="testimonial-text">&ldquo;{t.quote}&rdquo;</p>
         <footer className="testimonial-attribution">
           <cite>
             <span className="testimonial-name">{t.name}</span>
-            <span className="testimonial-role">{t.role}, {t.company}</span>
+            <span className="testimonial-role">
+              {t.role}, {t.company}
+            </span>
           </cite>
         </footer>
       </blockquote>
@@ -58,5 +65,5 @@ export function TestimonialCarousel({ testimonials, heading = 'What people say' 
         </div>
       )}
     </section>
-  )
+  );
 }

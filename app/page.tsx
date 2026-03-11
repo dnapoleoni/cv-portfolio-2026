@@ -1,11 +1,11 @@
-import { Hero } from '@/components/Hero'
-import { RoleGrid } from '@/components/RoleGrid'
-import { TestimonialCarousel } from '@/components/TestimonialCarousel'
-import { ContactSection } from '@/components/ContactSection'
-import { getFeaturedTestimonials } from '@/data/testimonials'
+import { Hero } from '@/components/Hero';
+import { RoleGrid } from '@/components/RoleGrid';
+import { TestimonialCarousel } from '@/components/TestimonialCarousel';
+import { ContactSection } from '@/components/ContactSection';
+import { getFeaturedTestimonials } from '@/data/testimonials';
 
 export default function Home() {
-  const testimonials = getFeaturedTestimonials(5)
+  const testimonials = getFeaturedTestimonials(5);
 
   return (
     <>
@@ -14,5 +14,5 @@ export default function Home() {
       <ContactSection />
       <TestimonialCarousel testimonials={testimonials} />
     </>
-  )
+  );
 }

@@ -8,9 +8,9 @@ export function Hero() {
         <span className="tagline-human">Pick the one you need.</span>
       </h1>
       <p className="hero-sub">
-        Frontend developer. Digital marketer. UX thinker. Culture builder.
-        Based in Melbourne, available now.
+        Frontend developer. Digital marketer. UX thinker. Culture builder. Based in Melbourne,
+        available now.
       </p>
     </section>
-  )
+  );
 }

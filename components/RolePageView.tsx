@@ -1,25 +1,25 @@
-import { getRoleBySlug, getOtherRoles } from '@/data/roles'
-import { getTestimonialsForRole } from '@/data/testimonials'
-import { Timeline } from '@/components/Timeline'
-import { SkillTags } from '@/components/SkillTags'
-import { TechIconRow } from '@/components/TechIcons'
-import { TestimonialCarousel } from '@/components/TestimonialCarousel'
-import { RoleCrossNav } from '@/components/RoleCrossNav'
-import { ContactSection } from '@/components/ContactSection'
-import { RoleHero } from '@/components/RoleHero'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { getRoleBySlug, getOtherRoles } from '@/data/roles';
+import { getTestimonialsForRole } from '@/data/testimonials';
+import { Timeline } from '@/components/Timeline';
+import { SkillTags } from '@/components/SkillTags';
+import { TechIconRow } from '@/components/TechIcons';
+import { TestimonialCarousel } from '@/components/TestimonialCarousel';
+import { RoleCrossNav } from '@/components/RoleCrossNav';
+import { ContactSection } from '@/components/ContactSection';
+import { RoleHero } from '@/components/RoleHero';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 interface RolePageViewProps {
-  slug: string
+  slug: string;
 }
 
 export function RolePageView({ slug }: RolePageViewProps) {
-  const role = getRoleBySlug(slug)
-  if (!role) notFound()
+  const role = getRoleBySlug(slug);
+  if (!role) notFound();
 
-  const otherRoles = getOtherRoles(slug)
-  const testimonials = getTestimonialsForRole(slug)
+  const otherRoles = getOtherRoles(slug);
+  const testimonials = getTestimonialsForRole(slug);
 
   return (
     <article className="role-page">
@@ -85,13 +85,10 @@ export function RolePageView({ slug }: RolePageViewProps) {
       )}
 
       {/* CTA */}
-      <ContactSection
-        heading="Interested?"
-        slug={role.slug}
-      />
+      <ContactSection heading="Interested?" slug={role.slug} />
 
       {/* Cross-nav to other roles */}
       <RoleCrossNav otherRoles={otherRoles} />
     </article>
-  )
+  );
 }

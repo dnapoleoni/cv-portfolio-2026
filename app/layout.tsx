@@ -1,19 +1,21 @@
-import type { Metadata } from 'next'
-import { ThemeProvider } from '@/components/ThemeProvider'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import './globals.css'
+import type { Metadata } from 'next';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Dan Napoleoni — Developer, Designer-Thinker, Human Communicator',
-  description: 'Frontend developer with 15+ years across the full evolution of digital. A developer who thinks like a designer and communicates like a human.',
+  description:
+    'Frontend developer with 15+ years across the full evolution of digital. A developer who thinks like a designer and communicates like a human.',
   openGraph: {
     title: 'Dan Napoleoni — A developer who thinks like a designer and communicates like a human',
-    description: 'Frontend developer with 15+ years across the full evolution of digital. React, TypeScript, Vue.js, and a whole lot more.',
+    description:
+      'Frontend developer with 15+ years across the full evolution of digital. React, TypeScript, Vue.js, and a whole lot more.',
     type: 'website',
     locale: 'en_AU',
   },
-}
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -28,7 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <a href="#main-content" className="skip-link">Skip to main content</a>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
           <div className="page-wrapper">
             <Header />
             <main id="main-content">{children}</main>
@@ -37,5 +41,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

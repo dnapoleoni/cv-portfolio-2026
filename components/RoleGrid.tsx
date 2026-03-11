@@ -1,5 +1,5 @@
-import { roles } from '@/data/roles'
-import { RoleCard } from './RoleCard'
+import { roles } from '@/data/roles';
+import { RoleCard } from './RoleCard';
 
 export function RoleGrid() {
   return (
@@ -8,10 +8,10 @@ export function RoleGrid() {
         Currently available for...
       </h2>
       <ul className="role-grid role-grid--prominent" role="list">
-        {roles.map(role => (
+        {roles.map((role) => (
           <RoleCard key={role.slug} role={role} />
         ))}
       </ul>
     </section>
-  )
+  );
 }

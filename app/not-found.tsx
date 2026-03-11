@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
@@ -8,8 +8,8 @@ export default function NotFound() {
         This page doesn't exist yet.
       </h1>
       <p className="hero-sub" style={{ marginInline: 'auto' }}>
-        But honestly, in this job market, I know how it feels to look for something
-        and not find it. Let's get you back on track.
+        But honestly, in this job market, I know how it feels to look for something and not find it.
+        Let's get you back on track.
       </p>
       <div style={{ marginTop: 'var(--space-lg)' }}>
         <Link href="/" className="btn-outline">
@@ -17,5 +17,5 @@ export default function NotFound() {
         </Link>
       </div>
     </section>
-  )
+  );
 }
