@@ -1,16 +1,22 @@
+import Image from 'next/image';
 export function Hero() {
   return (
     <section className="hero hero--compact" aria-labelledby="hero-heading">
-      <p className="hero-greeting">Hi, I'm Dan.</p>
-      <h1 id="hero-heading" className="hero-tagline">
-        <span className="tagline-developer">15 years of web.</span>{' '}
-        <span className="tagline-designer">One person, many hats.</span>{' '}
-        <span className="tagline-human">Pick the one you need.</span>
-      </h1>
-      <p className="hero-sub">
-        Frontend developer. Digital marketer. UX thinker. Culture builder. Based in Melbourne,
-        available now.
-      </p>
+      <Image
+        src="/images/profile-pic.jpeg"
+        alt="Dan Napoleoni"
+        width={280}
+        height={280}
+        priority
+        className="hero-image"
+      />
+      <div className="hero-text">
+        <h1 className="hero-heading">Hi, I'm Dan.</h1>
+        <p className="hero-sub">
+          Frontend developer. Digital marketer. UX thinker. Culture builder.
+        </p>
+        <p className="hero-sub">Based in Melbourne, available now.</p>
+      </div>
     </section>
   );
 }

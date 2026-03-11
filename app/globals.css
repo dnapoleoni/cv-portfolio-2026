@@ -475,6 +475,41 @@ span.site-wordmark {
   justify-content: center;
 }
 
+.hero--compact {
+  min-height: auto;
+  padding-block: var(--space-xl) var(--space-lg);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.hero-image {
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  width: clamp(140px, 18vw, 220px);
+  height: auto;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-heading {
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+}
+
+.hero-sub {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  max-width: 50ch;
+}
+
 .hero-greeting {
   font-size: var(--text-xl);
   color: var(--color-text-secondary);
@@ -492,6 +527,7 @@ span.site-wordmark {
   animation: fadeUp var(--duration-slow) var(--ease-out) 80ms both;
 }
 
+/* Tagline fonts — used on role pages */
 .tagline-developer {
   font-family: var(--font-mono);
   font-weight: 500;
@@ -513,17 +549,16 @@ span.site-wordmark {
   color: var(--color-accent);
 }
 
-.hero--compact {
-  min-height: auto;
-  padding-block: var(--space-xl) var(--space-lg);
-}
+@media (max-width: 640px) {
+  .hero--compact {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 
-.hero-sub {
-  font-size: var(--text-lg);
-  color: var(--color-text-secondary);
-  font-weight: 400;
-  max-width: 50ch;
-  animation: fadeUp var(--duration-slow) var(--ease-out) 160ms both;
+  .hero--compact .hero-sub {
+    margin-inline: auto;
+  }
 }
 
 /* --- Role Navigation Grid --- */
