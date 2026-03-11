@@ -42,7 +42,10 @@ export function Header() {
           </svg>
           <span>Download PDF</span>
         </a>
-        <ContextLink href="/contact" className="btn-solid-accent">
+        <ContextLink
+          href="/contact"
+          className={`btn-solid-accent${pathname === '/contact' ? ' btn-solid-accent--active' : ''}`}
+        >
           Contact Dan
         </ContextLink>
       </nav>

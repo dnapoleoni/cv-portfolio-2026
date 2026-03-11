@@ -1,11 +1,14 @@
+'use client';
+
 import Link from 'next/link';
 import { getRoleBySlug } from '@/data/roles';
 import { EmailLink } from '@/components/EmailLink';
 import { ContactForm } from '@/components/ContactForm';
+import { useFromContext } from '@/hooks/useFromContext';
 
-export default function ContactPage({ searchParams }: { searchParams: { from?: string } }) {
-  const from = searchParams.from || '';
-  const fromRole = from && from !== 'home' && from !== 'cv' ? getRoleBySlug(from) : null;
+export default function ContactPage() {
+  const { value: from, backHref } = useFromContext();
+  const fromRole = from ? getRoleBySlug(from) : null;
 
   const heading = fromRole
     ? `Interested in a ${fromRole.title.toLowerCase()}?`
@@ -19,39 +22,15 @@ export default function ContactPage({ searchParams }: { searchParams: { from?: s
     ? `Hi Dan — interested in your ${fromRole.title} background`
     : 'Hi Dan — I came across your portfolio';
 
-  function getBackHref(from: string): string {
-    if (!from || from === 'home') return '/';
-    return `/${from}`;
-  }
-
   return (
     <article className="role-page">
-      <Link href={getBackHref(from)} className="back-link">
+      <Link href={backHref} className="back-link">
         <span aria-hidden="true">←</span> Back
       </Link>
 
-      <header style={{ marginBottom: 'var(--space-xl)' }}>
-        <h1
-          style={{
-            fontSize: 'var(--text-3xl)',
-            fontWeight: 500,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
-          }}
-        >
-          {heading}
-        </h1>
-
-        <h2
-          style={{
-            fontSize: 'var(--text-1xl)',
-            fontWeight: 300,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.2,
-          }}
-        >
-          {subheading}
-        </h2>
+      <header className="page-header">
+        <h1 className="page-heading">{heading}</h1>
+        <p className="page-subheading">{subheading}</p>
       </header>
 
       <ContactForm subject={subject} />
