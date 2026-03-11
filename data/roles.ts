@@ -16,11 +16,18 @@ export interface CaseStudy {
   description: string
 }
 
+export interface Tagline {
+  mono: string    // displayed in JetBrains Mono
+  serif: string   // displayed in Cormorant Garamond italic
+  hand: string    // displayed in Caveat, accent colour
+}
+
 export interface RoleData {
   slug: string
   title: string
   shortDesc: string
   subtitle: string
+  tagline: Tagline
   intro: string[]
   variant?: 'vibes'
   icons: TechIconId[]
@@ -35,6 +42,11 @@ export const roles: RoleData[] = [
     title: 'Frontend Developer',
     shortDesc: 'React, TypeScript, Vue.js — 15+ years building for the web, from Flash to frameworks.',
     subtitle: 'Modern frontend engineering with a UX-first mindset',
+    tagline: {
+      mono: 'A developer',
+      serif: 'who thinks like a designer',
+      hand: 'and communicates like a human.',
+    },
     icons: ['react', 'typescript', 'vue', 'nextjs'],
     intro: [
       "I've been building for the web since Flash was king. That journey — through ActionScript, jQuery, Backbone, Angular, Vue, and now React — means I don't just know frameworks, I understand the web platform itself. I write semantic HTML, modern CSS, and accessible interfaces because I've seen enough trends come and go to know what actually matters: does it work, is it fast, can everyone use it?",
@@ -108,10 +120,15 @@ export const roles: RoleData[] = [
     ],
   },
   {
-    slug: 'digital-marketing-specialist',
+    slug: 'digital-marketing',
     title: 'Digital Marketing Specialist',
     shortDesc: 'eDMs, HTML banners, Salesforce Marketing Cloud — the full digital campaign toolkit.',
     subtitle: 'Email campaigns, dynamic banners, and marketing automation at scale',
+    tagline: {
+      mono: 'A developer',
+      serif: 'who speaks marketing',
+      hand: 'and builds campaigns that actually work.',
+    },
     icons: ['salesforce', 'html', 'css', 'javascript'],
     intro: [
       "Before I became a \"frontend developer\" I spent years deep in the trenches of digital marketing production — building eDM templates and campaigns in Salesforce Marketing Cloud (ExactTarget), creating dynamic HTML banners for Google DV360 and DoubleClick, and managing campaign deployments for some of Australia's biggest brands.",
@@ -163,6 +180,11 @@ export const roles: RoleData[] = [
     title: 'UX-Minded Engineer',
     shortDesc: "I don't just build what's in the brief — I question it, improve it, and fill in the gaps.",
     subtitle: 'Frontend development with deep user experience advocacy',
+    tagline: {
+      mono: 'A developer',
+      serif: 'who asks why before asking how',
+      hand: 'and fights for the user.',
+    },
     icons: ['accessibility', 'figma', 'react', 'css'],
     intro: [
       "I'm not a UX designer by title, but I think like one. Every ticket I pick up, I'm asking: who's using this? What are they trying to do? What happens when it goes wrong? What did we forget?",
@@ -206,6 +228,11 @@ export const roles: RoleData[] = [
     title: 'Chief Vibes Officer',
     shortDesc: 'Social clubs, ARGs, events, culture — I make workplaces places people actually want to be.',
     subtitle: 'Culture engineering, social programming, and workplace joy',
+    tagline: {
+      mono: 'A developer',
+      serif: 'who builds culture',
+      hand: 'as carefully as code.',
+    },
     variant: 'vibes',
     icons: ['sparkles', 'puzzle', 'users'],
     intro: [

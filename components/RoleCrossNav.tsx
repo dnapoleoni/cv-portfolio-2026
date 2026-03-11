@@ -14,7 +14,7 @@ export function RoleCrossNav({ otherRoles }: RoleCrossNavProps) {
         {otherRoles.map(role => (
           <Link
             key={role.slug}
-            href={`/role/${role.slug}`}
+            href={`/${role.slug}`}
             className={`cross-nav-card${role.variant === 'vibes' ? ' cross-nav-card--vibes' : ''}`}
           >
             <span className="cross-nav-title">{role.title}</span>
