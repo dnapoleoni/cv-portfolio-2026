@@ -244,6 +244,37 @@ ul, ol { list-style: none; }
   color: var(--color-accent);
 }
 
+/* --- Btn Accent: accent-colored bordered button-style link --- */
+.btn-solid-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.btn-solid-accent:hover {
+  color: var(--color-accent);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-accent);
+}
+
+.btn-solid-accent--active {
+  pointer-events: none;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
 /* --- Control Group: container for small icon buttons / selects --- */
 .control-group {
   display: flex;
@@ -461,7 +492,7 @@ span.site-wordmark { cursor: default; }
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: var(--space-lg);
+  padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   text-decoration: none;
@@ -494,6 +525,7 @@ span.site-wordmark { cursor: default; }
 .role-card-title {
   font-size: var(--text-xl);
   font-weight: 500;
+  color: var(--color-accent);
   display: flex;
   justify-content: space-between;
   align-items: baseline;

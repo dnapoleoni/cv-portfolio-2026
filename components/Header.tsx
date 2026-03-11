@@ -34,7 +34,7 @@ export function Header() {
           </svg>
           <span>Download PDF</span>
         </a>
-        <Link href="/contact" className={`btn-accent${pathname === '/contact' ? ' btn-accent--active' : ''}`}>Get in touch!</Link>
+        <Link href="/contact" className={`btn-solid-accent${pathname === '/contact' ? ' btn-solid-accent--active' : ''}`}>Contact Dan</Link>
       </nav>
     </header>
   )
