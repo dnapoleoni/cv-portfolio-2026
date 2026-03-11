@@ -3,7 +3,7 @@ export function Hero() {
   return (
     <section className="hero hero--compact" aria-labelledby="hero-heading">
       <Image
-        src="/images/profile-pic.jpeg"
+        src="/images/profile-pic.jpg"
         alt="Dan Napoleoni smiling, black and white headshot"
         width={280}
         height={280}
