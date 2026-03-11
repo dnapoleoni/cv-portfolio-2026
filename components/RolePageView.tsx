@@ -1,4 +1,4 @@
-import { roles, getRoleBySlug, getOtherRoles } from '@/data/roles'
+import { getRoleBySlug, getOtherRoles } from '@/data/roles'
 import { getTestimonialsForRole } from '@/data/testimonials'
 import { Timeline } from '@/components/Timeline'
 import { SkillTags } from '@/components/SkillTags'
@@ -6,28 +6,20 @@ import { TechIconRow } from '@/components/TechIcons'
 import { TestimonialCarousel } from '@/components/TestimonialCarousel'
 import { RoleCrossNav } from '@/components/RoleCrossNav'
 import { ContactSection } from '@/components/ContactSection'
+import { RoleHero } from '@/components/RoleHero'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-export function generateStaticParams() {
-  return roles.map(role => ({ slug: role.slug }))
+interface RolePageViewProps {
+  slug: string
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const role = getRoleBySlug(params.slug)
-  if (!role) return {}
-  return {
-    title: `${role.title} — Dan Napoleoni`,
-    description: role.subtitle,
-  }
-}
-
-export default function RolePage({ params }: { params: { slug: string } }) {
-  const role = getRoleBySlug(params.slug)
+export function RolePageView({ slug }: RolePageViewProps) {
+  const role = getRoleBySlug(slug)
   if (!role) notFound()
 
-  const otherRoles = getOtherRoles(params.slug)
-  const testimonials = getTestimonialsForRole(params.slug)
+  const otherRoles = getOtherRoles(slug)
+  const testimonials = getTestimonialsForRole(slug)
 
   return (
     <article className="role-page">
@@ -35,19 +27,20 @@ export default function RolePage({ params }: { params: { slug: string } }) {
         <span aria-hidden="true">←</span> Back
       </Link>
 
+      <RoleHero tagline={role.tagline} />
+
       <header className="role-page-header">
-        <h1 className="role-page-title">
+        <h2 className="role-page-title">
           {role.title}
           <TechIconRow icons={role.icons} size={22} />
-        </h1>
+        </h2>
         <p className="role-page-subtitle">{role.subtitle}</p>
-         <div style={{ marginTop: 'var(--space-md)' }}>
+        <div style={{ marginTop: 'var(--space-md)' }}>
           <a href={`/Dan-Napoleoni-CV-${role.slug}.pdf`} download className="btn-outline">
-            <span aria-hidden="true">↓</span> Download CV - { role.title } (PDF)
+            <span aria-hidden="true">↓</span> Download CV - {role.title} (PDF)
           </a>
         </div>
       </header>
-      
 
       {/* Intro */}
       <section className="role-section">
@@ -94,8 +87,7 @@ export default function RolePage({ params }: { params: { slug: string } }) {
       {/* CTA */}
       <ContactSection
         heading="Interested?"
-        description={`If you're looking for a ${role.title.toLowerCase()} who brings UX thinking, clear communication, and genuine care to the work — let's chat.`}
-        showCV
+        slug={role.slug}
       />
 
       {/* Cross-nav to other roles */}

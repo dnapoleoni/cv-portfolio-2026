@@ -10,7 +10,7 @@ export function RoleCard({ role }: RoleCardProps) {
   return (
     <li>
       <Link
-        href={`/role/${role.slug}`}
+        href={`/${role.slug}`}
         className={`role-card${role.variant === 'vibes' ? ' role-card--vibes' : ''}`}
       >
         <div className="role-card-header">
