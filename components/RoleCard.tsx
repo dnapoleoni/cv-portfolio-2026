@@ -14,15 +14,13 @@ export function RoleCard({ role }: RoleCardProps) {
         className={`role-card${role.variant === 'vibes' ? ' role-card--vibes' : ''}`}
       >
         <div className="role-card-header">
-          <h3 className="role-card-title">
-            {role.title}
-            <span className="role-card-arrow" aria-hidden="true">
-              →
-            </span>
-          </h3>
-          <TechIconRow icons={role.icons} size={16} />
+          <h3 className="role-card-title">{role.title}</h3>
+          <TechIconRow icons={role.icons} size={24} />
         </div>
         <p className="role-card-desc">{role.shortDesc}</p>
+        <span className="role-card-cta" aria-hidden="true">
+          View role →
+        </span>
       </Link>
     </li>
   );
