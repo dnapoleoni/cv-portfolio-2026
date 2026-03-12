@@ -241,7 +241,7 @@ export const themes: Theme[] = [
   },
   {
     id: 'coral',
-    name: 'Coral',
+    name: 'Vibrant Coral',
     // Base: #FF785A — vibrant warm coral
     light: {
       bg: '#FFFAF8',
@@ -299,7 +299,7 @@ export const themes: Theme[] = [
   },
   {
     id: 'tangerine',
-    name: 'Tangerine',
+    name: 'Tangerine Dream',
     // Base: #FAAA8D — warm peachy orange
     light: {
       bg: '#FFFBF8',
@@ -357,7 +357,7 @@ export const themes: Theme[] = [
   },
   {
     id: 'blush',
-    name: 'Blush',
+    name: 'Baby Pink',
     // Base: #FFADC6 — soft pink
     light: {
       bg: '#FFFAFC',

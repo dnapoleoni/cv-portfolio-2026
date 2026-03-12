@@ -1115,7 +1115,21 @@ span.site-wordmark {
   }
   .footer-content {
     flex-direction: column;
-    align-items: flex-start;
+  }
+  .theme-picker-grid {
+    left: -150%;
+    right: auto !important;
+    padding-top: 36px !important;
+  }
+  .theme-picker-label {
+    position: absolute;
+    width: 148px;
+    top: -142px;
+    left: -45px;
+    z-index: 999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center !important;
   }
 }
 
