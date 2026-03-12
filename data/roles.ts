@@ -62,7 +62,7 @@ export const roles: RoleData[] = [
     icons: ['react', 'typescript', 'vue', 'nextjs'],
     intro: [
       "I've been building for the web since Flash was king. That journey — through ActionScript, jQuery, Backbone, Angular, Vue, and now React — means I don't just know frameworks, I understand the web platform itself. I write semantic HTML, modern CSS, and accessible interfaces because I've seen enough trends come and go to know what actually matters: does it work, is it fast, can everyone use it?",
-      "My most recent work has been in React and TypeScript at Everest Engineering, building features for production applications. Before that I spent years deep in Vue.js across multiple agencies and product teams. I'm framework-flexible because my fundamentals are strong.",
+      "My most recent work was React and TypeScript at Everest Engineering, building features for Splose — a healthcare management platform. Before that I spent years deep in Vue.js across multiple agencies and product teams. I'm framework-flexible because my fundamentals are strong.",
       "What makes me different from other frontend developers is that I don't just implement designs — I interrogate them. I'll flag accessibility issues, question interaction patterns that don't serve users, and fill in the gaps the brief left out. I've been told this is both my greatest strength and occasionally annoying. I'm fine with that.",
     ],
     skills: [
@@ -83,56 +83,75 @@ export const roles: RoleData[] = [
       'Responsive Design',
       'WCAG Accessibility',
       'Performance Optimisation',
-      'Headless CMS (DatoCMS, Contentful, Sanity)',
+      'Quasar',
+      'Laravel',
+      'GSAP',
+      'Headless CMS (Storyblok, DatoCMS, Craft CMS)',
       'AI-Assisted Development (Claude, Copilot, Cursor)',
     ],
     timeline: [
       {
+        date: '2025 - 2026',
+        role: 'Software Engineer',
+        company: 'Everest Engineering',
+        type: 'contract',
+        description:
+          'React & TypeScript feature development for Splose, a healthcare management platform. Component architecture, API integration, and collaborative agile workflow.',
+      },
+      {
         date: '2024 - 2025',
         role: 'Frontend Developer',
-        company: 'Everest Engineering',
+        company: 'Mira | Business Software',
         type: 'redundancy',
         description:
-          'React + TypeScript feature development for production web applications. Component architecture, API integration, and collaborative agile workflow.',
+          'Frontend development, new feature builds and code upkeep for a SaaS desktop, mobile and web app built in Quasar, Vue JS and Laravel.',
       },
       {
-        date: '2023 - 2024',
-        role: 'Frontend Developer',
-        company: 'Mira (Business Management Software)',
-        type: 'contract',
-        description: 'Frontend development for a business management SaaS product.',
-      },
-      {
-        date: '2021 - 2023',
+        date: '2023',
         role: 'VueJS Developer',
         company: 'AdTorque Edge',
-        type: 'permanent',
+        type: 'redundancy',
         description:
-          'Vue.js development for advertising and marketing technology solutions within a product team.',
+          'Sole Vue JS developer tasked with creating and building a business-critical internal SPA in VueJS, TypeScript & Tailwind from the ground up.',
       },
       {
-        date: '2019 - 2021',
+        date: '2022',
         role: 'Frontend Developer',
         company: 'Honest Fox',
         type: 'redundancy',
         description:
-          'Frontend development at a digital design and development agency. Component-driven builds, headless CMS integration, and responsive interfaces.',
+          'Frontend Vue JS development across a range of projects. Complete rebuild of the agency website using Vue JS, Nuxt, Tailwind & Storyblok. Various site builds integrating Craft CMS, Hubspot, and Strapi.',
       },
       {
-        date: '2017 - 2019',
+        date: '2019 - 2021',
         role: 'Frontend Developer',
-        company: 'The Royals / Cummins & Partners',
-        type: 'contract',
-        description:
-          'Agency frontend development across multiple client projects — campaign sites, interactive experiences, and responsive builds.',
-      },
-      {
-        date: '2014 - 2017',
-        role: 'Frontend Developer',
-        company: 'Isobar / Clemenger',
+        company: 'Clemenger BBDO',
         type: 'permanent',
         description:
-          'Large-scale agency work across major Australian brands. Campaign builds, interactive experiences, and dynamic content systems.',
+          'Part of a wider frontend development team. Vue.js applications for BMW & Myer, static and dynamic HTML banners, and Salesforce EDM development and deployment.',
+      },
+      {
+        date: '2018 - 2019',
+        role: 'Frontend Developer',
+        company: 'Freelance & Contract (The Royals, Trout, Cummins & Partners)',
+        type: 'contract',
+        description:
+          'Dynamic HTML banner suites for AustralianSuper (partnering with Google as a DV360 showcase), Athena Home Loans. eDM development for Mercedes, Spotify Australia and more.',
+      },
+      {
+        date: '2009 - 2017',
+        role: 'Developer',
+        company: 'Isobar Australia',
+        type: 'permanent',
+        description:
+          'Eight years spanning Flash/ActionScript, HTML banners, eDMs, and frontend development for major Australian brands including Holden, Jetstar, Seek, and more. Managed the Porter Davis website. Created multiple internal social initiatives, clubs and events.',
+      },
+      {
+        date: '2007 - 2008',
+        role: 'Developer',
+        company: 'Cre8ive',
+        type: 'permanent',
+        description: 'Early-career web development and digital production.',
       },
     ],
     caseStudies: [
@@ -162,7 +181,7 @@ export const roles: RoleData[] = [
     icons: ['salesforce', 'html', 'css', 'javascript'],
     intro: [
       'Before I became a "frontend developer" I spent years deep in the trenches of digital marketing production — building eDM templates and campaigns in Salesforce Marketing Cloud (ExactTarget), creating dynamic HTML banners for Google DV360 and DoubleClick, and managing campaign deployments for some of Australia\'s biggest brands.',
-      "I ran the email template development for Myer and Australia Post for years. That means I know the pain of Outlook rendering, the art of responsive email design, and the operational reality of deploying to millions of inboxes. I've built template systems, automated campaign workflows, and debugged more rendering issues across more email clients than I'd like to admit.",
+      "I ran the Myer eDM account at Clemenger and the Australia Post Salesforce offering at Isobar — including a full modular template overhaul. That means I know the pain of Outlook rendering, the art of responsive email design, and the operational reality of deploying to millions of inboxes. I've built template systems, automated campaign workflows, and debugged more rendering issues across more email clients than I'd like to admit.",
       "This background gives me something most frontend developers don't have: a deep understanding of how marketing teams work, what they need from technology, and how to bridge the gap between creative intent and technical delivery.",
     ],
     skills: [
@@ -174,6 +193,11 @@ export const roles: RoleData[] = [
       'Campaign Deployment & QA',
       'A/B Testing',
       'Marketing Automation',
+      'Google Web Designer',
+      'Litmus',
+      'Browserstack',
+      'Campaign Monitor',
+      'Mailchimp',
       'HTML / CSS / JavaScript',
       'Photoshop / Figma',
     ],
@@ -187,18 +211,34 @@ export const roles: RoleData[] = [
           'Email campaign development and template management for digital fundraising initiatives.',
       },
       {
-        date: '2016 - 2019',
-        role: 'eDM & Banner Developer',
-        company: 'Various Agencies (Clemenger, Isobar, Trout)',
+        date: '2021 - 2022',
+        role: 'Technical Producer',
+        company: 'Bower House Digital',
+        type: 'contract',
         description:
-          'End-to-end eDM development for clients including Myer and Australia Post. Built and maintained template systems, created dynamic HTML banners for programmatic campaigns, handled deployment and QA across major email clients.',
+          'Brought over from Clemenger to run Salesforce EDM development for Target and Aesop, plus a complete process overhaul of the EDM development workflow.',
       },
       {
-        date: '2012 - 2016',
-        role: 'Digital Producer / Developer',
-        company: 'Various Agencies',
+        date: '2019 - 2021',
+        role: 'eDM & Banner Developer',
+        company: 'Clemenger BBDO',
         description:
-          'Full-service digital production including banner campaigns, eDMs, landing pages, and interactive rich media units.',
+          'Developed, targeted and deployed Salesforce EDMs for Myer. Static and dynamic HTML banners for BMW, Belong, NAB, TAC.',
+      },
+      {
+        date: '2018 - 2019',
+        role: 'eDM & Banner Developer',
+        company: 'Freelance & Contract (The Royals, Trout, Cummins & Partners)',
+        type: 'contract',
+        description:
+          'Created a fully dynamic HTML banner suite for AustralianSuper, partnering with Google as a showcase for the DV360 dynamic banner rollout. Dynamic banners for Athena Home Loans. eDMs for Mercedes, Spotify Australia and more.',
+      },
+      {
+        date: '2009 - 2017',
+        role: 'eDM & Banner Developer',
+        company: 'Isobar Australia',
+        description:
+          'Created and managed the Australia Post Salesforce EDM offering for over a year, including a full modular template overhaul. EDMs for Holden, Quest, Garnier, HSBC. HTML banners for Holden, Jetstar, Save The Children, Seek, Jora, and many more.',
       },
     ],
     caseStudies: [
