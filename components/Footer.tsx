@@ -1,4 +1,5 @@
 'use client';
+import { ThemePicker } from './ThemePicker';
 import { useTheme } from './ThemeProvider';
 import { themes } from '@/data/themes';
 
@@ -12,18 +13,7 @@ export function Footer() {
         </p>
         {/* Theme & Mode controls */}
         <div className="control-group">
-          <select
-            value={theme.id}
-            onChange={(e) => setThemeId(e.target.value)}
-            className="control-select"
-            aria-label="Choose color theme"
-          >
-            {themes.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
-          </select>
+          <ThemePicker />
           <button
             onClick={toggleMode}
             className="control-btn"
