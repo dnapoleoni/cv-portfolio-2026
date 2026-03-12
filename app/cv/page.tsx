@@ -100,8 +100,8 @@ export default function CVPage() {
         </p>
       </section>
 
-      <ContactSection />
       <TestimonialCarousel testimonials={testimonials} />
+      <ContactSection />
     </article>
   );
 }

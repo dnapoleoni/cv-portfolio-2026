@@ -624,7 +624,7 @@ span.site-wordmark {
 
 /* --- Role Navigation Grid --- */
 .role-nav {
-  padding-block: var(--space-xl) var(--space-2xl);
+  padding-block: var(--space-xl) var(--space-xl);
   animation: fadeUp var(--duration-slow) var(--ease-out) 280ms both;
 }
 
@@ -778,7 +778,7 @@ span.site-wordmark {
   line-height: 1.6;
   color: var(--color-text);
   margin-bottom: var(--space-md);
-  max-width: 60ch;
+  max-width: none;
 }
 
 .testimonial-attribution {
@@ -887,6 +887,7 @@ span.site-wordmark {
 
 /* --- Contact Section --- */
 .contact-section {
+  margin: var(--space-xl) 0;
   padding: var(--space-xl);
   background: var(--color-bg-elevated);
   border-radius: 8px;

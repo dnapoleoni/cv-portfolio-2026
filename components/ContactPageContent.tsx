@@ -10,13 +10,11 @@ export function ContactPageContent() {
   const { value: from, backHref } = useFromContext();
   const fromRole = from ? getRoleBySlug(from) : null;
 
-  const heading = fromRole
-    ? `Interested in a ${fromRole.title.toLowerCase()}?`
-    : 'Keen to know more?';
+  const heading = fromRole ? `Looking for a ${fromRole.title}?` : '1800-TXT-DAN';
 
   const subheading = fromRole
-    ? "Drop a message below and I'll be in touch to organise a proper catchup."
-    : "Fill out the form below and I'll be in touch.";
+    ? 'Or just keen for a chat? Either way - drop me a line below.'
+    : 'Say hi, ask questions, leave feedback or send memes via this handy form.';
 
   const subject = fromRole
     ? `Hi Dan — interested in your ${fromRole.title} background`

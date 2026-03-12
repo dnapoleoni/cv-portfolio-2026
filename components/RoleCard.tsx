@@ -19,7 +19,7 @@ export function RoleCard({ role }: RoleCardProps) {
         <p className="role-card-desc">{role.shortDesc}</p>
         <TechIconRow icons={role.icons} size={24} />
         <span className="role-card-cta" aria-hidden="true">
-          View role →
+          View CV →
         </span>
       </Link>
     </li>
