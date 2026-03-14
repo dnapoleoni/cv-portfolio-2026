@@ -1,14 +1,10 @@
 import { RolePageView } from '@/components/RolePageView';
-import { getRoleBySlug } from '@/data/roles';
 
-export function generateMetadata() {
-  const role = getRoleBySlug('ux-engineer');
-  if (!role) return {};
-  return {
-    title: `${role.title} — Dan Napoleoni`,
-    description: role.subtitle,
-  };
-}
+export const metadata = {
+  title: 'UX Engineer — Dan Napoleoni',
+  description:
+    'Frontend developer with deep UX instincts — 15+ years of asking "but does this actually work for the user?"',
+};
 
 export default function UXEngineer() {
   return <RolePageView slug="ux-engineer" />;

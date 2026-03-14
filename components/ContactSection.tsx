@@ -16,7 +16,7 @@ const ContactLink = () => (
 
 export function ContactSection({
   heading = "Let's talk",
-  description = "I'm currently looking for my next role — whether that's frontend development, digital marketing, UX engineering, or something I haven't thought of yet. Based in Melbourne, open to hybrid and remote.",
+  description = "I'm currently looking for my next role — whether that's frontend development, digital marketing, UX engineering, or something I haven't thought of yet. Based in Melbourne, open to hybrid, remote, and willing to relocate for the right role.",
   showCV = false,
   slug,
 }: ContactSectionProps) {

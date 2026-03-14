@@ -1,8 +1,24 @@
 # CLAUDE.md — Portfolio Site for Dan Napoleoni
 
+## Prompt Files
+
+Prompt files live in `/prompts/` and contain step-by-step instructions for specific changes. When Dan says "run prompt 07" or "implement 07-data-restructure-cv-as-role.md", read the file from the prompts directory and execute all changes described in it. Always read CLAUDE.md first (you're doing that now), then read the prompt file, then implement.
+
+Current prompt files:
+
+- `01-initial-one-shot-build.md` — original site generation
+- `02-structural-rework.md` — component architecture rebuild
+- `03-css-rename-sticky-header.md` — CSS class refactor, sticky header
+- `04-claude-code-restructure.md` — top-level routes, taglines, contact page
+- `05-new-themes.md` — 12-theme replacement
+- `06-first-pass-copy-changes.md` — copy audit fixes, metadata, skills updates
+- `07-data-restructure-cv-as-role.md` — centralised experiences, CV as role, contentSection
+
+These are historical records of how the site was built. New prompt files may be added as the project evolves.
+
 ## Who is Dan
 
-Melbourne-based frontend developer, 15+ years experience, currently job hunting after redundancy. Career path: Flash → banners → eDMs → Vue → React. Agencies: Isobar, Clemenger, Honest Fox, The Royals, Cummins & Partners, Trout, AdTorque Edge, Everest Engineering.
+Melbourne-based frontend developer, 15+ years experience, currently job hunting after redundancy. Career path: Flash > banners > eDMs > Vue > React. Agencies: Isobar, Clemenger, Honest Fox, The Royals, Cummins & Partners, Trout, AdTorque Edge, Everest Engineering.
 
 Core identity line: "A developer who thinks like a designer and communicates like a human."
 
@@ -29,7 +45,7 @@ Primary visitor: recruiter or hiring manager clicking a link from Dan's job appl
 
 The site is: portfolio, online CV, code sample (the repo demonstrates skills), and personality showcase.
 
-Target roles: Frontend Developer, Digital Marketing Specialist, UX-Minded Engineer, Chief Vibes Officer, Creative Technologist, Design Technologist, UI Engineer, Digital Producer.
+Target roles: Frontend Developer, Digital Marketing Specialist, UX Engineer, Chief Vibes Officer, Creative Technologist, Design Technologist, UI Engineer, Digital Producer.
 
 ## Tech Stack
 
@@ -46,7 +62,40 @@ Target roles: Frontend Developer, Digital Marketing Specialist, UX-Minded Engine
 - CSS classes must be location-independent. NEVER use names like "header-link", "footer-controls", "cv-download". Use generic reusable names: `nav-link`, `btn-outline`, `btn-accent`, `control-btn`, `control-select`, `link-muted`, `link-mono`, `link-group`, `nav-row`, `control-group`.
 - All content data in `/data/` (roles.ts, testimonials.ts, themes.ts). Components receive data as props.
 - Role pages are top-level routes: `/frontend-developer`, `/digital-marketing`, `/ux-engineer`, `/chief-vibes-officer`. NOT nested under `/role/`. Each page file wraps a shared `RolePageView` component.
+- CV is also a role in the data with `variant: 'cv'`. It uses `RolePageView` like other roles but with conditional rendering (no tagline hero, no icons, no cross-nav). CV is excluded from the home page role grid and cross-nav via `getDisplayRoles()` and `getOtherRoles()`.
 - Always prefer simplicity. No JS when CSS works. No scroll listeners when structural CSS works. No blur when solid background works. No floating widgets when nav links work.
+
+## Data Architecture
+
+### Centralised Experiences
+
+All experience entries live in a single `experiences` array in `data/roles.ts`. Each role references experiences by ID via `experienceIds: string[]`.
+
+Fields that vary by role use the `RoleVariant` type: either a plain string (same everywhere) or an array of `{ id, value }` pairs. The resolver tries: exact role slug match → `'default'` → first entry.
+
+```typescript
+type RoleVariant = string | { id: string; value: string }[];
+```
+
+### ContentSection (replaces CaseStudy)
+
+A single flexible section per role sits between Skills and Testimonials. Used for "How I work", "Also", case studies, achievements, or anything else. Replaces the old `caseStudies` field.
+
+```typescript
+interface ContentSection {
+  heading: string;
+  items: { title?: string; description: string }[];
+}
+```
+
+Items with a `title` render as titled blocks. Items without a `title` render as plain paragraphs.
+
+### Key helpers
+
+- `resolveVariant(field, roleId)` — resolves a RoleVariant for a given role
+- `getTimelineForRole(slug)` — returns resolved timeline entries for any role including CV
+- `getDisplayRoles()` — returns roles for the home page grid (excludes CV)
+- `getOtherRoles(slug)` — returns roles for cross-nav (excludes current + CV)
 
 ## Design System
 
@@ -65,11 +114,12 @@ Monospace / italic serif / handwritten Caveat. Role-specific variants:
 - Digital Marketing: "A developer" / "who speaks marketing" / "and builds campaigns that actually work."
 - UX Engineer: "A developer" / "who asks why before asking how" / "and fights for the user."
 - Chief Vibes Officer: "A developer" / "who builds culture" / "as carefully as code."
-- Home page: general-purpose version, not role-specific. TBD.
+- Home page: general-purpose version, not role-specific.
+- CV: no tagline (tagline field is optional).
 
 ### Themes & Accessibility
 
-6 themes (Warm, Ink, Midnight, Forest, Ocean, Sunset) × light/dark. All WCAG AAA: 7:1 normal text, 4.5:1 large text. `textTertiary` only for large text or decorative elements. Persisted to localStorage, defaults to `prefers-color-scheme`.
+12 themes (Claude, GitHub, Linear, Vercel, Stripe, Spotify, Desert Sand, Coral, Vintage Grape, Tangerine, Sea Grass, Blush) x light/dark. All WCAG AAA: 7:1 normal text, 4.5:1 large text. `textTertiary` only for large text or decorative elements. Persisted to localStorage, defaults to `prefers-color-scheme`.
 
 ### Typography & Spacing
 
@@ -99,15 +149,15 @@ Dedicated `/contact` page. Reads `?from=` param to tailor heading and mailto sub
 
 ### Home Page
 
-Compact hero (no min-height) with general tagline, then role cards immediately with minimal scroll. Cards are the primary interaction. Heading like "Currently available for..." Includes testimonial carousel.
+Compact hero (no min-height) with general tagline, then role cards immediately with minimal scroll. Cards are the primary interaction. Includes testimonial carousel.
 
 ### Role Pages
 
-Must stand alone (recruiter may never see home). Contains: role-specific tagline hero, intro, experience (ABOVE skills always), skill tags, case studies, role-specific testimonials, contact CTA linking to `/contact`, cross-nav to other roles at bottom.
+Must stand alone (recruiter may never see home). Contains: role-specific tagline hero, intro, experience (ABOVE skills always), skill tags, contentSection, role-specific testimonials, contact CTA linking to `/contact`, cross-nav to other roles at bottom.
 
 ### CV Page
 
-Experience above skills. Summary, timeline, skills, non-dev interests, contact CTA.
+Uses `RolePageView` with `variant: 'cv'`. No tagline hero, no icons, no cross-nav. Has "Also" contentSection for non-dev interests. Download button says "Download CV - Complete (PDF)".
 
 ### Cards
 

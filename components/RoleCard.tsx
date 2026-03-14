@@ -17,7 +17,7 @@ export function RoleCard({ role }: RoleCardProps) {
           <h3 className="role-card-title">{role.title}</h3>
         </div>
         <p className="role-card-desc">{role.shortDesc}</p>
-        <TechIconRow icons={role.icons} size={24} />
+        <TechIconRow icons={role.icons ?? []} size={24} />
         <span className="role-card-cta" aria-hidden="true">
           View CV →
         </span>

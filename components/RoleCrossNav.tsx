@@ -20,7 +20,7 @@ export function RoleCrossNav({ otherRoles }: RoleCrossNavProps) {
             className={`cross-nav-card${role.variant === 'vibes' ? ' cross-nav-card--vibes' : ''}`}
           >
             <span className="cross-nav-title">{role.title}</span>
-            <TechIconRow icons={role.icons} size={14} />
+            <TechIconRow icons={role.icons ?? []} size={14} />
           </Link>
         ))}
       </div>

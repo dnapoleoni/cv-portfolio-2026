@@ -1,7 +1,7 @@
-import type { TimelineEntry } from '@/data/roles';
+import type { ResolvedTimelineEntry } from '@/data/roles';
 
 interface TimelineProps {
-  entries: TimelineEntry[];
+  entries: ResolvedTimelineEntry[];
 }
 
 function getTypeLabel(type?: string) {
