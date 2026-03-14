@@ -10,7 +10,7 @@ export function RoleCrossNav({ otherRoles }: RoleCrossNavProps) {
   return (
     <nav className="cross-nav" aria-labelledby="cross-nav-heading">
       <h2 id="cross-nav-heading" className="section-heading">
-        Also looking for…
+        Also looking for a…
       </h2>
       <div className="cross-nav-grid">
         {otherRoles.map((role) => (

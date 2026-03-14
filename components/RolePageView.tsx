@@ -89,7 +89,7 @@ export function RolePageView({ slug }: RolePageViewProps) {
       <ContactSection heading="Interested?" slug={role.slug} />
 
       {/* Cross-nav to other roles */}
-      {role.variant !== 'cv' && <RoleCrossNav otherRoles={otherRoles} />}
+      {otherRoles.length > 0 && <RoleCrossNav otherRoles={otherRoles} />}
     </article>
   );
 }

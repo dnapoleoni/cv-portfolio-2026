@@ -66,12 +66,21 @@ export interface RoleData {
   subtitle: string;
   tagline?: Tagline; // OPTIONAL — CV has no tagline
   intro: string[];
-  variant?: 'vibes' | 'cv';
+  variant?: 'vibes';
+  contactHeading?: string;
   icons?: TechIconId[]; // OPTIONAL — CV has no icons
   skills: string[];
   experienceIds: string[]; // REPLACES timeline: TimelineEntry[]
   contentSection?: ContentSection; // REPLACES caseStudies: CaseStudy[]
 }
+
+/** Role slugs that appear in the home page grid and cross-nav */
+export const navRoleSlugs = [
+  'frontend-developer',
+  'digital-marketing',
+  'ux-engineer',
+  'chief-vibes-officer',
+];
 
 export const experiences: Experience[] = [
   {
@@ -305,7 +314,7 @@ export const roles: RoleData[] = [
   },
   {
     slug: 'digital-marketing',
-    title: 'Digital Marketing Specialist',
+    title: 'Digital Marketer',
     shortDesc:
       'eDMs, HTML banners, Salesforce Marketing Cloud — the full digital campaign toolkit.',
     subtitle: 'Email campaigns, dynamic banners, and marketing production at scale',
@@ -449,11 +458,11 @@ export const roles: RoleData[] = [
     },
   },
   {
-    slug: 'cv',
-    title: 'Curriculum Vitae',
+    slug: 'the-full-picture',
+    title: 'The Full Picture',
     shortDesc: '',
     subtitle: 'Dan Napoleoni · Frontend Developer · Melbourne, Australia',
-    variant: 'cv',
+    contactHeading: 'Read enough?',
     intro: [
       'Frontend developer with 15+ years of experience across the full evolution of web development — from Flash and interactive media through to modern React, TypeScript, and Vue.js applications. Strong UX instincts, clear communicator, and genuine collaborator. Experienced across agency and product environments with deep expertise in digital marketing production alongside modern frontend engineering.',
       'A developer who thinks like a designer and communicates like a human.',
@@ -536,21 +545,23 @@ export function getRoleBySlug(slug: string): RoleData | undefined {
   return roles.find((r) => r.slug === slug);
 }
 
-export function getOtherRoles(currentSlug: string): RoleData[] {
-  return roles.filter((r) => r.slug !== currentSlug && r.variant !== 'cv');
+export function getDisplayRoles(): RoleData[] {
+  return navRoleSlugs
+    .map((slug) => roles.find((r) => r.slug === slug))
+    .filter((r): r is RoleData => r !== undefined);
 }
 
-export function getDisplayRoles(): RoleData[] {
-  return roles.filter((r) => r.variant !== 'cv');
+export function getOtherRoles(currentSlug: string): RoleData[] {
+  return getDisplayRoles().filter((r) => r.slug !== currentSlug);
 }
 
 export function getPdfForSlug(slug?: string): { href: string; label: string } {
-  if (!slug || slug === 'cv') {
+  if (!slug || slug === 'the-full-picture') {
     return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
   }
   const role = getRoleBySlug(slug);
   if (role) {
     return { href: `/Dan-Napoleoni-CV-${slug}.pdf`, label: `Download CV - ${role.title}` };
   }
-  return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download PDF' };
+  return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
 }

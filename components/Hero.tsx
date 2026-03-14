@@ -24,7 +24,7 @@ export function Hero() {
           <p className="hero-sub">Based in Melbourne, available now.</p>
         </div>
         <div className="link-group mobile-center">
-          <Link href="/cv" className="btn-solid-accent">
+          <Link href="/the-full-picture" className="btn-solid-accent">
             View CV
           </Link>
           <DownloadButton
