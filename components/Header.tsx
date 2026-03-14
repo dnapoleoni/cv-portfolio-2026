@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ContextLink } from './ContextLink';
 import { useState, useEffect } from 'react';
 import { getPdfForSlug } from '@/data/roles';
+import { DownloadButton } from './DownloadButton';
 
 export function Header() {
   const pathname = usePathname();
@@ -79,24 +80,7 @@ export function Header() {
       </button>
 
       <nav className={`nav-row${mobileOpen ? ' nav-row-mobile' : ''}`} aria-label="Site navigation">
-        <a href={pdf.href} download className="nav-link" title="Download PDF">
-          <span>Download PDF</span>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            aria-hidden="true"
-          >
-            <path
-              d="M8 2v8m0 0l-3-3m3 3l3-3M3 12h10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
+        <DownloadButton href={pdf.href} label="Download CV" className="nav-link" />
         <a
           href="https://www.linkedin.com/in/daniel-napoleoni"
           className="nav-link nav-mobile-only"

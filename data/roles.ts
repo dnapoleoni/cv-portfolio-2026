@@ -546,11 +546,11 @@ export function getDisplayRoles(): RoleData[] {
 
 export function getPdfForSlug(slug?: string): { href: string; label: string } {
   if (!slug || slug === 'cv') {
-    return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV - Complete (PDF)' };
+    return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
   }
   const role = getRoleBySlug(slug);
   if (role) {
-    return { href: `/Dan-Napoleoni-CV-${slug}.pdf`, label: `Download CV - ${role.title} (PDF)` };
+    return { href: `/Dan-Napoleoni-CV-${slug}.pdf`, label: `Download CV - ${role.title}` };
   }
   return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download PDF' };
 }
