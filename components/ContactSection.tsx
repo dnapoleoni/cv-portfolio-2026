@@ -4,7 +4,6 @@ import { ContextLink } from './ContextLink';
 interface ContactSectionProps {
   heading?: string;
   description?: string;
-  showCV?: boolean;
   slug?: string;
 }
 
@@ -17,7 +16,6 @@ const ContactLink = () => (
 export function ContactSection({
   heading = "Let's talk",
   description = "I'm currently looking for my next role — whether that's frontend development, digital marketing, UX engineering, or something I haven't thought of yet. Based in Melbourne, open to hybrid, remote, and willing to relocate for the right role.",
-  showCV = false,
   slug,
 }: ContactSectionProps) {
   // Role page variant — lighter CTA linking to /contact with context
@@ -40,11 +38,6 @@ export function ContactSection({
       <p>{description}</p>
       <div className="link-group">
         <ContactLink />
-        {showCV && (
-          <Link href="/cv" className="link-mono">
-            View full CV
-          </Link>
-        )}
         <a
           href="https://github.com/dnapoleoni/cv-portfolio-2026"
           target="_blank"

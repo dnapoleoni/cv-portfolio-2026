@@ -12,7 +12,7 @@ Current prompt files:
 - `04-claude-code-restructure.md` — top-level routes, taglines, contact page
 - `05-new-themes.md` — 12-theme replacement
 - `06-first-pass-copy-changes.md` — copy audit fixes, metadata, skills updates
-- `07-data-restructure-cv-as-role.md` — centralised experiences, CV as role, contentSection
+- `07-data-restructure-cv-as-role.md` — centralised experiences, contentSection
 
 These are historical records of how the site was built. New prompt files may be added as the project evolves.
 
@@ -45,7 +45,7 @@ Primary visitor: recruiter or hiring manager clicking a link from Dan's job appl
 
 The site is: portfolio, online CV, code sample (the repo demonstrates skills), and personality showcase.
 
-Target roles: Frontend Developer, Digital Marketing Specialist, UX Engineer, Chief Vibes Officer, Creative Technologist, Design Technologist, UI Engineer, Digital Producer.
+Target roles: Frontend Developer, Digital Marketer, UX Engineer, Chief Vibes Officer, Creative Technologist, Design Technologist, UI Engineer, Digital Producer.
 
 ## Tech Stack
 
@@ -59,11 +59,31 @@ Target roles: Frontend Developer, Digital Marketing Specialist, UX Engineer, Chi
 ## Architecture Rules
 
 - Server components by default. Only use `'use client'` when state, effects, or browser APIs are required. Current client components: ThemeProvider, Header, TestimonialCarousel.
-- CSS classes must be location-independent. NEVER use names like "header-link", "footer-controls", "cv-download". Use generic reusable names: `nav-link`, `btn-outline`, `btn-accent`, `control-btn`, `control-select`, `link-muted`, `link-mono`, `link-group`, `nav-row`, `control-group`.
+- CSS classes must be location-independent. NEVER use names like "header-link", "footer-controls", "cv-download". Use generic reusable names: `nav-link`, `btn-outline`, `btn-accent`, `btn-solid-accent`, `control-btn`, `control-select`, `link-muted`, `link-mono`, `link-group`, `nav-row`, `control-group`.
 - All content data in `/data/` (roles.ts, testimonials.ts, themes.ts). Components receive data as props.
-- Role pages are top-level routes: `/frontend-developer`, `/digital-marketing`, `/ux-engineer`, `/chief-vibes-officer`. NOT nested under `/role/`. Each page file wraps a shared `RolePageView` component.
-- CV is also a role in the data with `variant: 'cv'`. It uses `RolePageView` like other roles but with conditional rendering (no tagline hero, no icons, no cross-nav). CV is excluded from the home page role grid and cross-nav via `getDisplayRoles()` and `getOtherRoles()`.
+- Role pages are top-level routes: `/frontend-developer`, `/digital-marketing`, `/ux-engineer`, `/chief-vibes-officer`, `/the-full-picture`. NOT nested under `/role/`. Each page file wraps a shared `RolePageView` component.
 - Always prefer simplicity. No JS when CSS works. No scroll listeners when structural CSS works. No blur when solid background works. No floating widgets when nav links work.
+
+## Navigation Architecture
+
+Which roles appear in the home page grid and cross-nav is controlled by a single `navRoleSlugs` array in `data/roles.ts`. This is an explicit allowlist — roles not in this array still exist as pages but won't appear in navigation. Currently:
+
+```typescript
+export const navRoleSlugs = [
+  'frontend-developer',
+  'digital-marketing',
+  'ux-engineer',
+  'chief-vibes-officer',
+];
+```
+
+"The Full Picture" (`/the-full-picture`) is the complete CV role — it contains all experiences and a combined skills list. It is NOT in `navRoleSlugs` so it doesn't appear in the home grid or cross-nav, but it does show cross-nav links TO the other roles (because `getOtherRoles` returns the nav roles minus the current one). To add it to the home grid in future, just add its slug to `navRoleSlugs`.
+
+Key helpers:
+
+- `getDisplayRoles()` — returns roles in `navRoleSlugs` order (for home grid)
+- `getOtherRoles(slug)` — returns display roles minus the current one (for cross-nav)
+- `getPdfForSlug(slug)` — returns the correct PDF href and label for any role
 
 ## Data Architecture
 
@@ -77,9 +97,9 @@ Fields that vary by role use the `RoleVariant` type: either a plain string (same
 type RoleVariant = string | { id: string; value: string }[];
 ```
 
-### ContentSection (replaces CaseStudy)
+### ContentSection
 
-A single flexible section per role sits between Skills and Testimonials. Used for "How I work", "Also", case studies, achievements, or anything else. Replaces the old `caseStudies` field.
+A single flexible section per role sits between Skills and Testimonials. Used for "How I work", "Also", case studies, achievements, or anything else. Optional — not all roles need one.
 
 ```typescript
 interface ContentSection {
@@ -88,14 +108,27 @@ interface ContentSection {
 }
 ```
 
-Items with a `title` render as titled blocks. Items without a `title` render as plain paragraphs.
+Items with a `title` render as titled blocks (case-study styling). Items without a `title` render as plain paragraphs.
 
-### Key helpers
+### Contact Page Customisation
 
-- `resolveVariant(field, roleId)` — resolves a RoleVariant for a given role
-- `getTimelineForRole(slug)` — returns resolved timeline entries for any role including CV
-- `getDisplayRoles()` — returns roles for the home page grid (excludes CV)
-- `getOtherRoles(slug)` — returns roles for cross-nav (excludes current + CV)
+Roles can optionally set `contactHeading` to override the default "Looking for a [title]?" heading on the contact page. Used by The Full Picture which sets `contactHeading: 'Read enough?'`.
+
+### Shared Components
+
+- `DownloadButton` — reusable download link with SVG icon. Accepts `href`, `label`, and `className`. Used in Header, Hero, and RolePageView. Includes `sr-only` "(PDF)" for screen readers.
+
+### Key Roles
+
+Five roles exist in the data:
+
+| Role                | Slug                  | In navRoleSlugs | Variant | Notes                        |
+| ------------------- | --------------------- | --------------- | ------- | ---------------------------- |
+| Frontend Developer  | `frontend-developer`  | Yes             | —       | Primary technical role       |
+| Digital Marketer    | `digital-marketing`   | Yes             | —       | eDMs, banners, campaigns     |
+| UX Engineer         | `ux-engineer`         | Yes             | —       | UX-focused development       |
+| Chief Vibes Officer | `chief-vibes-officer` | Yes             | `vibes` | Dashed border card           |
+| The Full Picture    | `the-full-picture`    | No              | —       | Complete CV, all experiences |
 
 ## Design System
 
@@ -111,11 +144,11 @@ Items with a `title` render as titled blocks. Items without a `title` render as 
 Monospace / italic serif / handwritten Caveat. Role-specific variants:
 
 - Frontend Developer: "A developer" / "who thinks like a designer" / "and communicates like a human."
-- Digital Marketing: "A developer" / "who speaks marketing" / "and builds campaigns that actually work."
+- Digital Marketer: "A developer" / "who speaks marketing" / "and builds campaigns that actually work."
 - UX Engineer: "A developer" / "who asks why before asking how" / "and fights for the user."
 - Chief Vibes Officer: "A developer" / "who builds culture" / "as carefully as code."
 - Home page: general-purpose version, not role-specific.
-- CV: no tagline (tagline field is optional).
+- The Full Picture: no tagline (tagline field is optional).
 
 ### Themes & Accessibility
 
@@ -137,7 +170,7 @@ Never use inline styles. All styles go in `globals.css` as reusable classes.
 
 ### Header
 
-Sticky, always compact (small padding, hero padding creates breathing room), solid background (no blur/transparency). Contains: wordmark (`danielnapoleoni.dev` — non-clickable span on home, link elsewhere), "View CV", "Download PDF", "Get in touch". "Get in touch" links to `/contact?from=[current path]`.
+Sticky, always compact (small padding, hero padding creates breathing room), solid background (no blur/transparency). Contains: wordmark (`danielnapoleoni.dev` — non-clickable span on home, link elsewhere), "Download CV" (role-aware via `getPdfForSlug` — downloads role-specific PDF on role pages, full CV elsewhere), "Contact Dan" (links to `/contact?from=[current path]`). Mobile menu adds LinkedIn and GitHub links.
 
 ### Footer
 
@@ -145,19 +178,19 @@ Copyright + theme/mode controls only. No nav links.
 
 ### Contact
 
-Dedicated `/contact` page. Reads `?from=` param to tailor heading and mailto subject. Netlify Forms + honeypot. Email obfuscated via JS string assembly. Phone only in PDF, never on site. No floating widgets.
+Dedicated `/contact` page. Reads `?from=` param to tailor heading and mailto subject. Roles can set `contactHeading` for custom headings (e.g., The Full Picture uses "Read enough?" instead of "Looking for a The Full Picture?"). Netlify Forms + honeypot. Email obfuscated via JS string assembly. Phone only in PDF, never on site. No floating widgets.
 
 ### Home Page
 
-Compact hero (no min-height) with general tagline, then role cards immediately with minimal scroll. Cards are the primary interaction. Includes testimonial carousel.
+Compact hero (no min-height) with profile image, subtitle, "Based in Melbourne, available now.", and a link group with "View CV" (links to `/the-full-picture`) and "Download CV" (downloads full PDF via `DownloadButton`). Role cards immediately below with minimal scroll. Cards are the primary interaction. Includes testimonial carousel.
 
 ### Role Pages
 
-Must stand alone (recruiter may never see home). Contains: role-specific tagline hero, intro, experience (ABOVE skills always), skill tags, contentSection, role-specific testimonials, contact CTA linking to `/contact`, cross-nav to other roles at bottom.
+Must stand alone (recruiter may never see home). Contains: role-specific tagline hero (if tagline exists), intro, experience (ABOVE skills always), skill tags, contentSection (if exists), role-specific testimonials, contact CTA linking to `/contact`, cross-nav to other roles at bottom (renders if `otherRoles.length > 0`). Each has a role-specific `DownloadButton` near the top.
 
-### CV Page
+### The Full Picture (Full CV)
 
-Uses `RolePageView` with `variant: 'cv'`. No tagline hero, no icons, no cross-nav. Has "Also" contentSection for non-dev interests. Download button says "Download CV - Complete (PDF)".
+Uses `RolePageView` like any other role. Has no tagline hero (tagline field is undefined), no icons (icons field is undefined). Shows all experiences, combined curated skills list, and "Also" contentSection for non-dev interests. Cross-nav renders showing all four main roles. Contact CTA uses custom heading "Read enough?" via `contactHeading` field.
 
 ### Cards
 
@@ -173,7 +206,7 @@ Placeholder data, will be replaced with real references (with consent). Supports
 
 ### Accessibility
 
-Skip link, ARIA labels, semantic HTML, `focus-visible`, keyboard nav, `.sr-only` utility class, AAA contrast throughout. PDF link and web CV grouped in nav with descriptive `aria-label` so web version = accessible alternative.
+Skip link, ARIA labels, semantic HTML, `focus-visible`, keyboard nav, `.sr-only` utility class, AAA contrast throughout. `DownloadButton` uses `sr-only` to convey file format "(PDF)" to screen readers without cluttering visible text.
 
 ## Copy and Tone
 

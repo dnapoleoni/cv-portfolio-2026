@@ -34,8 +34,8 @@ export default function ContactSuccess() {
         <Link href="/" className="btn-outline">
           ← Back to home
         </Link>
-        <Link href="/cv" className="btn-outline">
-          View my CV
+        <Link href="/the-full-picture" className="btn-outline">
+          View CV
         </Link>
       </div>
     </section>
