@@ -4,10 +4,13 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ContextLink } from './ContextLink';
 import { useState, useEffect } from 'react';
+import { getPdfForSlug } from '@/data/roles';
 
 export function Header() {
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const slug = isHome ? undefined : pathname.slice(1);
+  const pdf = getPdfForSlug(slug);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Close mobile menu on route change
@@ -76,10 +79,7 @@ export function Header() {
       </button>
 
       <nav className={`nav-row${mobileOpen ? ' nav-row-mobile' : ''}`} aria-label="Site navigation">
-        <Link href="/cv" className={`nav-link${pathname === '/cv' ? ' nav-link--active' : ''}`}>
-          View CV
-        </Link>
-        <a href="/Dan-Napoleoni-CV.pdf" download className="nav-link" title="Download PDF">
+        <a href={pdf.href} download className="nav-link" title="Download PDF">
           <span>Download PDF</span>
           <svg
             width="16"

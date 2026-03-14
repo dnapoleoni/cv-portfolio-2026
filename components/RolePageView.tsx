@@ -1,4 +1,4 @@
-import { getRoleBySlug, getOtherRoles, getTimelineForRole } from '@/data/roles';
+import { getRoleBySlug, getOtherRoles, getTimelineForRole, getPdfForSlug } from '@/data/roles';
 import { getTestimonialsForRole } from '@/data/testimonials';
 import { Timeline } from '@/components/Timeline';
 import { SkillTags } from '@/components/SkillTags';
@@ -21,6 +21,7 @@ export function RolePageView({ slug }: RolePageViewProps) {
   const otherRoles = getOtherRoles(slug);
   const testimonials = getTestimonialsForRole(slug);
   const timeline = getTimelineForRole(slug);
+  const pdf = getPdfForSlug(role.slug);
 
   return (
     <article className="role-page">
@@ -37,15 +38,24 @@ export function RolePageView({ slug }: RolePageViewProps) {
         </h2>
         <p className="role-page-subtitle">{role.subtitle}</p>
         <div style={{ marginTop: 'var(--space-md)' }}>
-          {role.variant === 'cv' ? (
-            <a href="/Dan-Napoleoni-CV.pdf" download className="btn-outline">
-              <span aria-hidden="true">↓</span> Download CV - Complete (PDF)
-            </a>
-          ) : (
-            <a href={`/Dan-Napoleoni-CV-${role.slug}.pdf`} download className="btn-outline">
-              <span aria-hidden="true">↓</span> Download CV - {role.title} (PDF)
-            </a>
-          )}
+          <a href={pdf.href} download className="btn-solid-accent">
+            <span>Download CV - {role.title} (PDF)</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true"
+            >
+              <path
+                d="M8 2v8m0 0l-3-3m3 3l3-3M3 12h10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </div>
       </header>
 

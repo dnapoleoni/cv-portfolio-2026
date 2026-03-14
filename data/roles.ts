@@ -277,7 +277,16 @@ export const roles: RoleData[] = [
       'Headless CMS (Storyblok, DatoCMS, Craft CMS)',
       'AI-Assisted Development (Claude, Copilot, Cursor)',
     ],
-    experienceIds: ['everest', 'mira', 'adtorque', 'honest-fox', 'clemenger', 'freelance-contract', 'isobar', 'cre8ive'],
+    experienceIds: [
+      'everest',
+      'mira',
+      'adtorque',
+      'honest-fox',
+      'clemenger',
+      'freelance-contract',
+      'isobar',
+      'cre8ive',
+    ],
     contentSection: {
       heading: 'How I work',
       items: [
@@ -478,8 +487,16 @@ export const roles: RoleData[] = [
       'Photoshop / Sketch / Figma',
     ],
     experienceIds: [
-      'everest', 'mira', 'world-vision', 'adtorque', 'honest-fox',
-      'bower-house', 'clemenger', 'freelance-contract', 'isobar', 'cre8ive',
+      'everest',
+      'mira',
+      'world-vision',
+      'adtorque',
+      'honest-fox',
+      'bower-house',
+      'clemenger',
+      'freelance-contract',
+      'isobar',
+      'cre8ive',
     ],
     contentSection: {
       heading: 'Also',
@@ -525,4 +542,15 @@ export function getOtherRoles(currentSlug: string): RoleData[] {
 
 export function getDisplayRoles(): RoleData[] {
   return roles.filter((r) => r.variant !== 'cv');
+}
+
+export function getPdfForSlug(slug?: string): { href: string; label: string } {
+  if (!slug || slug === 'cv') {
+    return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV - Complete (PDF)' };
+  }
+  const role = getRoleBySlug(slug);
+  if (role) {
+    return { href: `/Dan-Napoleoni-CV-${slug}.pdf`, label: `Download CV - ${role.title} (PDF)` };
+  }
+  return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download PDF' };
 }
