@@ -89,8 +89,18 @@ export const experiences: Experience[] = [
     role: 'Software Engineer',
     company: 'Everest Engineering',
     type: 'contract',
-    description:
-      'React & TypeScript feature development for Splose, a healthcare management platform. Component architecture, API integration, and collaborative agile workflow.',
+    description: [
+      {
+        id: 'default',
+        value:
+          'React & TypeScript feature development for Splose, a healthcare practice management platform. Built a new reporting dashboard under a tight product launch deadline, and designed a reusable "FlowModal" engine that turned repetitive modal implementations into a modular, documented system for future developers to build on.',
+      },
+      {
+        id: 'ux-engineer',
+        value:
+          "Built a reporting dashboard from a vibe-coded prototype and static designs that had significant UX gaps. Made gap-spotting part of the daily routine — flagging missing states, working through edge cases with designers, and fleshing out what the spec didn't cover.",
+      },
+    ],
   },
   {
     id: 'mira',
@@ -99,7 +109,7 @@ export const experiences: Experience[] = [
     company: 'Mira | Business Software',
     type: 'redundancy',
     description:
-      'Frontend development, new feature builds and code upkeep for a SaaS desktop, mobile and web app built in Quasar, Vue JS and Laravel.',
+      'Frontend development for a SaaS app built in Quasar, Vue JS and Laravel. Small, self-directed dev team that owned the full product lifecycle from user feedback through to shipping. Upskilled in Laravel and Figma on the job to contribute beyond the frontend. Created and developed a new feature from interpreting user feedback, creating wireframes, mocking up designs with component ui, developing and testing.',
   },
   {
     id: 'world-vision',
@@ -108,7 +118,7 @@ export const experiences: Experience[] = [
     company: 'World Vision Australia',
     type: 'contract',
     description:
-      'Email campaign development and template management for digital fundraising initiatives.',
+      "Short contract covering BAU eDM development — translating designs into HTML emails for the Child Sponsorship program, plus branded templates for the team's internal SharePoint site.",
   },
   {
     id: 'adtorque',
@@ -117,7 +127,7 @@ export const experiences: Experience[] = [
     company: 'AdTorque Edge',
     type: 'redundancy',
     description:
-      'Sole Vue JS developer tasked with creating and building a business-critical internal SPA in VueJS, TypeScript & Tailwind from the ground up.',
+      'Sole developer on a ground-up SPA build in VueJS, TypeScript & Tailwind — a management tool for car-dealership franchise owners. Evaluated and replaced the original component library, set up the project architecture, and advocated for proper scoping and backend support throughout.',
   },
   {
     id: 'honest-fox',
@@ -132,12 +142,12 @@ export const experiences: Experience[] = [
       {
         id: 'default',
         value:
-          'Frontend Vue JS development across a range of projects. Complete rebuild of the agency website using Vue JS, Nuxt, Tailwind & Storyblok. Various site builds integrating Craft CMS, Hubspot, and Strapi.',
+          'Developed a ground-up rebuild of the agency website in Vue, Nuxt, Tailwind & Storyblok — then went beyond the brief to make the entire site CMS-editable with a full page-builder system. Followed by general agency work across Vue, React, vanilla JS, and CMS platforms including Hubspot, Strapi, Contentful and CraftCMS.',
       },
       {
         id: 'chief-vibes-officer',
         value:
-          'Culture contributions alongside frontend development work. Specific examples coming soon.',
+          'Showed up on day one with whisky, Codenames and a plate of home-made cookies. Started a monthly whisky collection, brought in an arcade machine (still there), joined the diversity committee, invited an ADHD consultant to present to the team, and ran a weekly themed music club with crowd-sourced themed Spotify playlists every Friday afternoon.',
       },
     ],
   },
@@ -146,9 +156,8 @@ export const experiences: Experience[] = [
     date: '2021 - 2022',
     role: 'Technical Producer',
     company: 'Bower House Digital',
-    type: 'contract',
     description:
-      'Brought over from Clemenger to run Salesforce EDM development for Target and Aesop, plus a complete process overhaul of the EDM development workflow.',
+      "Poached from Clemenger after impressing the CEO with my Salesforce work. Modernised the team's entire eDM development pipeline — new tooling, streamlined asset workflows, and a complete overhaul of their Salesforce Marketing Cloud system with reusable templates, code snippets and helper functions.",
   },
   {
     id: 'clemenger',
@@ -164,17 +173,17 @@ export const experiences: Experience[] = [
       {
         id: 'default',
         value:
-          'Part of a wider frontend development team. Vue.js applications for BMW & Myer, static and dynamic HTML banners, and Salesforce EDM development and deployment.',
+          'Learned Vue on the job and shipped it to production. Built Vue.js applications for BMW and Myer, including a complete overhaul of the Fashions on the Field web app under a tight Melbourne Cup deadline. Dynamic HTML banner campaigns for BMW, NAB, TAC and Belong. Later became the sole Myer eDM developer, running the full pipeline from design to Salesforce deployment.',
       },
       {
         id: 'digital-marketing',
         value:
-          'Developed, targeted and deployed Salesforce EDMs for Myer. Static and dynamic HTML banners for BMW, Belong, NAB, TAC.',
+          'Sole developer on the Myer eDM program — end-to-end ownership from design through Salesforce Marketing Cloud deployment, subscriber lists, scheduling, dispatch and reporting. Created a modular template system for NAB emails. Dynamic HTML banner campaigns for BMW, NAB, TAC and Belong across DoubleClick and Sizmek.',
       },
       {
         id: 'chief-vibes-officer',
         value:
-          'Culture contributions alongside frontend development work. Specific examples coming soon.',
+          'Started an unofficial board games club with Friday sessions and a carefully hidden whisky collection behind some hollowed-out folders in a cupboard. Sometimes the best culture work happens in the margins.',
       },
     ],
   },
@@ -191,12 +200,12 @@ export const experiences: Experience[] = [
       {
         id: 'default',
         value:
-          'Dynamic HTML banner suites for AustralianSuper (partnering with Google as a DV360 showcase), Athena Home Loans. eDM development for Mercedes, Spotify Australia and more.',
+          'Contracts across three agencies. At The Royals: dynamic HTML banner suites for AustralianSuper (adopted by Google as a DV360 showcase), Athena Home Loans, Deakin University, Intel and REA Group, plus eDMs for Spotify and Mercedes-Benz. At Trout: product page builds for Reece Group. At Cummins & Partners: dynamic banners for SpecSavers.',
       },
       {
         id: 'digital-marketing',
         value:
-          'Created a fully dynamic HTML banner suite for AustralianSuper, partnering with Google as a showcase for the DV360 dynamic banner rollout. Dynamic banners for Athena Home Loans. eDMs for Mercedes, Spotify Australia and more.',
+          'Built a content-agnostic master banner template for AustralianSuper — dynamic frame count, timing, content, images and transitions, all configurable without dev involvement. Google adopted the campaign as a showcase for their new DV360 platform and partnered with the agency. A year later, the client was still using it for every campaign. Also: dynamic banners for Athena Home Loans, eDMs for Spotify Australia and Mercedes-Benz.',
       },
     ],
   },
@@ -214,17 +223,17 @@ export const experiences: Experience[] = [
       {
         id: 'default',
         value:
-          'Eight years spanning Flash/ActionScript, HTML banners, eDMs, and frontend development for major Australian brands including Holden, Jetstar, Seek, and more. Managed the Porter Davis website. Created multiple internal social initiatives, clubs and events.',
+          "Eight years spanning the full evolution of web development — from Flash and ActionScript through to HTML5 banners, eDMs, and frontend JavaScript. Built interactive mobile games for Smiggle, redeveloped The Smith Family's donation portal with a custom state-machine, and managed the Porter Davis website solo for over a year. Became DoubleClick Studio HTML5 certified.",
       },
       {
         id: 'digital-marketing',
         value:
-          'Created and managed the Australia Post Salesforce EDM offering for over a year, including a full modular template overhaul. EDMs for Holden, Quest, Garnier, HSBC. HTML banners for Holden, Jetstar, Save The Children, Seek, Jora, and many more.',
+          'Sole developer on the Australia Post Salesforce Marketing Cloud program for 2+ years. Designed and implemented a complete process overhaul — modular code templates, structured brief documents and tiered pricing — that fixed client friction and dramatically sped up delivery. Also built a standardised dynamic banner template used across numerous campaigns for clients including Holden, Jetstar, Seek, Save The Children and many more.',
       },
       {
         id: 'chief-vibes-officer',
         value:
-          'Eight years of culture building alongside development work. Created multiple internal social initiatives, clubs and events. Full details coming soon — this is the big one.',
+          'Eight years of grassroots culture building. Founded the Whisky Club, Burger Club (complete with Tumblr review blog), Board Games Club, and Film Club —including a guess-the-film cryptic challenge, personal film introduction speeches and themed home-made food. Eventually the social clubs were adopted by the CEO to include fully designed club logos, incorporated into official onboarding docs and used for industry culture awards. Also designed multi-channel ARG experiences for office events, and help guide the annual Art Exhibition to raise more money than ever before, for charity.',
       },
     ],
   },
@@ -234,7 +243,8 @@ export const experiences: Experience[] = [
     role: 'Developer',
     company: 'Cre8ive',
     type: 'permanent',
-    description: 'Early-career web development and digital production.',
+    description:
+      'Early-career Flash development in Canberra — ActionScript, interactive websites and microsites, including award-winning work for the Royal Australian Mint.',
   },
   {
     id: 'cvo-off-the-clock',
@@ -242,7 +252,7 @@ export const experiences: Experience[] = [
     role: 'Chief Vibes Officer (Self-Appointed)',
     company: 'Off the clock',
     description:
-      "Game design enthusiast with multiple prototypes and design documents. Puzzle and ARG designer. Creative writer — member of Unsolicited Musings, a writing collective with two issues written and a third in progress. This stuff isn't a side hustle — it's who I am.",
+      "Lifelong game design enthusiast with a trail of prototypes — from custom HeroQuest campaigns to mobile game experiments with AI-assisted development. Puzzle and ARG designer who once built a city-spanning birthday treasure hunt involving a locked briefcase, black-light ink, a spy bag-swap, mysterious packages hidden in local businesses and a casino mission. Creative writer and member of an underground writing collective called Unsolicited Musings. Recently designed a variable-difficulty cryptic crossword system for a friend's D&D campaign. This isn't a side hustle — it's who I am.",
   },
 ];
 
@@ -300,14 +310,14 @@ export const roles: RoleData[] = [
       heading: 'How I work',
       items: [
         {
-          title: 'Coming soon — a real story about questioning the brief.',
+          title: 'I see repetitive patterns and build systems instead.',
           description:
-            'This section will feature a real example from my career where I pushed back on a spec and the outcome was better for it. Check back soon.',
+            'At Splose, I was tasked with implementing new 2FA modal flows. The designs had multiple variations with repetitive elements and inconsistencies between them — building each one individually would have meant messy, redundant code and a maintenance headache for whoever came next. So instead of just building what was in front of me, I designed a reusable "FlowModal" engine that separated the data layer from the modal management from the individual steps. Future devs can now create new flows, edit existing ones, and run A/B tests without touching the underlying architecture. I wrote full documentation so the system would outlive my contract. It\'s a pattern I keep coming back to — I\'d rather spend a bit more time building something properly than contribute to technical debt.',
         },
         {
-          title: 'Coming soon — a real story about building things right.',
+          title: 'I tend to go beyond the brief when it makes sense.',
           description:
-            'This section will feature a real example of technical problem-solving from my career. Check back soon.',
+            "At Honest Fox, I was rebuilding the agency website in Vue, Nuxt and Storyblok. The original plan was to hard-code most pages and only make the blog CMS-editable. But once I started mapping the design components to Storyblok's content model, I realised the extra effort to make everything editable was relatively small — and since the designs were already built on reusable components, it made sense to go the whole way. I built a full page-builder system: the team could create entirely new landing pages, rearrange layouts, experiment with CTA placement — not just edit blog posts. The scope grew organically as the team saw what was possible, and the end result was a site they could manage and evolve entirely on their own.",
         },
       ],
     },
@@ -347,22 +357,22 @@ export const roles: RoleData[] = [
     ],
     experienceIds: ['world-vision', 'bower-house', 'clemenger', 'freelance-contract', 'isobar'],
     contentSection: {
-      heading: 'How I work',
+      heading: 'Achievements',
       items: [
         {
-          title: "Overhauling Australia Post's Salesforce email system.",
+          title: 'Redesigning how Australia Post briefed and built emails.',
           description:
-            'Placeholder — Dan will provide the real story of the full modular template overhaul he led for the Australia Post Salesforce eDM offering at Isobar. This was a major, hands-on contribution.',
+            'I was the sole developer on the Australia Post email program at Isobar for over two years — marketing, transactional, the lot. The process was painful: incomplete briefs from multiple client teams, small tweaks treated the same as full custom builds, and no shared language for what we were actually making. So I proposed a complete overhaul. I built modular email templates mapped to the most common layouts, each with unique IDs and documented content fields. Then I created brief documents that forced the client to fill in only the fields that matched those templates — no ambiguity. Finally, I set up tiered pricing so simple template work was quick and cheap, complex work was scoped properly, and anything outside the system was quoted as custom. It transformed the relationship. Briefs came in clean, turnaround dropped, and I could actually focus on building rather than deciphering what was being asked of me.',
         },
         {
-          title: 'Scaling email production for Myer and NAB.',
+          title: 'Building banners so flexible that Google made them a case study.',
           description:
-            'Placeholder — Dan will provide the real story of template and campaign work at Clemenger. The current version has fabricated metrics that need replacing with real details.',
+            'At The Royals, I built a master banner template for AustralianSuper that was genuinely content-agnostic — dynamic frame count, timing, images, transitions, fonts, urls — all controlled through a data feed. The client could roll out completely new campaigns without any developer involvement. It happened to coincide with Google launching their DV360 platform, and my implementation was included in their showcase for what the new system could do. A year later The Royals reached out to say the client was still running every campaign through my template, and was looking for minor branding updates to continue use of the template system.',
         },
         {
-          title: 'Partnering with Google on the DV360 dynamic banner rollout.',
+          title: 'Running the Myer email machine solo.',
           description:
-            'Placeholder — Dan will provide the real story of creating the AustralianSuper dynamic banner suite that was used as a Google showcase example for DV360.',
+            "At Clemenger, I was the sole developer on a relentless stream of Myer eDMs — full end-to-end ownership from receiving designs through to Salesforce deployment, testing, subscriber lists, scheduling and reporting. The client sent incomplete briefs, changed direction constantly, and had different teams sending conflicting instructions. I became the last quality check in the chain, catching issues and pushing back up the line before writing a single line of code. It wasn't glamorous work, but it taught me that half of production at scale is process discipline, not technical skill.",
         },
       ],
     },
@@ -402,14 +412,14 @@ export const roles: RoleData[] = [
       heading: 'How I work',
       items: [
         {
-          title: 'Coming soon — a real story about fighting for the user.',
+          title: 'I fill in what the spec leaves out.',
           description:
-            "This section will feature a real example where I identified UX gaps that weren't in the brief and made the product better. Check back soon.",
+            "At Splose, I was building a reporting dashboard — revenue, cancellations, practitioner utilisation — under a tight launch deadline. The starting point was a vibe-coded prototype and some static designs, neither of which had been thoroughly thought through from a UX perspective. What happens when there's no data yet? What does the loading state look like? What if a date range returns nothing? None of it was specced. Rather than building exactly what was in front of me and shipping gaps, I made it part of my daily routine to spot what was missing, sketch out solutions, run them past the designers, and build them in. It's slower in the short term. It's dramatically faster than fixing it after launch.",
         },
         {
-          title: 'Coming soon — a real story about bridging design and engineering.',
+          title: "I build logic when the designs don't have any.",
           description:
-            'This section will feature a real example of how I brought a UX perspective to a technical implementation. Check back soon.',
+            "At Isobar, I was given a set of \"interactive\" designs for The Smith Family's donation portal — screens showing different states of a form, but with no clear logic connecting them. Actions led to dead ends, transitions were ambiguous, and the journey as a whole didn't hold together. Rather than sending it back for another round of revisions, I built a recursive state-machine under the hood: each user action triggered a lookup that could call functions, set states, activate other elements in sequence, and trigger sub-flows. It let me make the whole thing work as a coherent experience without needing the designs to tell me how. On the surface? Just a donation form. Underneath? Something I'm still proud of.",
         },
       ],
     },
@@ -450,9 +460,19 @@ export const roles: RoleData[] = [
       heading: 'The vibes archive',
       items: [
         {
-          title: 'Coming soon — real stories from the vibes archive.',
+          title: 'The Easter Bunny who leaked company secrets.',
           description:
-            "Specific examples of ARGs, social clubs, events, and culture initiatives I've created across my career are on their way. This is the work I'm most proud of — it deserves proper telling.",
+            'I was asked to organise an Easter egg hunt at Isobar. Naturally, I overengineered it. I used my eDM skills to build a fake internal email — proper HTML template, spoofed sender address, indistinguishable from the real thing — from "Easter J. Bunny," a recently fired employee who still had access to the email system. Throughout the day he sent emails that were actually clues to hidden egg locations. Management was slowly replacing the office plants with fake ones? Eggs buried in the planter soil. They didn\'t actually read the suggestion box? Chocolates stashed inside it. By the end of the day, the character had a change of heart and asked for his job back.',
+        },
+        {
+          title: 'A fake travel agency, hidden codes, and office-wide assassination.',
+          description:
+            'The office ran a Hunger Games elimination game — secret targets, innocuous weapons, stealth kills. I was knocked out on a technicality and given the job of distributing immunity idols however I saw fit. In two days I built "Panem Travel" — a fake travel agency with a real website and email account, filled with Hunger Games imagery and copy. Immunity clues were hidden in bolded letters spelling secret messages, images with steganographic data (and a decoder link buried in the copy), and auto-response emails triggered by the website\'s contact form. Multi-channel, fully interactive, built over a weekend.',
+        },
+        {
+          title: 'Five clubs, a live auction, and eventually, the onboarding deck.',
+          description:
+            "Over eight years at Isobar I started the Whisky Club (shared cabinet, membership fees, Friday tastings), Burger Club (group orders, a Tumblr review blog, a custom McDonald's menu-hack outing before \"Create Your Taste\" was a thing), Board Games Club (Friday meetups, a donated office game library), and Film Club — where the title was kept secret, I'd send cryptic clues in the lead-up, the first correct guess won a Blu-ray, and I'd write a personal introduction and bring themed food I'd made at home. All out of my own pocket. I also overhauled the annual charity art auction — replaced a broken online bidding system with a live auction that raised thousands more for charity. Eventually the CEO had official logos designed for each club, added them to the onboarding documentation, and used them to win industry culture awards. It all started with one person and a bottle of whisky.",
         },
       ],
     },
@@ -512,7 +532,7 @@ export const roles: RoleData[] = [
       items: [
         {
           description:
-            "Beyond the day job: game design enthusiast with multiple prototypes and design documents, puzzle creator, ARG designer, social club organiser, and creative writer — currently a member of Unsolicited Musings, a writing collective with two issues written and a third in progress. Self-appointed Chief Vibes Officer at every workplace I've been part of. I believe culture isn't a perk — it's infrastructure.",
+            "Beyond the day job: lifelong game design enthusiast with a trail of prototypes — from custom HeroQuest campaigns to mobile experiments with AI-assisted development. Puzzle and ARG designer who once built a city-spanning birthday treasure hunt involving a locked briefcase, a spy bag-swap on a park bench, black-light ink, mysterious packages hidden in local businesses and a casino mission. Creative writer — completed an AFTRS screenplay course, currently a member of Unsolicited Musings writing collective. Recently designed a variable-difficulty cryptic crossword system for a friend's D&D campaign. Self-appointed Chief Vibes Officer at every workplace I've been part of. I believe culture isn't a perk — it's infrastructure.",
         },
       ],
     },
