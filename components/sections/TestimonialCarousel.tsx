@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import type { Testimonial } from '@/data/testimonials';
+import type { Testimonial } from '@/types';
+import { Icon } from '@/components/ui/Icon';
 
 interface TestimonialCarouselProps {
   testimonials: Testimonial[];
@@ -63,17 +64,7 @@ export function TestimonialCarousel({
             onClick={handlePrev}
             aria-label="Previous testimonial"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <Icon name="chevron-left" size={24} />
           </button>
         )}
 
@@ -95,17 +86,7 @@ export function TestimonialCarousel({
             onClick={handleNext}
             aria-label="Next testimonial"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <Icon name="chevron-right" size={24} />
           </button>
         )}
       </div>

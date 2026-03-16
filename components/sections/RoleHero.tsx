@@ -1,4 +1,4 @@
-import type { Tagline } from '@/data/roles';
+import type { Tagline } from '@/types';
 
 interface RoleHeroProps {
   tagline: Tagline;

@@ -1,7 +1,9 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from 'react';
-import { themes, defaultThemeId, getThemeById, type Theme } from '@/data/themes';
+import type { Theme } from '@/types';
+import { themes, defaultThemeId } from '@/data/themes';
+import { getThemeById } from '@/lib/themes';
 
 type Mode = 'light' | 'dark';
 

@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { ContextLink } from './ContextLink';
+import { ContextLink } from '@/components/ui/ContextLink';
 
 interface ContactSectionProps {
   heading?: string;
@@ -24,7 +23,7 @@ export function ContactSection({
       <section className="contact-section" aria-labelledby="contact-heading">
         <h2 id="contact-heading">{heading}</h2>
         <p>If this sounds like the kind of person you need, let's have a conversation.</p>
-        <div style={{ marginTop: 'var(--space-md)' }}>
+        <div className="mt-md">
           <ContactLink />
         </div>
       </section>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import type { RoleData } from '@/data/roles';
-import { TechIconRow } from './TechIcons';
+import type { RoleData } from '@/types';
+import { TechIconRow } from '@/components/TechIcons';
 
 interface RoleCardProps {
   role: RoleData;
@@ -11,7 +11,7 @@ export function RoleCard({ role }: RoleCardProps) {
     <li>
       <Link
         href={`/${role.slug}`}
-        className={`role-card${role.variant === 'vibes' ? ' role-card--vibes' : ''}`}
+        className={`card role-card${role.variant === 'vibes' ? ' card--vibes' : ''}`}
       >
         <div className="role-card-header">
           <h3 className="role-card-title">{role.title}</h3>

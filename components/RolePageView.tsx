@@ -1,15 +1,17 @@
-import { getRoleBySlug, getOtherRoles, getTimelineForRole, getPdfForSlug } from '@/data/roles';
-import { getTestimonialsForRole } from '@/data/testimonials';
-import { Timeline } from '@/components/Timeline';
-import { SkillTags } from '@/components/SkillTags';
+import { getRoleBySlug, getOtherRoles, getPdfForSlug } from '@/lib/roles';
+import { getTimelineForRole } from '@/lib/experiences';
+import { getTestimonialsForRole } from '@/lib/testimonials';
+import { getContentItems } from '@/lib/content';
+import { Timeline } from '@/components/sections/Timeline';
+import { SkillTags } from '@/components/ui/SkillTags';
 import { TechIconRow } from '@/components/TechIcons';
-import { TestimonialCarousel } from '@/components/TestimonialCarousel';
-import { RoleCrossNav } from '@/components/RoleCrossNav';
-import { ContactSection } from '@/components/ContactSection';
-import { RoleHero } from '@/components/RoleHero';
+import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
+import { RoleCrossNav } from '@/components/sections/RoleCrossNav';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { RoleHero } from '@/components/sections/RoleHero';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { DownloadButton } from './DownloadButton';
+import { DownloadButton } from '@/components/ui/DownloadButton';
 
 interface RolePageViewProps {
   slug: string;
@@ -21,8 +23,11 @@ export function RolePageView({ slug }: RolePageViewProps) {
 
   const otherRoles = getOtherRoles(slug);
   const testimonials = getTestimonialsForRole(slug);
-  const timeline = getTimelineForRole(slug);
+  const timeline = getTimelineForRole(role.experienceIds, slug);
   const pdf = getPdfForSlug(role.slug);
+  const resolvedContentItems = role.contentSection
+    ? getContentItems(role.contentSection.itemIds)
+    : [];
 
   return (
     <article className="role-page">
@@ -38,7 +43,7 @@ export function RolePageView({ slug }: RolePageViewProps) {
           {role.icons && <TechIconRow icons={role.icons} size={22} />}
         </h2>
         <p className="role-page-subtitle">{role.subtitle}</p>
-        <div style={{ marginTop: 'var(--space-md)' }}>
+        <div className="mt-md">
           <DownloadButton href={pdf.href} label={pdf.label} className="btn-solid-accent" />
         </div>
       </header>
@@ -65,11 +70,11 @@ export function RolePageView({ slug }: RolePageViewProps) {
       </section>
 
       {/* Content section — "How I work" / "Also" / case studies / etc */}
-      {role.contentSection && role.contentSection.items.length > 0 && (
+      {role.contentSection && resolvedContentItems.length > 0 && (
         <section className="role-section" aria-labelledby="content-section-heading">
           <h2 id="content-section-heading">{role.contentSection.heading}</h2>
-          {role.contentSection.items.map((item, i) => (
-            <div key={i} className={item.title ? 'case-study' : ''}>
+          {resolvedContentItems.map((item) => (
+            <div key={item.id} className={item.title ? 'case-study' : ''}>
               {item.title && <h3>{item.title}</h3>}
               <p>{item.description}</p>
             </div>

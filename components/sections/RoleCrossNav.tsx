@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import type { RoleData } from '@/data/roles';
-import { TechIconRow } from './TechIcons';
+import type { RoleData } from '@/types';
+import { TechIconRow } from '@/components/TechIcons';
 
 interface RoleCrossNavProps {
   otherRoles: RoleData[];
@@ -17,7 +17,7 @@ export function RoleCrossNav({ otherRoles }: RoleCrossNavProps) {
           <Link
             key={role.slug}
             href={`/${role.slug}`}
-            className={`cross-nav-card${role.variant === 'vibes' ? ' cross-nav-card--vibes' : ''}`}
+            className={`card cross-nav-card${role.variant === 'vibes' ? ' card--vibes' : ''}`}
           >
             <span className="cross-nav-title">{role.title}</span>
             <TechIconRow icons={role.icons ?? []} size={14} />
