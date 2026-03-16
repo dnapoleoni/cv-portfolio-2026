@@ -1,5 +1,5 @@
 import { getDisplayRoles } from '@/data/roles';
-import { RoleCard } from './RoleCard';
+import { RoleCard } from '@/components/sections/RoleCard';
 
 export function RoleGrid() {
   const displayRoles = getDisplayRoles();

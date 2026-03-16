@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { useTheme } from './ThemeProvider';
+import { useState, useRef } from 'react';
+import { useTheme } from '@/components/theme/ThemeProvider';
 import { themes } from '@/data/themes';
+import { useClickOutside } from '@/hooks/useClickOutside';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 export function ThemePicker() {
   const { theme, mode, setThemeId } = useTheme();
@@ -10,27 +12,8 @@ export function ThemePicker() {
   const [hoveredName, setHoveredName] = useState<string | null>(null);
   const pickerRef = useRef<HTMLDivElement>(null);
 
-  // Close on click outside
-  useEffect(() => {
-    if (!open) return;
-    function handleClick(e: MouseEvent) {
-      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [open]);
-
-  // Close on escape
-  useEffect(() => {
-    if (!open) return;
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false);
-    }
-    document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
-  }, [open]);
+  useClickOutside(pickerRef, () => setOpen(false), open);
+  useEscapeKey(() => setOpen(false), open);
 
   const currentAccent = mode === 'dark' ? theme.dark.accent : theme.light.accent;
   const displayName = hoveredName ?? theme.name;

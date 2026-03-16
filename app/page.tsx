@@ -1,7 +1,7 @@
-import { Hero } from '@/components/Hero';
-import { RoleGrid } from '@/components/RoleGrid';
-import { TestimonialCarousel } from '@/components/TestimonialCarousel';
-import { ContactSection } from '@/components/ContactSection';
+import { Hero } from '@/components/sections/Hero';
+import { RoleGrid } from '@/components/sections/RoleGrid';
+import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
+import { ContactSection } from '@/components/sections/ContactSection';
 import { getFeaturedTestimonials } from '@/data/testimonials';
 
 export const metadata = {

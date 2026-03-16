@@ -1,15 +1,15 @@
 import { getRoleBySlug, getOtherRoles, getTimelineForRole, getPdfForSlug } from '@/data/roles';
 import { getTestimonialsForRole } from '@/data/testimonials';
-import { Timeline } from '@/components/Timeline';
-import { SkillTags } from '@/components/SkillTags';
+import { Timeline } from '@/components/sections/Timeline';
+import { SkillTags } from '@/components/ui/SkillTags';
 import { TechIconRow } from '@/components/TechIcons';
-import { TestimonialCarousel } from '@/components/TestimonialCarousel';
-import { RoleCrossNav } from '@/components/RoleCrossNav';
-import { ContactSection } from '@/components/ContactSection';
-import { RoleHero } from '@/components/RoleHero';
+import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
+import { RoleCrossNav } from '@/components/sections/RoleCrossNav';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { RoleHero } from '@/components/sections/RoleHero';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { DownloadButton } from './DownloadButton';
+import { DownloadButton } from '@/components/ui/DownloadButton';
 
 interface RolePageViewProps {
   slug: string;
@@ -38,7 +38,7 @@ export function RolePageView({ slug }: RolePageViewProps) {
           {role.icons && <TechIconRow icons={role.icons} size={22} />}
         </h2>
         <p className="role-page-subtitle">{role.subtitle}</p>
-        <div style={{ marginTop: 'var(--space-md)' }}>
+        <div className="mt-md">
           <DownloadButton href={pdf.href} label={pdf.label} className="btn-solid-accent" />
         </div>
       </header>
