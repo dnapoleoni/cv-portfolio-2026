@@ -1,18 +1,8 @@
-import type { ResolvedTimelineEntry } from '@/data/roles';
+import { getTypeLabel } from '@/lib/experiences';
+import type { ResolvedTimelineEntry } from '@/types';
 
 interface TimelineProps {
   entries: ResolvedTimelineEntry[];
-}
-
-function getTypeLabel(type?: string) {
-  switch (type) {
-    case 'contract':
-      return 'Contract';
-    case 'redundancy':
-      return 'Role made redundant';
-    default:
-      return null;
-  }
 }
 
 export function Timeline({ entries }: TimelineProps) {

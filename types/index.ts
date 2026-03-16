@@ -57,6 +57,28 @@ export interface Testimonial {
   contactable?: boolean;
 }
 
+/** Color values for a single theme mode (light or dark) */
+export interface ThemeColors {
+  bg: string;
+  bgElevated: string;
+  bgHover: string;
+  text: string;
+  textSecondary: string;
+  textTertiary: string;
+  accent: string;
+  accentHover: string;
+  border: string;
+  borderSubtle: string;
+}
+
+/** A complete theme with light and dark modes */
+export interface Theme {
+  id: string;
+  name: string;
+  light: ThemeColors;
+  dark: ThemeColors;
+}
+
 /** Full role definition */
 export interface RoleData {
   slug: string;

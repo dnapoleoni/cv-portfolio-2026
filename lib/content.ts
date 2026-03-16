@@ -8,7 +8,7 @@ export function getContentItems(itemIds: string[]): ContentItem[] {
     .filter((item): item is ContentItem => item !== undefined);
 }
 
-/** Get all content items that have titles (for future portfolio/work page) */
+/** Get all titled content items — used by the future portfolio/work page. */
 export function getAllCaseStudies(): ContentItem[] {
   return contentItems.filter((item) => item.title !== undefined);
 }

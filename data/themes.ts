@@ -1,22 +1,4 @@
-export interface ThemeColors {
-  bg: string;
-  bgElevated: string;
-  bgHover: string;
-  text: string;
-  textSecondary: string;
-  textTertiary: string;
-  accent: string;
-  accentHover: string;
-  border: string;
-  borderSubtle: string;
-}
-
-export interface Theme {
-  id: string;
-  name: string;
-  light: ThemeColors;
-  dark: ThemeColors;
-}
+import type { Theme } from '@/types';
 
 /**
  * All themes are AAA compliant:
@@ -387,7 +369,3 @@ export const themes: Theme[] = [
 ];
 
 export const defaultThemeId = 'claude';
-
-export function getThemeById(id: string): Theme {
-  return themes.find((t) => t.id === id) ?? themes[0];
-}

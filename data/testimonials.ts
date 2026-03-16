@@ -1,8 +1,5 @@
 import type { Testimonial } from '@/types';
 
-// Re-export type so existing component type imports still resolve without changes
-export type { Testimonial } from '@/types';
-
 /**
  * PLACEHOLDER TESTIMONIALS
  * Replace these with real quotes once you've gotten consent from your references.

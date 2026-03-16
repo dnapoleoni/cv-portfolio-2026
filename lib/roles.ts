@@ -15,6 +15,8 @@ export function getOtherRoles(currentSlug: string): RoleData[] {
   return getDisplayRoles().filter((r) => r.slug !== currentSlug);
 }
 
+/** Return the correct PDF href and download label for a role slug.
+ *  Falls back to the general CV for unknown slugs or 'the-full-picture'. */
 export function getPdfForSlug(slug?: string): { href: string; label: string } {
   if (!slug || slug === 'the-full-picture') {
     return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV' };

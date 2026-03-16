@@ -1,4 +1,4 @@
-import type { TechIconId } from '@/data/roles';
+import type { TechIconId } from '@/types';
 import {
   siReact,
   siTypescript,
@@ -81,8 +81,7 @@ export function TechIcon({ id, size = 20, className }: TechIconProps) {
       fill="currentColor"
       role="img"
       aria-label={icon.title}
-      className={className}
-      style={{ flexShrink: 0 }}
+      className={`flex-shrink-0${className ? ` ${className}` : ''}`}
     >
       <title>{icon.title}</title>
       <path d={icon.path} />
