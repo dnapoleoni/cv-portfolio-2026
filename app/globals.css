@@ -295,7 +295,7 @@ ol {
 
 /* === PRIMITIVES — Cards === */
 
-/* Base card class — .role-card and .cross-nav-card to be refactored to extend .card in Pass 2 */
+/* Base card class — shared by .role-card and .cross-nav-card */
 .card {
   display: flex;
   flex-direction: column;
@@ -323,6 +323,7 @@ ol {
 
 .card--vibes:hover {
   border-style: solid;
+  border-color: var(--color-accent);
 }
 
 /* === PRIMITIVES — Form Elements === */
@@ -645,30 +646,10 @@ span.site-wordmark {
   gap: var(--space-lg);
 }
 
-/* .role-card and .cross-nav-card to be refactored to extend .card in Pass 2 */
 .role-card {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   gap: 24px;
-  padding: var(--space-md);
-  border: 1px solid var(--color-border);
   border-radius: 8px;
-  text-decoration: none;
-  color: var(--color-text);
-  background: transparent;
-  transition:
-    background-color var(--duration-slow) var(--ease-out),
-    border-color var(--duration-slow) var(--ease-out);
-}
-
-.role-card:hover {
-  background-color: var(--color-bg-elevated);
-  border-color: var(--color-text-tertiary);
-  color: var(--color-text);
-  transition:
-    background-color var(--duration-slow) var(--ease-out),
-    border-color var(--duration-slow) var(--ease-out);
 }
 
 .role-card:focus-visible {
@@ -713,15 +694,6 @@ span.site-wordmark {
 .role-card:hover .role-card-cta {
   background: var(--color-accent);
   color: var(--color-bg);
-}
-
-.role-card--vibes {
-  border-style: dashed;
-}
-
-.role-card--vibes:hover {
-  border-style: solid;
-  border-color: var(--color-accent);
 }
 
 /* === SECTIONS — Role Page === */
@@ -1006,35 +978,12 @@ span.site-wordmark {
   gap: var(--space-sm);
 }
 
-/* .role-card and .cross-nav-card to be refactored to extend .card in Pass 2 */
 .cross-nav-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  padding: var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--color-text);
   font-size: var(--text-sm);
   font-weight: 500;
   transition:
     background var(--duration-fast) var(--ease-out),
     border-color var(--duration-fast) var(--ease-out);
-}
-
-.cross-nav-card:hover {
-  background: var(--color-bg-elevated);
-  border-color: var(--color-text-tertiary);
-  color: var(--color-text);
-}
-
-.cross-nav-card--vibes {
-  border-style: dashed;
-}
-
-.cross-nav-card--vibes:hover {
-  border-style: solid;
 }
 
 .cross-nav-title {

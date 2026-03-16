@@ -1,5 +1,5 @@
 import { ContactPageContent } from '@/components/ContactPageContent';
-import { Loading } from '@/components/Loading';
+import { Loading } from '@/components/ui/Loading';
 import { Suspense } from 'react';
 
 export const metadata = {

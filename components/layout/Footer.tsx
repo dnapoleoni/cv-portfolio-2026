@@ -1,6 +1,6 @@
 'use client';
-import { DarkModeToggle } from './DarkModeToggle';
-import { ThemePicker } from './ThemePicker';
+import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
+import { ThemePicker } from '@/components/theme/ThemePicker';
 
 export function Footer() {
   return (

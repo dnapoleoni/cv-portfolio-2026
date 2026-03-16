@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { ThemeProvider } from '@/components/theme/ThemeProvider';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { DownloadButton } from './DownloadButton';
+import { DownloadButton } from '@/components/ui/DownloadButton';
 
 export function Hero() {
   return (
