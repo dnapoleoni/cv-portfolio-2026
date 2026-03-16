@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { getRoleBySlug } from '@/data/roles';
+import { getRoleBySlug } from '@/lib/roles';
 import { EmailLink } from '@/components/ui/EmailLink';
 import { ContactForm } from '@/components/ContactForm';
 import { useFromContext } from '@/hooks/useFromContext';

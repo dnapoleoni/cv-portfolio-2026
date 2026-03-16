@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ContextLink } from '@/components/ui/ContextLink';
-import { getPdfForSlug } from '@/data/roles';
+import { getPdfForSlug } from '@/lib/roles';
 import { DownloadButton } from '@/components/ui/DownloadButton';
 import { Icon } from '@/components/ui/Icon';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
