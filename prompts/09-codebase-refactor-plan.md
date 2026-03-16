@@ -247,32 +247,35 @@ TechIcons stays separate — it's a different system (brand icons from simple-ic
 
 **Branch:** `claude/refactor-data-layer`
 **Risk:** LOW — if imports resolve, it works
-**Changes:** data/ files, types/ files
+**Changes:** `data/` files, `types/` files, new `lib/` directory, import path updates
+
+### Architecture change
+
+Separate concerns into three layers with a one-directional dependency graph:
+- `types/` — type definitions only (imports nothing)
+- `data/` — pure static content, arrays and objects (imports from `types/` only)
+- `lib/` — accessor and resolver functions (imports from `data/` and `types/`)
+
+Dependency flow: `Components → lib/ → data/ → types/`. No circular imports possible by design.
 
 ### Extractions
 
-**A. Split `data/roles.ts` (588 lines → 3 files):**
+**A. `types/index.ts`** — all shared types in one file:
+`RoleData`, `ResolvedTimelineEntry`, `ContentSection`, `ContentItem`, `Tagline`, `TechIconId`, `RoleVariant`, `Testimonial`
 
-- `data/experiences.ts` — the `experiences` array, `Experience` interface, `resolveVariant`, `resolveExperience`, `getTimelineForRole`
-- `data/case-studies.ts` — (NEW) extracted case study entries with IDs, referenced by roles. Structure:
-  ```ts
-  export interface CaseStudy {
-    id: string;
-    title?: string;        // titled items render as case study blocks
-    description: string;
-    relevantRoles: string[]; // for the future portfolio/work page
-  }
-  ```
-  Roles reference case studies by ID via `contentSection.itemIds` instead of inline items.
-- `data/roles.ts` — slimmed down to role definitions, `navRoleSlugs`, and role-specific getters (`getRoleBySlug`, `getDisplayRoles`, `getOtherRoles`, `getPdfForSlug`)
+**B. `data/` files (pure data, no functions):**
+- `data/experiences.ts` — the `experiences` array, `Experience` interface
+- `data/content-items.ts` — extracted content items with IDs, referenced by roles via `contentSection.itemIds`
+- `data/roles.ts` — slimmed to `roles` array, `navRoleSlugs`, and type re-exports for convenience
+- `data/testimonials.ts` — slimmed to `testimonials` array and type re-export
 
-**B. Move shared types to `types/`:**
-- `types/roles.ts` — `RoleData`, `ResolvedTimelineEntry`, `ContentSection`, `Tagline`, `TechIconId`, `RoleVariant`
-- `types/testimonials.ts` — `Testimonial`
-- `types/case-studies.ts` — `CaseStudy`
-- Keep `types/css.d.ts` as-is
+**C. `lib/` files (accessor functions):**
+- `lib/roles.ts` — `getRoleBySlug`, `getDisplayRoles`, `getOtherRoles`, `getPdfForSlug`
+- `lib/experiences.ts` — `resolveVariant`, `getTimelineForRole` (takes experienceIds directly, not slug)
+- `lib/content.ts` — `getContentItems`, `getAllCaseStudies`
+- `lib/testimonials.ts` — `getTestimonialsForRole`, `getFeaturedTestimonials`
 
-**C. Verify all imports resolve** after the split. Every component and page file that imports from `@/data/roles` needs updating.
+**D. Verify all imports resolve.** Components that import functions switch from `@/data/` to `@/lib/`. Components that only import types continue working via re-exports from `data/` files.
 
 ### What NOT to do in this pass
 - Do not change component rendering logic

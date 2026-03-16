@@ -1,13 +1,7 @@
-export interface Testimonial {
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-  /** Which role pages this testimonial is relevant to */
-  relevantRoles: string[];
-  /** Whether this person has consented to being contacted */
-  contactable?: boolean;
-}
+import type { Testimonial } from '@/types';
+
+// Re-export type so existing component type imports still resolve without changes
+export type { Testimonial } from '@/types';
 
 /**
  * PLACEHOLDER TESTIMONIALS
@@ -61,11 +55,3 @@ export const testimonials: Testimonial[] = [
     contactable: false,
   },
 ];
-
-export function getTestimonialsForRole(slug: string): Testimonial[] {
-  return testimonials.filter((t) => t.relevantRoles.includes(slug));
-}
-
-export function getFeaturedTestimonials(count = 3): Testimonial[] {
-  return testimonials.slice(0, count);
-}

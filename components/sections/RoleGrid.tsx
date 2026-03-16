@@ -1,4 +1,4 @@
-import { getDisplayRoles } from '@/data/roles';
+import { getDisplayRoles } from '@/lib/roles';
 import { RoleCard } from '@/components/sections/RoleCard';
 
 export function RoleGrid() {
