@@ -292,25 +292,26 @@ Dependency flow: `Components → lib/ → data/ → types/`. No circular imports
 
 ### Tasks
 
-**A. ContactSection simplification:**
-The two-path render (slug vs no-slug) is awkward. Consider whether these should be two separate components or whether the conditional can be cleaner.
+**A. Type import cleanup:**
+Remove re-export crutches from `data/roles.ts` and `data/testimonials.ts`. Update 6 components to import types directly from `@/types` instead of via data files.
 
-**B. Dead code audit:**
-- Check for any CSS classes not referenced by any component
-- Check for any exported functions not imported anywhere
-- Check for any unused type definitions
-- Remove any commented-out code
+**B. Themes consistency:**
+Move `ThemeColors` and `Theme` interfaces to `types/index.ts`. Move `getThemeById` to `lib/themes.ts`. Update `data/themes.ts` to pure data only. Update ThemeProvider imports.
 
-**C. Consistency pass:**
-- Ensure all components follow the same patterns (props interfaces, named exports, consistent formatting)
-- Ensure all `aria-` attributes are correct and consistent
-- Ensure all `className` construction uses the same pattern (template literals vs concatenation)
+**C. Experience interface:**
+Make `Experience` in `data/experiences.ts` non-exported (it's only used within that file).
 
-**D. README update:**
-Update README.md to reflect the new architecture — directory structure, data flow, CSS system. This is part of the portfolio piece.
+**D. Bug fix:**
+Fix broken CSS transition `all 1000 ease-in-out` → `all 1000ms ease-in-out` in mobile nav.
 
-**E. Code comments:**
-Add brief doc comments to non-obvious utility functions (resolveVariant, the PDF slug helper, etc.). Don't over-document — just the things where intent isn't obvious from the name.
+**E. Dead code removal:**
+Remove unused CSS utilities (`.mt-sm`, `.mt-lg`, `.mt-xl`, `.mobile-text-center`). Replace `TechIcons.tsx` inline `style={{ flexShrink: 0 }}` with a utility class.
+
+**F. README rewrite:**
+Full rewrite to reflect current architecture — directory structure, layer separation, data flow, CSS system, client vs server strategy.
+
+**G. Code comments:**
+Brief JSDoc comments on non-obvious `lib/` functions (`resolveVariant`, `getPdfForSlug`, `getAllCaseStudies`).
 
 ---
 
@@ -318,7 +319,7 @@ Add brief doc comments to non-obvious utility functions (resolveVariant, the PDF
 
 These are separate features that should be their own prompts after the refactor is complete:
 
-- **Portfolio / Work page** — new route, pulls from `case-studies.ts`, brief intro explaining agency work context
+- **Portfolio / Work page** — new route, pulls from `content-items.ts` via `getAllCaseStudies`, brief intro explaining agency work context
 - **References on contact page** — small addition to ContactPageContent
 - **Resume PDF generation** — build script using role data, potentially `@react-pdf/renderer`
 - **OG image & meta tags** — per-page metadata, share card generation
@@ -328,18 +329,18 @@ These are separate features that should be their own prompts after the refactor 
 
 ---
 
-## Quick reference: current file sizes
+## Quick reference: file sizes after Passes 1–3
 
-| File | Lines | Notes |
+| File | Lines | Layer |
 |------|-------|-------|
-| `globals.css` | 1328 | Biggest target — lots of duplication |
-| `data/roles.ts` | 588 | Should split into 3 files |
-| `components/TestimonialCarousel.tsx` | 132 | Contains inline SVGs → Icon component |
-| `components/ThemeProvider.tsx` | 126 | Clean, leave as-is |
-| `components/Header.tsx` | 109 | Extract mobile menu hook + inline SVGs |
-| `components/TechIcons.tsx` | 108 | Separate icon system, leave as-is |
-| `components/RolePageView.tsx` | 95 | Has inline style to fix |
-| `components/ThemePicker.tsx` | 80 | Extract click-outside + escape hooks |
-| `components/ContactForm.tsx` | 61 | Clean, leave as-is |
-| `components/ContactSection.tsx` | 60 | Two-path render to simplify in Pass 4 |
-| `components/ContactPageContent.tsx` | 56 | Clean, leave as-is |
+| `app/globals.css` | 1270 | CSS design system |
+| `data/roles.ts` | 236 | Data (was 588 — split into 3 files + lib) |
+| `data/experiences.ts` | 184 | Data |
+| `data/themes.ts` | 393 | Data (to be cleaned up in Pass 4) |
+| `data/content-items.ts` | 78 | Data |
+| `data/testimonials.ts` | 57 | Data |
+| `types/index.ts` | 74 | Types |
+| `lib/experiences.ts` | 34 | Logic |
+| `lib/roles.ts` | 27 | Logic |
+| `lib/content.ts` | 14 | Logic |
+| `lib/testimonials.ts` | 10 | Logic |

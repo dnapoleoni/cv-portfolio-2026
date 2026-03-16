@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import type { Testimonial } from '@/data/testimonials';
+import type { Testimonial } from '@/types';
 import { Icon } from '@/components/ui/Icon';
 
 interface TestimonialCarouselProps {

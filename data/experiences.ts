@@ -1,6 +1,6 @@
 import type { RoleVariant } from '@/types';
 
-export interface Experience {
+interface Experience {
   id: string;
   date: RoleVariant;
   role: RoleVariant;

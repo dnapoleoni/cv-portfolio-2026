@@ -1,8 +1,5 @@
 import type { TechIconId, RoleData } from '@/types';
 
-// Re-export types so existing component type imports still resolve without changes
-export type { RoleData, Tagline, TechIconId, ResolvedTimelineEntry } from '@/types';
-
 /** Role slugs that appear in the home page grid and cross-nav */
 export const navRoleSlugs = [
   'frontend-developer',

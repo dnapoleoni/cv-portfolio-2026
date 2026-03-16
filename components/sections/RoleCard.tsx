@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { RoleData } from '@/data/roles';
+import type { RoleData } from '@/types';
 import { TechIconRow } from '@/components/TechIcons';
 
 interface RoleCardProps {
