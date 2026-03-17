@@ -78,10 +78,24 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   min-height: 100dvh;
-  padding-top: env(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top, 0px);
   transition:
     background-color var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out);
+}
+
+/* iso/safari header-drawer hackery */
+body::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top, 0px);
+  background-color: var(--color-bg);
+  z-index: 51;
+  transition: background-color var(--duration-base) var(--ease-out);
 }
 
 h1,
