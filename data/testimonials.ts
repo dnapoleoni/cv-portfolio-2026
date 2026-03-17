@@ -39,7 +39,7 @@ export const testimonials: Testimonial[] = [
     name: 'Placeholder Name',
     role: 'Marketing Manager',
     company: 'Previous Client',
-    relevantRoles: ['digital-marketing'],
+    relevantRoles: ['digital-marketer'],
     contactable: false,
   },
   {

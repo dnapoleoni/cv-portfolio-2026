@@ -3,7 +3,7 @@ import type { TechIconId, RoleData } from '@/types';
 /** Role slugs that appear in the home page grid and cross-nav */
 export const navRoleSlugs = [
   'frontend-developer',
-  'digital-marketing',
+  'digital-marketer',
   'ux-engineer',
   'chief-vibes-officer',
 ];
@@ -67,7 +67,7 @@ export const roles: RoleData[] = [
       "I'm available now and based in Melbourne. If you're looking for someone who ships clean, accessible code and actually cares about the details — let's talk.",
   },
   {
-    slug: 'digital-marketing',
+    slug: 'digital-marketer',
     title: 'Digital Marketer',
     shortDesc:
       'eDMs, HTML banners, Salesforce Marketing Cloud — the full digital campaign toolkit.',

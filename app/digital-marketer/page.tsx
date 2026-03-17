@@ -6,6 +6,6 @@ export const metadata = {
     "eDMs, HTML banners, Salesforce Marketing Cloud — a decade of digital marketing production for Australia's biggest brands.",
 };
 
-export default function DigitalMarketing() {
-  return <RolePageView slug="digital-marketing" />;
+export default function DigitalMarketer() {
+  return <RolePageView slug="digital-marketer" />;
 }

@@ -139,7 +139,7 @@ async function main() {
   console.log('Generating PDFs...\n');
   await generateFullPictureCV(email, phone);
   await generateRoleCV('frontend-developer', email, phone);
-  await generateRoleCV('digital-marketing', email, phone);
+  await generateRoleCV('digital-marketer', email, phone);
   await generateRoleCV('ux-engineer', email, phone);
   await generateRoleCV('chief-vibes-officer', email, phone);
   console.log('\nDone.');

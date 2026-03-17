@@ -91,7 +91,7 @@ export const experiences: Experience[] = [
     date: '2019 - 2021',
     role: [
       { id: 'default', value: 'Frontend Developer' },
-      { id: 'digital-marketing', value: 'eDM & Banner Developer' },
+      { id: 'digital-marketer', value: 'eDM & Banner Developer' },
       { id: 'chief-vibes-officer', value: 'Frontend Developer & Culture Contributor' },
     ],
     company: 'Clemenger BBDO',
@@ -103,7 +103,7 @@ export const experiences: Experience[] = [
           'Learned Vue on the job and shipped it to production. Built Vue.js applications for BMW and Myer, including a complete overhaul of the Fashions on the Field web app under a tight Melbourne Cup deadline. Dynamic HTML banner campaigns for BMW, NAB, TAC and Belong. Later became the sole Myer eDM developer, running the full pipeline from design to Salesforce deployment.',
       },
       {
-        id: 'digital-marketing',
+        id: 'digital-marketer',
         value:
           'Sole developer on the Myer eDM program — end-to-end ownership from design through Salesforce Marketing Cloud deployment, subscriber lists, scheduling, dispatch and reporting. Created a modular template system for NAB emails. Dynamic HTML banner campaigns for BMW, NAB, TAC and Belong across DoubleClick and Sizmek.',
       },
@@ -119,7 +119,7 @@ export const experiences: Experience[] = [
     date: '2018 - 2019',
     role: [
       { id: 'default', value: 'Various Contracts' },
-      { id: 'digital-marketing', value: 'eDM & Banner Developer' },
+      { id: 'digital-marketer', value: 'eDM & Banner Developer' },
     ],
     company: 'The Royals, Trout, Cummins & Partners',
     type: 'contract',
@@ -130,7 +130,7 @@ export const experiences: Experience[] = [
           'Contracts across three agencies. At The Royals: dynamic HTML banner suites for AustralianSuper (adopted by Google as a DV360 showcase), Athena Home Loans, Deakin University, Intel and REA Group, plus eDMs for Spotify and Mercedes-Benz. At Trout: product page builds for Reece Group. At Cummins & Partners: dynamic banners for SpecSavers.',
       },
       {
-        id: 'digital-marketing',
+        id: 'digital-marketer',
         value:
           'Built a content-agnostic master banner template for AustralianSuper — dynamic frame count, timing, images, transitions, fonts, urls — all controlled through a data feed. The client could roll out completely new campaigns without any developer involvement. It happened to coincide with Google launching their DV360 platform, and my implementation was included in their showcase for what the new system could do. A year later The Royals reached out to say the client was still running every campaign through my template, and was looking for minor branding updates to continue use of the template system.',
       },
@@ -141,7 +141,7 @@ export const experiences: Experience[] = [
     date: '2009 - 2017',
     role: [
       { id: 'default', value: 'Developer' },
-      { id: 'digital-marketing', value: 'eDM & Banner Developer' },
+      { id: 'digital-marketer', value: 'eDM & Banner Developer' },
       { id: 'chief-vibes-officer', value: 'Developer & Culture Contributor' },
     ],
     company: 'Isobar Australia',
@@ -153,7 +153,7 @@ export const experiences: Experience[] = [
           "Eight years spanning the full evolution of web development — from Flash and ActionScript through to HTML5 banners, eDMs, and frontend JavaScript. Built interactive mobile games for Smiggle, redeveloped The Smith Family's donation portal with a custom state-machine, and managed the Porter Davis website solo for over a year. Became DoubleClick Studio HTML5 certified.",
       },
       {
-        id: 'digital-marketing',
+        id: 'digital-marketer',
         value:
           'Sole developer on the Australia Post Salesforce Marketing Cloud program for 2+ years. Designed and implemented a complete process overhaul — modular code templates, structured brief documents and tiered pricing — that fixed client friction and dramatically sped up delivery. Also built a standardised dynamic banner template used across numerous campaigns for clients including Holden, Jetstar, Seek, Save The Children and many more.',
       },
