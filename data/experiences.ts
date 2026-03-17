@@ -118,10 +118,10 @@ export const experiences: Experience[] = [
     id: 'freelance-contract',
     date: '2018 - 2019',
     role: [
-      { id: 'default', value: 'Frontend Developer' },
+      { id: 'default', value: 'Various Contracts' },
       { id: 'digital-marketing', value: 'eDM & Banner Developer' },
     ],
-    company: 'Freelance & Contract (The Royals, Trout, Cummins & Partners)',
+    company: 'The Royals, Trout, Cummins & Partners',
     type: 'contract',
     description: [
       {
