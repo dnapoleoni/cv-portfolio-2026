@@ -314,7 +314,7 @@ export function CVTemplate({
             More at{' '}
             <Link src={`https://${siteUrl}${siteUrlPath || ''}`} style={styles.footerLink}>
               {siteUrl}
-            </Link>{' '}
+            </Link>
           </Text>
         </View>
       </Page>
