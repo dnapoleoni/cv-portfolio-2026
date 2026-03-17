@@ -1,6 +1,6 @@
-import { ContactPageContent } from '@/components/ContactPageContent';
 import { Loading } from '@/components/ui/Loading';
 import { Suspense } from 'react';
+import { ContactPageContent } from './ContactPageContent';
 
 export const metadata = {
   title: 'Get in Touch — Dan Napoleoni',

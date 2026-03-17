@@ -1,7 +1,7 @@
 import { Hero } from '@/components/sections/Hero';
 import { RoleGrid } from '@/components/sections/RoleGrid';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
-import { ContactSection } from '@/components/sections/ContactSection';
+import { ContactCTA } from '@/components/sections/ContactCTA';
 import { getFeaturedTestimonials } from '@/lib/testimonials';
 
 export const metadata = {
@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <RoleGrid />
       <TestimonialCarousel testimonials={testimonials} />
-      <ContactSection />
+      <ContactCTA />
     </>
   );
 }

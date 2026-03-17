@@ -93,4 +93,6 @@ export interface RoleData {
   skills: string[];
   experienceIds: string[];
   contentSection?: ContentSection;
+  ctaHeading?: string;
+  ctaDescription?: string;
 }

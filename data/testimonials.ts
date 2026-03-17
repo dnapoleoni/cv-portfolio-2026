@@ -13,7 +13,7 @@ export const testimonials: Testimonial[] = [
     role: 'Product Manager',
     company: 'Previous Company',
     relevantRoles: ['frontend-developer', 'ux-engineer'],
-    contactable: false,
+    contactable: true,
   },
   {
     quote:
@@ -22,7 +22,7 @@ export const testimonials: Testimonial[] = [
     role: 'Design Lead',
     company: 'Previous Agency',
     relevantRoles: ['ux-engineer', 'frontend-developer'],
-    contactable: false,
+    contactable: true,
   },
   {
     quote:
@@ -31,7 +31,7 @@ export const testimonials: Testimonial[] = [
     role: 'People & Culture',
     company: 'Previous Company',
     relevantRoles: ['chief-vibes-officer'],
-    contactable: false,
+    contactable: true,
   },
   {
     quote:

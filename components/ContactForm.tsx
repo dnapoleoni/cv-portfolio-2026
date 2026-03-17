@@ -53,7 +53,7 @@ export function ContactForm({ subject }: { subject?: string }) {
 
       <div>
         <button type="submit" className="btn-solid-accent" disabled={submitting}>
-          {submitting ? 'Sending...' : 'Send message →'}
+          {submitting ? 'Sending...' : 'Message Dan →'}
         </button>
       </div>
     </form>
