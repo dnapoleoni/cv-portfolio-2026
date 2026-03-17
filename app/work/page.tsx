@@ -13,18 +13,22 @@ export const metadata = {
 const caseStudyGroups = [
   {
     label: 'Frontend Development',
+    link: 'frontend-developer',
     ids: ['fe-flow-modal', 'fe-honest-fox-cms'],
   },
   {
     label: 'Digital Marketing',
+    link: 'digital-marketer',
     ids: ['dm-auspost-overhaul', 'dm-aussuper-banners', 'dm-myer-edm'],
   },
   {
     label: 'UX Engineering',
+    link: 'ux-engineer',
     ids: ['ux-splose-dashboard', 'ux-smith-family'],
   },
   {
     label: 'Culture & Vibes',
+    link: 'chief-vibes-officer',
     ids: ['cvo-easter-bunny', 'cvo-panem-travel', 'cvo-five-clubs'],
   },
 ];
@@ -52,7 +56,9 @@ export default function WorkPage() {
         if (items.length === 0) return null;
         return (
           <section key={group.label} className="role-section">
-            <h2 className="section-heading">{group.label}</h2>
+            <Link href={`/${group.link}`}>
+              <h2 className="section-heading">{group.label}</h2>
+            </Link>
             {items.map((item) => (
               <div key={item.id} className="case-study">
                 {item.title && <h3>{item.title}</h3>}
