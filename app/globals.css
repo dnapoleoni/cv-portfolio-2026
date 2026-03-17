@@ -78,6 +78,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   min-height: 100dvh;
+  padding-top: env(safe-area-inset-top);
   transition:
     background-color var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out);
@@ -191,6 +192,7 @@ ol {
   text-decoration: none;
   font-weight: 500;
   border-radius: 5px;
+  cursor: pointer;
   transition:
     background var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out),
@@ -267,6 +269,11 @@ ol {
   background: var(--color-bg-hover);
 }
 
+.nav-link--active {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
 /* --- Link Mono: monospace-styled link --- */
 .link-mono {
   font-family: var(--font-mono);
@@ -329,6 +336,57 @@ ol {
   border-color: var(--color-accent);
 }
 
+/* --- PRIMITIVES — Contact Page Layout --- */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.contact-form-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-lg);
+}
+
+.contact-form-card .contact-form {
+  margin-bottom: 0;
+}
+
+.contact-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact-testimonial-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+  max-width: none;
+}
+
+.contact-testimonial-attribution {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.divider-subtle {
+  border: none;
+  border-top: 1px solid var(--color-border-subtle);
+  margin-block: var(--space-lg);
+}
+
+.divider-stretch {
+  align-self: stretch;
+}
+
 /* === PRIMITIVES — Form Elements === */
 
 .contact-form {
@@ -352,11 +410,12 @@ ol {
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--color-text);
-  background: var(--color-bg-elevated);
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 6px;
   padding: var(--space-sm) var(--space-md);
   transition: border-color var(--duration-fast) var(--ease-out);
+  max-width: var(--content-width);
 }
 
 .contact-form input:focus,
@@ -469,7 +528,7 @@ ol {
 
 .site-header {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 50;
   background-color: var(--color-bg);
   border-bottom: 1px solid var(--color-border-subtle);
@@ -967,6 +1026,32 @@ span.site-wordmark {
   color: var(--color-text-secondary);
 }
 
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.contact-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact-testimonial-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.contact-testimonial-attribution {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
 /* === SECTIONS — Cross Navigation === */
 
 .cross-nav {
@@ -1129,6 +1214,13 @@ span.site-wordmark {
   .mobile-center {
     justify-content: center;
   }
+  .mobile-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .mobile-col-reverse {
+    flex-direction: column-reverse;
+  }
   /* Header & Nav */
   .nav-row {
     display: none;
@@ -1154,6 +1246,11 @@ span.site-wordmark {
   }
   .nav-mobile-only {
     display: flex;
+  }
+
+  .link-group--stacked {
+    flex-direction: column;
+    align-items: center;
   }
 
   /* Hero */
@@ -1214,5 +1311,16 @@ span.site-wordmark {
     white-space: nowrap;
     overflow: hidden;
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .contact-form {
+    max-width: none;
+    margin-bottom: 0;
   }
 }

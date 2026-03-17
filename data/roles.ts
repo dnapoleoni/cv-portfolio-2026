@@ -62,6 +62,9 @@ export const roles: RoleData[] = [
       heading: 'How I work',
       itemIds: ['fe-flow-modal', 'fe-honest-fox-cms'],
     },
+    ctaHeading: 'Need a frontend developer?',
+    ctaDescription:
+      "I'm available now and based in Melbourne. If you're looking for someone who ships clean, accessible code and actually cares about the details — let's talk.",
   },
   {
     slug: 'digital-marketing',
@@ -101,6 +104,9 @@ export const roles: RoleData[] = [
       heading: 'Achievements',
       itemIds: ['dm-auspost-overhaul', 'dm-aussuper-banners', 'dm-myer-edm'],
     },
+    ctaHeading: 'Looking for someone who gets marketing AND code?',
+    ctaDescription:
+      "Most marketing developers just build what's briefed. I fix the process, build the systems, and make sure it actually works in the inbox. Let's talk.",
   },
   {
     slug: 'ux-engineer',
@@ -137,6 +143,9 @@ export const roles: RoleData[] = [
       heading: 'How I work',
       itemIds: ['ux-splose-dashboard', 'ux-smith-family'],
     },
+    ctaHeading: 'Want someone who fights for the user?',
+    ctaDescription:
+      "I'm at my best when the spec has gaps and the edge cases haven't been thought through. If that sounds useful to your team — let's talk.",
   },
   {
     slug: 'chief-vibes-officer',
@@ -174,6 +183,9 @@ export const roles: RoleData[] = [
       heading: 'The vibes archive',
       itemIds: ['cvo-easter-bunny', 'cvo-panem-travel', 'cvo-five-clubs'],
     },
+    ctaHeading: 'Think culture matters?',
+    ctaDescription:
+      "If your company values the people who make it fun to show up, I'd love to hear about it. This stuff doesn't happen by accident — let's talk.",
   },
   {
     slug: 'the-full-picture',
@@ -229,5 +241,8 @@ export const roles: RoleData[] = [
       heading: 'Also',
       itemIds: ['full-picture-also'],
     },
+    ctaHeading: 'Read enough?',
+    ctaDescription:
+      "Whether it's frontend, marketing, UX, or something in between — I'm available now and keen for a conversation.",
   },
 ];

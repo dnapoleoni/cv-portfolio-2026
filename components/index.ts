@@ -16,7 +16,7 @@ export { Hero } from './sections/Hero';
 export { RoleHero } from './sections/RoleHero';
 export { Timeline } from './sections/Timeline';
 export { TestimonialCarousel } from './sections/TestimonialCarousel';
-export { ContactSection } from './sections/ContactSection';
+export { ContactCTA } from './sections/ContactCTA';
 export { RoleCrossNav } from './sections/RoleCrossNav';
 export { RoleGrid } from './sections/RoleGrid';
 export { RoleCard } from './sections/RoleCard';
@@ -28,6 +28,6 @@ export { DarkModeToggle } from './theme/DarkModeToggle';
 
 // Page-specific
 export { ContactForm } from './ContactForm';
-export { ContactPageContent } from './ContactPageContent';
+export { ContactPageContent } from '../app/contact/ContactPageContent';
 export { RolePageView } from './RolePageView';
 export { TechIcon, TechIconRow } from './TechIcons';

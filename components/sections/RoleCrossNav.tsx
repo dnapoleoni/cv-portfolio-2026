@@ -3,17 +3,17 @@ import type { RoleData } from '@/types';
 import { TechIconRow } from '@/components/TechIcons';
 
 interface RoleCrossNavProps {
-  otherRoles: RoleData[];
+  roles: RoleData[];
 }
 
-export function RoleCrossNav({ otherRoles }: RoleCrossNavProps) {
+export function RoleCrossNav({ roles }: RoleCrossNavProps) {
   return (
     <nav className="cross-nav" aria-labelledby="cross-nav-heading">
       <h2 id="cross-nav-heading" className="section-heading">
         Also looking for a…
       </h2>
       <div className="cross-nav-grid">
-        {otherRoles.map((role) => (
+        {roles.map((role) => (
           <Link
             key={role.slug}
             href={`/${role.slug}`}

@@ -7,7 +7,7 @@ import { SkillTags } from '@/components/ui/SkillTags';
 import { TechIconRow } from '@/components/TechIcons';
 import { TestimonialCarousel } from '@/components/sections/TestimonialCarousel';
 import { RoleCrossNav } from '@/components/sections/RoleCrossNav';
-import { ContactSection } from '@/components/sections/ContactSection';
+import { ContactCTA } from '@/components/sections/ContactCTA';
 import { RoleHero } from '@/components/sections/RoleHero';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -21,7 +21,7 @@ export function RolePageView({ slug }: RolePageViewProps) {
   const role = getRoleBySlug(slug);
   if (!role) notFound();
 
-  const otherRoles = getOtherRoles(slug);
+  const roles = getOtherRoles(slug);
   const testimonials = getTestimonialsForRole(slug);
   const timeline = getTimelineForRole(role.experienceIds, slug);
   const pdf = getPdfForSlug(role.slug);
@@ -43,8 +43,11 @@ export function RolePageView({ slug }: RolePageViewProps) {
           {role.icons && <TechIconRow icons={role.icons} size={22} />}
         </h2>
         <p className="role-page-subtitle">{role.subtitle}</p>
-        <div className="mt-md">
+        <div className="mt-md link-group mobile-start mobile-col-reverse">
           <DownloadButton href={pdf.href} label={pdf.label} className="btn-solid-accent" />
+          <Link href="/work" className="link-mono">
+            View Portfolio
+          </Link>
         </div>
       </header>
 
@@ -91,10 +94,10 @@ export function RolePageView({ slug }: RolePageViewProps) {
       )}
 
       {/* CTA */}
-      <ContactSection heading="Interested?" slug={role.slug} />
+      <ContactCTA heading={role.ctaHeading} description={role.ctaDescription} slug={role.slug} />
 
       {/* Cross-nav to other roles */}
-      {otherRoles.length > 0 && <RoleCrossNav otherRoles={otherRoles} />}
+      {roles.length > 0 && <RoleCrossNav roles={roles} />}
     </article>
   );
 }
