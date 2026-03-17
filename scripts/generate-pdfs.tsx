@@ -50,16 +50,9 @@ const fullPictureSkills: SkillCategory[] = [
   },
 ];
 
-async function generateFullPictureCV() {
+async function generateFullPictureCV(email: string) {
   const role = getRoleBySlug('the-full-picture');
   if (!role) throw new Error('Role not found: the-full-picture');
-
-  const email = process.env.CONTACT_EMAIL;
-  if (!email) throw new Error('CONTACT_EMAIL not set in .env');
-
-  if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-  }
 
   const timeline = getTimelineForRole(role.experienceIds, role.slug);
 
@@ -81,11 +74,47 @@ async function generateFullPictureCV() {
   console.log(`✓ Generated: ${outputPath}`);
 }
 
+async function generateRoleCV(slug: string, email: string) {
+  const role = getRoleBySlug(slug);
+  if (!role) throw new Error(`Role not found: ${slug}`);
+
+  const timeline = getTimelineForRole(role.experienceIds, role.slug);
+  const skills: SkillCategory[] = [{ category: '', items: role.skills }];
+
+  const outputPath = path.join(OUTPUT_DIR, `Dan-Napoleoni-CV-${slug}.pdf`);
+  await renderToFile(
+    <CVTemplate
+      name="Dan Napoleoni"
+      title={`${role.title} · Melbourne, Australia`}
+      email={email}
+      siteUrl="danielnapoleoni.dev"
+      siteUrlPath={`/${slug}`}
+      linkedIn="linkedin.com/in/daniel-napoleoni"
+      summary={role.intro[0]}
+      skills={skills}
+      experiences={timeline}
+      footer={`Full portfolio and references at danielnapoleoni.dev/${slug}`}
+    />,
+    outputPath
+  );
+  console.log(`✓ Generated: ${outputPath}`);
+}
+
 async function main() {
-  console.log('Generating PDFs...');
-  await generateFullPictureCV();
-  // Role-specific PDFs will be added here in a future prompt
-  console.log('Done.');
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  }
+
+  const email = process.env.CONTACT_EMAIL;
+  if (!email) throw new Error('CONTACT_EMAIL not set in .env');
+
+  console.log('Generating PDFs...\n');
+  await generateFullPictureCV(email);
+  await generateRoleCV('frontend-developer', email);
+  await generateRoleCV('digital-marketing', email);
+  await generateRoleCV('ux-engineer', email);
+  await generateRoleCV('chief-vibes-officer', email);
+  console.log('\nDone.');
 }
 
 main().catch((err) => {

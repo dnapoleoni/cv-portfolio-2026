@@ -45,6 +45,7 @@ export interface CVTemplateProps {
   title: string;
   email: string;
   siteUrl: string;
+  siteUrlPath?: string;
   linkedIn: string;
   summary: string;
   skills: SkillCategory[];
@@ -162,6 +163,13 @@ const styles = StyleSheet.create({
     flex: 1,
     lineHeight: 1.5,
   },
+  skillItemsFlat: {
+    fontFamily: 'Outfit',
+    fontWeight: 400,
+    fontSize: 9,
+    color: COLORS.textSecondary,
+    lineHeight: 1.5,
+  },
   // ── Experience ───────────────────────────────────────────
   experienceEntry: {
     marginBottom: 12,
@@ -212,6 +220,7 @@ export function CVTemplate({
   title,
   email,
   siteUrl,
+  siteUrlPath,
   linkedIn,
   summary,
   skills,
@@ -231,7 +240,7 @@ export function CVTemplate({
             {email}
           </Link>
           <Text>{'    '}</Text>
-          <Link src={`https://${siteUrl}`} style={styles.footerLink}>
+          <Link src={`https://${siteUrl}${siteUrlPath || ''}`} style={styles.footerLink}>
             {siteUrl}
           </Link>
           <Text>{'    '}</Text>
@@ -244,7 +253,7 @@ export function CVTemplate({
         <View style={styles.dividerAccent} />
 
         {/* Summary */}
-        <View style={styles.sectionBlock}>
+        <View style={{ marginBottom: 14 }}>
           <Text style={styles.sectionHeading}>Summary</Text>
           <Text style={styles.summary}>{summary}</Text>
         </View>
@@ -254,51 +263,54 @@ export function CVTemplate({
           <Text style={styles.sectionHeading}>Skills & Tools</Text>
           {skills.map((group, i) => (
             <View key={i} style={styles.skillRow}>
-              <Text style={styles.skillCategory}>{group.category}</Text>
-              <Text style={styles.skillItems}>{group.items.join('  ·  ')}</Text>
+              {group.category ? <Text style={styles.skillCategory}>{group.category}</Text> : null}
+              <Text style={group.category ? styles.skillItems : styles.skillItemsFlat}>
+                {group.items.join('  ·  ')}
+              </Text>
             </View>
           ))}
         </View>
 
         {/* Experience */}
-        <View style={styles.sectionBlock}>
-          <Text style={styles.sectionHeading}>Experience</Text>
-          {experiences.map((exp, i) => {
-            const typeLabel = getTypeLabel(exp.type);
-            const metaLine = typeLabel ? `${exp.date}  ·  ${typeLabel}` : exp.date;
-            return (
-              <View key={i} style={styles.experienceEntry} wrap={false}>
-                <Text style={styles.experienceTitle}>
-                  {exp.role}, {exp.company}
-                </Text>
-                <Text style={styles.experienceMeta}>{metaLine}</Text>
-                <Text style={styles.experienceDescription}>{exp.description}</Text>
-              </View>
-            );
-          })}
-        </View>
-
-        {/* Education */}
-        <View style={styles.sectionBlock}>
-          <Text style={styles.sectionHeading}>Education</Text>
-          <View style={styles.experienceEntry} wrap={false}>
-            <Text style={styles.experienceTitle}>Diploma, Web Design — Riverina TAFE (2007)</Text>
-            <Text style={styles.experienceTitle}>
-              Diploma, Digital Media — Riverina TAFE (2005)
-            </Text>
+        {/* <View style={styles.sectionBlock} wrap={true}> */}
+        <Text style={styles.sectionHeading}>Experience</Text>
+        {experiences.map((exp, i) => {
+          const typeLabel = getTypeLabel(exp.type);
+          const metaLine = typeLabel ? `${exp.date}  ·  ${typeLabel}` : exp.date;
+          return (
+            <View key={i} style={styles.experienceEntry} wrap={false}>
+              <Text style={styles.experienceTitle}>
+                {exp.role}, {exp.company}
+              </Text>
+              <Text style={styles.experienceMeta}>{metaLine}</Text>
+              <Text style={styles.experienceDescription}>{exp.description}</Text>
+            </View>
+          );
+        })}
+        {/* </View> */}
+        <View wrap={false}>
+          {/* Education */}
+          <View style={styles.sectionBlock}>
+            <Text style={styles.sectionHeading}>Education</Text>
+            <View style={styles.experienceEntry} wrap={false}>
+              <Text style={styles.experienceTitle}>Diploma, Web Design — Riverina TAFE (2007)</Text>
+              <Text style={styles.experienceTitle}>
+                Diploma, Digital Media — Riverina TAFE (2005)
+              </Text>
+            </View>
           </View>
+
+          {/* Border divider */}
+          <View style={styles.dividerBorder} />
+
+          {/* Footer */}
+          <Text style={styles.footer}>
+            More at{' '}
+            <Link src={`https://${siteUrl}${siteUrlPath || ''}`} style={styles.footerLink}>
+              {siteUrl}
+            </Link>
+          </Text>
         </View>
-
-        {/* Border divider */}
-        <View style={styles.dividerBorder} />
-
-        {/* Footer */}
-        <Text style={styles.footer}>
-          Full portfolio and references at{' '}
-          <Link src={`https://${siteUrl}`} style={styles.footerLink}>
-            {siteUrl}
-          </Link>
-        </Text>
       </Page>
     </Document>
   );
