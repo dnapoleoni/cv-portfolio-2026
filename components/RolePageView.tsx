@@ -31,10 +31,6 @@ export function RolePageView({ slug }: RolePageViewProps) {
 
   return (
     <article className="role-page">
-      <Link href="/" className="back-link">
-        <span aria-hidden="true">←</span> Back
-      </Link>
-
       {role.tagline && <RoleHero tagline={role.tagline} />}
 
       <header className="role-page-header">

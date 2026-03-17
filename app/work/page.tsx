@@ -37,10 +37,6 @@ export default function WorkPage() {
   const allRoles = getDisplayRoles();
   return (
     <article className="role-page">
-      <Link href="/" className="back-link">
-        <span aria-hidden="true">←</span> Back
-      </Link>
-
       <header className="page-header">
         <h1 className="page-heading">About that...</h1>
         <p className="page-subheading">

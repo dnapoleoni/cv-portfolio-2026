@@ -321,22 +321,6 @@ ol {
   align-items: center;
 }
 
-/* --- Back Link --- */
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  margin-bottom: var(--space-lg);
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.back-link:hover {
-  color: var(--color-text);
-}
-
 /* === PRIMITIVES — Cards === */
 
 /* Base card class — shared by .role-card and .cross-nav-card */
@@ -631,7 +615,7 @@ span.site-wordmark {
 /* === SECTIONS — Hero === */
 
 .hero {
-  padding-block: var(--space-2xl);
+  padding-block: var(--space-sm);
   min-height: 55dvh;
   display: flex;
   flex-direction: column;
@@ -794,7 +778,7 @@ span.site-wordmark {
 /* === SECTIONS — Role Page === */
 
 .role-page {
-  padding-block: var(--space-md) var(--space-2xl);
+  padding-block: var(--space-2xl) var(--space-sm);
 }
 
 .role-page-header {
@@ -1284,23 +1268,6 @@ span.site-wordmark {
   .link-group--stacked {
     flex-direction: column;
     align-items: center;
-  }
-
-  /* Hero */
-  .hero {
-    min-height: auto;
-    padding-block: var(--space-xl);
-  }
-  .hero--compact {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .hero--compact .hero-sub {
-    margin-inline: auto;
-  }
-  .hero-tagline {
-    font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
   }
 
   /* Role Grid */

@@ -30,10 +30,6 @@ export function ContactPageContent() {
 
   return (
     <article className="role-page">
-      <Link href={backHref} className="back-link">
-        <span aria-hidden="true">←</span> Back
-      </Link>
-
       <header className="page-header">
         <h1 className="page-heading">{heading}</h1>
         <p className="page-subheading">{subheading}</p>
