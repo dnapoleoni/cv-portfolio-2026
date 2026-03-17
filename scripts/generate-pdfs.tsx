@@ -14,43 +14,66 @@ const fullPictureSkills: SkillCategory[] = [
   {
     category: 'Development',
     items: [
-      'React', 'TypeScript', 'Vue.js', 'JavaScript (ES6+)',
-      'HTML5 / Semantic HTML', 'CSS3 / SCSS / Tailwind', 'Next.js',
-      'Nuxt', 'Quasar', 'Laravel', 'GSAP', 'REST APIs', 'GraphQL',
+      'React',
+      'TypeScript',
+      'Vue.js',
+      'JavaScript (ES6+)',
+      'HTML5 / Semantic HTML',
+      'CSS3 / SCSS / Tailwind',
+      'Next.js',
+      'Nuxt',
+      'Quasar',
+      'Laravel',
+      'GSAP',
+      'REST APIs',
+      'GraphQL',
     ],
   },
   {
     category: 'UX',
     items: [
-      'Figma → Code', 'Responsive Design', 'WCAG Accessibility',
-      'UX Advocacy & Review', 'Interaction Design Implementation',
-      'Design System Contribution', 'Edge Case Identification',
-      'Error State & Empty State Design', 'User Flow Analysis',
+      'Figma → Code',
+      'Responsive Design',
+      'WCAG Accessibility',
+      'UX Advocacy & Review',
+      'Interaction Design Implementation',
+      'Design System Contribution',
+      'Edge Case Identification',
+      'Error State & Empty State Design',
+      'User Flow Analysis',
     ],
   },
   {
     category: 'Marketing',
     items: [
-      'Salesforce Marketing Cloud', 'eDM Design & Development',
+      'Salesforce Marketing Cloud',
+      'eDM Design & Development',
       'HTML Email (Responsive, Cross-client)',
-      'Google DV360 / DoubleClick Studio', 'Dynamic HTML Banners (DCO)',
-      'Campaign Deployment & QA', 'A/B Testing', 'Google Web Designer',
-      'Campaign Monitor', 'Mailchimp',
+      'Google DV360 / DoubleClick Studio',
+      'Dynamic HTML Banners (DCO)',
+      'Campaign Deployment & QA',
+      'A/B Testing',
+      'Google Web Designer',
+      'Campaign Monitor',
+      'Mailchimp',
     ],
   },
   {
     category: 'Tools',
     items: [
-      'Git', 'Agile / Scrum',
+      'Git',
+      'Agile / Scrum',
       'AI-Assisted Development (Claude, Copilot, Cursor)',
       'Headless CMS (Storyblok, DatoCMS, Craft CMS)',
-      'Photoshop / Sketch / Figma', 'Litmus', 'Browserstack',
+      'Photoshop / Sketch / Figma',
+      'Litmus',
+      'Browserstack',
       'Cross-browser / Cross-device QA',
     ],
   },
 ];
 
-async function generateFullPictureCV(email: string) {
+async function generateFullPictureCV(email: string, phone: string) {
   const role = getRoleBySlug('the-full-picture');
   if (!role) throw new Error('Role not found: the-full-picture');
 
@@ -62,6 +85,7 @@ async function generateFullPictureCV(email: string) {
       name="Dan Napoleoni"
       title="Frontend Developer · Melbourne, Australia"
       email={email}
+      phone={phone}
       siteUrl="danielnapoleoni.dev"
       linkedIn="linkedin.com/in/daniel-napoleoni"
       summary={role.intro[0]}
@@ -74,7 +98,7 @@ async function generateFullPictureCV(email: string) {
   console.log(`✓ Generated: ${outputPath}`);
 }
 
-async function generateRoleCV(slug: string, email: string) {
+async function generateRoleCV(slug: string, email: string, phone: string) {
   const role = getRoleBySlug(slug);
   if (!role) throw new Error(`Role not found: ${slug}`);
 
@@ -87,6 +111,7 @@ async function generateRoleCV(slug: string, email: string) {
       name="Dan Napoleoni"
       title={`${role.title} · Melbourne, Australia`}
       email={email}
+      phone={phone}
       siteUrl="danielnapoleoni.dev"
       siteUrlPath={`/${slug}`}
       linkedIn="linkedin.com/in/daniel-napoleoni"
@@ -108,12 +133,15 @@ async function main() {
   const email = process.env.CONTACT_EMAIL;
   if (!email) throw new Error('CONTACT_EMAIL not set in .env');
 
+  const phone = process.env.CONTACT_PHONE;
+  if (!phone) throw new Error('CONTACT_PHONE not set in .env');
+
   console.log('Generating PDFs...\n');
-  await generateFullPictureCV(email);
-  await generateRoleCV('frontend-developer', email);
-  await generateRoleCV('digital-marketing', email);
-  await generateRoleCV('ux-engineer', email);
-  await generateRoleCV('chief-vibes-officer', email);
+  await generateFullPictureCV(email, phone);
+  await generateRoleCV('frontend-developer', email, phone);
+  await generateRoleCV('digital-marketing', email, phone);
+  await generateRoleCV('ux-engineer', email, phone);
+  await generateRoleCV('chief-vibes-officer', email, phone);
   console.log('\nDone.');
 }
 

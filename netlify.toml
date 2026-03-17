@@ -3,4 +3,4 @@
   publish = ".next"
 
 [build.environment]
-  # CONTACT_EMAIL must be set in the Netlify dashboard environment variables
+  # CONTACT_EMAIL and CONTACT_PHONE must be set in the Netlify dashboard environment variables

@@ -44,6 +44,7 @@ export interface CVTemplateProps {
   name: string;
   title: string;
   email: string;
+  phone: string;
   siteUrl: string;
   siteUrlPath?: string;
   linkedIn: string;
@@ -219,6 +220,7 @@ export function CVTemplate({
   name,
   title,
   email,
+  phone,
   siteUrl,
   siteUrlPath,
   linkedIn,
@@ -246,6 +248,10 @@ export function CVTemplate({
           <Text>{'    '}</Text>
           <Link src={`https://${linkedIn}`} style={styles.footerLink}>
             {linkedIn}
+          </Link>
+          <Text>{'    '}</Text>
+          <Link src={`tel:${phone}`} style={styles.footerLink}>
+            0{phone.slice(3)}
           </Link>
         </View>
 
@@ -308,7 +314,7 @@ export function CVTemplate({
             More at{' '}
             <Link src={`https://${siteUrl}${siteUrlPath || ''}`} style={styles.footerLink}>
               {siteUrl}
-            </Link>
+            </Link>{' '}
           </Text>
         </View>
       </Page>

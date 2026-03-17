@@ -28,7 +28,7 @@ export function Hero() {
             View CV
           </Link>
           <DownloadButton
-            href="/Dan-Napoleoni-CV.pdf"
+            href="/pdfs/Dan-Napoleoni-CV.pdf"
             label="Download CV"
             className="btn-solid-accent"
           />
