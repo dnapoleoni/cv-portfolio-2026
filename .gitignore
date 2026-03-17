@@ -24,6 +24,11 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+
+# Generated PDFs (built at deploy time)
+public/pdfs/
+public/*.pdf
 
 # vercel
 .vercel

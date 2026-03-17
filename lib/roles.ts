@@ -19,11 +19,11 @@ export function getOtherRoles(currentSlug: string): RoleData[] {
  *  Falls back to the general CV for unknown slugs or 'the-full-picture'. */
 export function getPdfForSlug(slug?: string): { href: string; label: string } {
   if (!slug || slug === 'the-full-picture') {
-    return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
+    return { href: '/pdfs/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
   }
   const role = getRoleBySlug(slug);
   if (role) {
-    return { href: `/Dan-Napoleoni-CV-${slug}.pdf`, label: `Download CV - ${role.title}` };
+    return { href: `/pdfs/Dan-Napoleoni-CV-${slug}.pdf`, label: `Download CV - ${role.title}` };
   }
-  return { href: '/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
+  return { href: '/pdfs/Dan-Napoleoni-CV.pdf', label: 'Download CV' };
 }
