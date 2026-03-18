@@ -98,8 +98,6 @@ export function TestimonialCarousel({
           {testimonials.map((_, i) => (
             <li
               key={i}
-              aria-selected={i === current}
-              aria-label={`Testimonial progress: ${i + 1}`}
               className={`testimonial-dot${i === current ? ' testimonial-dot--active' : ''}`}
             />
           ))}
