@@ -419,6 +419,24 @@ ol {
   margin-bottom: var(--space-xl);
 }
 
+.contact-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact-form fieldset:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.contact-form fieldset:disabled .btn-solid-accent {
+  pointer-events: none;
+}
+
 .contact-form label {
   display: flex;
   flex-direction: column;

@@ -28,34 +28,36 @@ export function ContactForm({ subject }: { subject?: string }) {
 
   return (
     <form onSubmit={handleSubmit} name="contact" className="contact-form">
-      <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="subject" value={subject || 'General enquiry'} />
-      <p hidden>
+      <fieldset disabled={submitting}>
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="subject" value={subject || 'General enquiry'} />
+        <p hidden>
+          <label>
+            Don't fill this out: <input name="bot-field" />
+          </label>
+        </p>
+
         <label>
-          Don't fill this out: <input name="bot-field" />
+          Name
+          <input type="text" name="name" required autoComplete="name" />
         </label>
-      </p>
 
-      <label>
-        Name
-        <input type="text" name="name" required autoComplete="name" />
-      </label>
+        <label>
+          Email
+          <input type="email" name="email" required autoComplete="email" />
+        </label>
 
-      <label>
-        Email
-        <input type="email" name="email" required autoComplete="email" />
-      </label>
+        <label>
+          Message
+          <textarea name="message" required rows={6} />
+        </label>
 
-      <label>
-        Message
-        <textarea name="message" required rows={6} />
-      </label>
-
-      <div>
-        <button type="submit" className="btn-solid-accent" disabled={submitting}>
-          {submitting ? 'Sending...' : 'Message Dan →'}
-        </button>
-      </div>
+        <div>
+          <button type="submit" className="btn-solid-accent">
+            {submitting ? 'Sending...' : 'Message Dan →'}
+          </button>
+        </div>
+      </fieldset>
     </form>
   );
 }
