@@ -629,7 +629,6 @@ span.site-wordmark {
 /* Tagline hero — dramatic full-height centered tagline (role pages) */
 .hero--tagline {
   min-height: 55dvh;
-  justify-content: center;
   align-items: center;
   padding-block: var(--space-2xl);
 }
@@ -638,6 +637,7 @@ span.site-wordmark {
 .hero--compact {
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xl);
   padding-block: var(--space-xl) var(--space-lg);
 }
@@ -646,7 +646,6 @@ span.site-wordmark {
 .hero--centered {
   align-items: center;
   text-align: center;
-  justify-content: center;
   min-height: 40dvh;
   gap: var(--space-md);
 }
