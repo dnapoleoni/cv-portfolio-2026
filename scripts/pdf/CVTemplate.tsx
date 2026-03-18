@@ -43,6 +43,7 @@ export interface SkillCategory {
 export interface CVTemplateProps {
   name: string;
   title: string;
+  location: string;
   email: string;
   phone: string;
   siteUrl: string;
@@ -219,6 +220,7 @@ function getTypeLabel(type?: 'contract' | 'redundancy' | 'permanent'): string | 
 export function CVTemplate({
   name,
   title,
+  location,
   email,
   phone,
   siteUrl,
@@ -230,11 +232,11 @@ export function CVTemplate({
   footer: _footer,
 }: CVTemplateProps) {
   return (
-    <Document>
+    <Document title={`Dan Napoleoni — ${title}`} language="en">
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <Text style={styles.headerName}>{name}</Text>
-        <Text style={styles.headerTitle}>{title}</Text>
+        <Text style={styles.headerTitle}>{title + ' · ' + location}</Text>
 
         {/* Contact row */}
         <View style={styles.contactRow}>

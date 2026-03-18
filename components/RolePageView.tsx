@@ -34,12 +34,12 @@ export function RolePageView({ slug }: RolePageViewProps) {
       {role.tagline && <RoleHero tagline={role.tagline} />}
 
       <header className="role-page-header">
-        <h2 className="role-page-title">
-          {role.title}
+        <div className="role-page-header-row">
+          <h2 className="role-page-title">{role.title}</h2>
           {role.icons && <TechIconRow icons={role.icons} size={22} />}
-        </h2>
+        </div>
         <p className="role-page-subtitle">{role.subtitle}</p>
-        <div className="mt-md link-group mobile-start">
+        <div className="mt-md link-group mobile-col mobile-start">
           <Link href="/work" className="link-mono">
             View Portfolio
           </Link>
@@ -48,7 +48,10 @@ export function RolePageView({ slug }: RolePageViewProps) {
       </header>
 
       {/* Intro */}
-      <section className="role-section">
+      <section className="role-section" aria-labelledby="experience-intro">
+        <h2 id="experience-intro" className="sr-only">
+          Introduction
+        </h2>
         {role.intro.map((para, i) => (
           <p key={i}>{para}</p>
         ))}

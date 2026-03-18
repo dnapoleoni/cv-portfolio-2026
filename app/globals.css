@@ -839,6 +839,13 @@ span.site-wordmark {
   padding-block: var(--space-2xl) var(--space-sm);
 }
 
+.role-page-header-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
 .role-page-header {
   margin-bottom: var(--space-xl);
   padding-bottom: var(--space-lg);
@@ -1316,6 +1323,15 @@ span.site-wordmark {
     font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
   }
 
+  .role-page {
+    padding-block: 0 var(--space-sm);
+  }
+
+  .role-page-header-row {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+
   /* Role Grid */
   .role-grid {
     grid-template-columns: 1fr;
@@ -1357,6 +1373,10 @@ span.site-wordmark {
     white-space: nowrap;
     overflow: hidden;
     text-align: center;
+  }
+
+  .tech-icon-row {
+    display: none;
   }
 }
 

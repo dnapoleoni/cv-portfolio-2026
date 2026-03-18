@@ -8,7 +8,7 @@ export function RoleGrid() {
       <h2 id="role-nav-label" className="role-nav-label">
         Click below to view a role-specific CV for...
       </h2>
-      <ul className="role-grid role-grid--prominent" role="list">
+      <ul className="role-grid role-grid--prominent">
         {displayRoles.map((role) => (
           <RoleCard key={role.slug} role={role} />
         ))}

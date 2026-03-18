@@ -37,13 +37,11 @@ export function Header() {
   }, [isOpen]);
 
   return (
-    <header className="site-header" role="banner">
+    <header className="site-header">
       <div className="site-header-wrapper">
         <div className="site-header-contents">
           {isHome ? (
-            <span className="site-wordmark" aria-label="danielnapoleoni.dev">
-              danielnapoleoni.dev
-            </span>
+            <span className="site-wordmark">danielnapoleoni.dev</span>
           ) : (
             <Link href="/" className="site-wordmark" aria-label="danielnapoleoni.dev — Home">
               danielnapoleoni.dev

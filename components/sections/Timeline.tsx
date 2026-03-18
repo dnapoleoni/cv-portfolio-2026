@@ -7,7 +7,7 @@ interface TimelineProps {
 
 export function Timeline({ entries }: TimelineProps) {
   return (
-    <ol className="timeline" role="list">
+    <ol className="timeline">
       {entries.map((entry, i) => {
         const typeLabel = getTypeLabel(entry.type);
         return (

@@ -83,7 +83,8 @@ async function generateFullPictureCV(email: string, phone: string) {
   await renderToFile(
     <CVTemplate
       name="Dan Napoleoni"
-      title="Frontend Developer · Melbourne, Australia"
+      title="Frontend Developer"
+      location="Melbourne, Australia"
       email={email}
       phone={phone}
       siteUrl="danielnapoleoni.dev"
@@ -109,9 +110,10 @@ async function generateRoleCV(slug: string, email: string, phone: string) {
   await renderToFile(
     <CVTemplate
       name="Dan Napoleoni"
-      title={`${role.title} · Melbourne, Australia`}
+      title={role.title}
       email={email}
       phone={phone}
+      location="Melbourne, Australia"
       siteUrl="danielnapoleoni.dev"
       siteUrlPath={`/${slug}`}
       linkedIn="linkedin.com/in/daniel-napoleoni"

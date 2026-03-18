@@ -4,7 +4,7 @@ import { ThemePicker } from '@/components/theme/ThemePicker';
 
 export function Footer() {
   return (
-    <footer className="site-footer" role="contentinfo">
+    <footer className="site-footer">
       <div className="footer-content">
         <p className="footer-text">© {new Date().getFullYear()} · Dan Napoleoni</p>
         {/* Theme & Mode controls */}
