@@ -527,7 +527,8 @@ ol {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: max(1.5rem, env(safe-area-inset-left));
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
 }
 
 .page-header {
@@ -573,9 +574,10 @@ ol {
   background-color: var(--color-bg);
 }
 .site-header-wrapper {
-  padding-inline: max(1.5rem, env(safe-area-inset-left));
   margin: 0 auto;
   max-width: var(--max-width);
+  padding-left: max(1.5rem, env(safe-area-inset-left));
+  padding-right: max(1.5rem, env(safe-area-inset-right));
 }
 .site-header-contents {
   padding-block: var(--space-md);
