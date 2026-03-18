@@ -24,11 +24,11 @@ export function Hero() {
           <p className="hero-sub">Based in Melbourne, available now.</p>
         </div>
         <div className="link-group mobile-col mobile-center">
+          <Link href="/the-full-picture" className="link-mono">
+            Get the full picture
+          </Link>
           <Link href="/work" className="link-mono">
             View Portfolio
-          </Link>
-          <Link href="/the-full-picture" className="link-mono">
-            View CV
           </Link>
           <DownloadButton
             href="/pdfs/Dan-Napoleoni-CV.pdf"

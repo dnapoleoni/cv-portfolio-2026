@@ -329,7 +329,7 @@ ol {
   flex-direction: column;
   gap: var(--space-xs);
   padding: var(--space-md);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-accent);
   border-radius: 6px;
   text-decoration: none;
   color: var(--color-text);
@@ -347,10 +347,6 @@ ol {
 
 .card--vibes {
   border-style: dashed;
-}
-
-.card--vibes:hover {
-  border-color: var(--color-accent);
 }
 
 /* --- PRIMITIVES — Contact Page Layout --- */
