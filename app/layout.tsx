@@ -59,8 +59,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="#main-content" className="skip-link">
             Skip to main content
           </a>
+          <Header />
           <div className="page-wrapper">
-            <Header />
             <main id="main-content">{children}</main>
             <Footer />
           </div>

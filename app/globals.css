@@ -571,13 +571,20 @@ ol {
   top: env(safe-area-inset-top, 0px);
   z-index: 50;
   background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-border-subtle);
+}
+.site-header-wrapper {
+  padding-inline: var(--space-lg);
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+.site-header-contents {
   padding-block: var(--space-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .site-wordmark {
@@ -1252,6 +1259,7 @@ span.site-wordmark {
     width: 100%;
     height: calc(100vh - 66px);
     top: 66px;
+    left: 0;
     justify-content: center;
     align-content: center;
     transition: all 1000ms ease-in-out;
