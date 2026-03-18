@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import './globals.css';
+import { ConsoleGreeting } from '@/components/ui/ConsoleGreeting';
 
 export const metadata: Metadata = {
   title: 'Dan Napoleoni — Developer, Designer-Thinker, Human Communicator',
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <ConsoleGreeting />
         <ThemeProvider>
           <a href="#main-content" className="skip-link">
             Skip to main content

@@ -29,6 +29,11 @@ export function ContactCTA({
         <a href={contact.linkedIn} className="link-mono" target="_blank" rel="noopener noreferrer">
           LinkedIn ↗
         </a>
+        {hideContactLink && (
+          <a href={contact.gitHub} className="link-mono" target="_blank" rel="noopener noreferrer">
+            Check out the repo ↗
+          </a>
+        )}
       </div>
     </section>
   );
