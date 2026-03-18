@@ -21,7 +21,7 @@
   /* Typography — fluid scale */
   --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
-  --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-serif: 'Libre Baskerville', 'Georgia', serif;
   --font-hand: 'Caveat', cursive;
 
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -382,7 +382,8 @@ ol {
 .contact-testimonial-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: var(--text-base);
+  font-weight: 600;
+  font-size: var(--text-sm);
   color: var(--color-text);
   line-height: 1.6;
   margin-bottom: var(--space-sm);
@@ -390,8 +391,12 @@ ol {
 }
 
 .contact-testimonial-attribution {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-text-secondary);
+}
+
+.contact-testimonials > .section-heading {
+  margin-bottom: 0;
 }
 
 .divider-subtle {
@@ -696,7 +701,7 @@ span.site-wordmark {
 .tagline-developer {
   font-family: var(--font-mono);
   font-weight: 500;
-  font-size: 0.85em;
+  font-size: 0.75em;
   letter-spacing: -0.03em;
 }
 
@@ -704,7 +709,7 @@ span.site-wordmark {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 0.775em;
 }
 
 .tagline-human {
@@ -712,6 +717,7 @@ span.site-wordmark {
   font-weight: 400;
   font-size: 1.15em;
   color: var(--color-accent);
+  line-height: 1rem;
 }
 
 /* === SECTIONS — Role Navigation === */
@@ -925,6 +931,7 @@ span.site-wordmark {
   background: var(--color-bg-elevated);
   border-radius: 8px;
   border-left: 3px solid var(--color-accent);
+  border-right: 3px solid var(--color-accent);
   min-height: 140px;
   display: flex;
   flex-direction: column;
@@ -933,7 +940,7 @@ span.site-wordmark {
 }
 
 .testimonial-text {
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
   font-family: var(--font-serif);
   font-style: italic;
   line-height: 1.6;
@@ -1045,46 +1052,6 @@ span.site-wordmark {
 .contact-section p {
   color: var(--color-text-secondary);
   margin-bottom: var(--space-lg);
-}
-
-.contact-aside {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--color-border-subtle);
-  margin-top: var(--space-xl);
-}
-
-.contact-aside p {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-}
-
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-}
-
-.contact-testimonials {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.contact-testimonial-quote {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: var(--text-base);
-  color: var(--color-text);
-  line-height: 1.6;
-  margin-bottom: var(--space-sm);
-}
-
-.contact-testimonial-attribution {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
 }
 
 /* === SECTIONS — Cross Navigation === */

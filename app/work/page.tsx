@@ -52,9 +52,9 @@ export default function WorkPage() {
         if (items.length === 0) return null;
         return (
           <section key={group.label} className="role-section">
-            <Link href={`/${group.link}`}>
-              <h2 className="section-heading">{group.label}</h2>
-            </Link>
+            <h2 className="section-heading">
+              <Link href={`/${group.link}`}>{group.label}</Link>
+            </h2>
             {items.map((item) => (
               <div key={item.id} className="case-study">
                 {item.title && <h3>{item.title}</h3>}
