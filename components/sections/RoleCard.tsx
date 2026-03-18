@@ -11,6 +11,7 @@ export function RoleCard({ role }: RoleCardProps) {
     <li>
       <Link
         href={`/${role.slug}`}
+        aria-label={`View CV for ${role.title}`}
         className={`card role-card${role.variant === 'vibes' ? ' card--vibes' : ''}`}
       >
         <div className="role-card-header">
