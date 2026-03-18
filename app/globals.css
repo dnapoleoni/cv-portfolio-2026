@@ -527,7 +527,7 @@ ol {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: var(--space-lg);
+  padding-inline: max(1.5rem, env(safe-area-inset-left));
 }
 
 .page-header {
@@ -573,7 +573,7 @@ ol {
   background-color: var(--color-bg);
 }
 .site-header-wrapper {
-  padding-inline: var(--space-lg);
+  padding-inline: max(1.5rem, env(safe-area-inset-left));
   margin: 0 auto;
   max-width: var(--max-width);
 }
@@ -1348,5 +1348,16 @@ span.site-wordmark {
   .contact-form {
     max-width: none;
     margin-bottom: 0;
+  }
+
+  .page-wrapper,
+  .site-header-wrapper {
+    padding-inline: 2rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .page-wrapper,
+  .site-header-wrapper {
+    padding-inline: 3rem;
   }
 }
