@@ -614,20 +614,40 @@ span.site-wordmark {
 
 /* === SECTIONS — Hero === */
 
+/* Base — shared structure for all hero sections */
 .hero {
-  padding-block: var(--space-md);
-  min-height: 55dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-block: var(--space-xl);
 }
 
+/* Tagline hero — dramatic full-height centered tagline (role pages) */
+.hero--tagline {
+  min-height: 55dvh;
+  justify-content: center;
+  align-items: center;
+  padding-block: var(--space-2xl);
+}
+
+/* Compact hero — photo + text side by side (home page) */
 .hero--compact {
-  min-height: auto;
-  padding-block: var(--space-xl) var(--space-lg);
   flex-direction: row;
   align-items: center;
   gap: var(--space-xl);
+  padding-block: var(--space-xl) var(--space-lg);
+}
+
+/* Centered hero — centered text, no min-height (404, success, etc.) */
+.hero--centered {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 40dvh;
+  gap: var(--space-md);
+}
+
+.hero--centered .hero-sub {
+  margin-inline: auto;
 }
 
 .hero-image {
@@ -661,7 +681,6 @@ span.site-wordmark {
   font-size: var(--text-xl);
   color: var(--color-text-secondary);
   font-weight: 400;
-  margin-bottom: var(--space-md);
   animation: fadeUp var(--duration-slow) var(--ease-out) both;
 }
 
@@ -670,7 +689,6 @@ span.site-wordmark {
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.025em;
-  margin-bottom: var(--space-xl);
   animation: fadeUp var(--duration-slow) var(--ease-out) 80ms both;
 }
 
@@ -1270,10 +1288,9 @@ span.site-wordmark {
     align-items: center;
   }
 
-  /* Hero */
-  .hero {
+  /* Hero Mobile Responsive */
+  .hero--tagline {
     min-height: auto;
-    padding-block: var(--space-sm);
   }
   .hero--compact {
     flex-direction: column;

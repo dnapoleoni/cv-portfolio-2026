@@ -7,30 +7,13 @@ export const metadata = {
 
 export default function ContactSuccess() {
   return (
-    <section className="hero hero--compact" style={{ textAlign: 'center' }}>
+    <section className="hero hero--centered">
       <p className="hero-greeting">Message sent.</p>
-      <h1
-        style={{
-          fontSize: 'var(--text-3xl)',
-          fontWeight: 500,
-          letterSpacing: '-0.02em',
-          marginBottom: 'var(--space-md)',
-        }}
-      >
-        Thanks for reaching out.
-      </h1>
-      <p className="hero-sub" style={{ marginInline: 'auto' }}>
+      <h1 className="hero-heading">Thanks for reaching out.</h1>
+      <p className="hero-sub">
         I typically reply within a day. In the meantime, feel free to keep looking around.
       </p>
-      <div
-        style={{
-          marginTop: 'var(--space-lg)',
-          display: 'flex',
-          gap: 'var(--space-md)',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-        }}
-      >
+      <div className="link-group">
         <Link href="/" className="btn-outline">
           ← Back to home
         </Link>

@@ -6,7 +6,7 @@ interface RoleHeroProps {
 
 export function RoleHero({ tagline }: RoleHeroProps) {
   return (
-    <section className="hero" aria-labelledby="role-hero-heading">
+    <section className="hero hero--tagline" aria-labelledby="role-hero-heading">
       <h1 id="role-hero-heading" className="hero-tagline">
         <span className="tagline-developer">{tagline.mono}</span>{' '}
         <span className="tagline-designer">{tagline.serif}</span>{' '}
