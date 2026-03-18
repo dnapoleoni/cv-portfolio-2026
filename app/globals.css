@@ -373,6 +373,11 @@ ol {
   margin-bottom: 0;
 }
 
+.form-error {
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+}
+
 .contact-testimonials {
   display: flex;
   flex-direction: column;
@@ -863,6 +868,11 @@ span.site-wordmark {
   margin-bottom: var(--space-md);
 }
 
+.role-section h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-md);
+}
+
 .role-section p {
   color: var(--color-text-secondary);
   margin-bottom: var(--space-md);
@@ -873,6 +883,12 @@ span.site-wordmark {
 }
 
 .case-study h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.case-study h4 {
   font-size: var(--text-lg);
   margin-bottom: var(--space-sm);
   font-weight: 500;
@@ -1246,8 +1262,8 @@ span.site-wordmark {
     justify-content: flex-start;
     align-items: flex-start;
   }
-  .mobile-col-reverse {
-    flex-direction: column-reverse;
+  .mobile-col {
+    flex-direction: column;
   }
   /* Header & Nav */
   .nav-row {
@@ -1264,7 +1280,6 @@ span.site-wordmark {
     left: 0;
     justify-content: center;
     align-content: center;
-    transition: all 1000ms ease-in-out;
   }
   .nav-row-mobile a {
     font-size: 18px;

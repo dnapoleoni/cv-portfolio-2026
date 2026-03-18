@@ -52,7 +52,7 @@ export default function WorkPage() {
       <h2 className="section-heading">Portfolio Pieces</h2>
 
       <section className="role-section">
-        <h2 className="section-heading">2026 CV & Portfolio webiste (yes, this one!)</h2>
+        <h3 className="section-heading">2026 CV & Portfolio website (yes, this one!)</h3>
         <p>
           The site you're on right now started as a simple portfolio build and became a case study
           in its own right. The brief I gave myself: build something that works as an online CV, a
@@ -81,7 +81,13 @@ export default function WorkPage() {
           is the interesting part.
         </p>
         <div className="link-group mt-md">
-          <a href={contact.gitHub} className="link-mono" target="_blank" rel="noopener noreferrer">
+          <a
+            href={contact.gitHub}
+            className="link-mono"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View the code (opens in new tab)"
+          >
             View the code ↗
           </a>
         </div>
@@ -93,12 +99,12 @@ export default function WorkPage() {
         if (items.length === 0) return null;
         return (
           <section key={group.label} className="role-section">
-            <h2 className="section-heading">
+            <h3 className="section-heading">
               <Link href={`/${group.link}`}>{group.label}</Link>
-            </h2>
+            </h3>
             {items.map((item) => (
               <div key={item.id} className="case-study">
-                {item.title && <h3>{item.title}</h3>}
+                {item.title && <h4>{item.title}</h4>}
                 <p>{item.description}</p>
               </div>
             ))}

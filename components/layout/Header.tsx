@@ -7,6 +7,7 @@ import { getPdfForSlug, getDisplayRoles } from '@/lib/roles';
 import { DownloadButton } from '@/components/ui/DownloadButton';
 import { Icon } from '@/components/ui/Icon';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
+import { useEffect } from 'react';
 
 export function Header() {
   const pathname = usePathname();
@@ -15,6 +16,25 @@ export function Header() {
   const pdf = getPdfForSlug(slug);
   const { isOpen, toggle } = useMobileMenu();
   const displayRoles = getDisplayRoles();
+
+  // ok hear me out i hate using document selectors but just this once we're
+  // making the main page non-interactive so keyboard nav doesn't break out of
+  // the mobile nav menu overlay - for accessibility
+  const toggleInert = (selector: string, inert: boolean) => {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    if (inert) {
+      el.setAttribute('inert', '');
+      el.setAttribute('aria-hidden', 'true');
+    } else {
+      el.removeAttribute('inert');
+      el.removeAttribute('aria-hidden');
+    }
+  };
+  useEffect(() => {
+    toggleInert('.page-wrapper', isOpen);
+    toggleInert('.skip-link', isOpen);
+  }, [isOpen]);
 
   return (
     <header className="site-header" role="banner">
@@ -31,8 +51,9 @@ export function Header() {
           )}
 
           <button
-            className="nav-mobile-only nav-hamburger"
+            type="button"
             onClick={toggle}
+            className="nav-mobile-only nav-hamburger"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
           >

@@ -39,11 +39,11 @@ export function RolePageView({ slug }: RolePageViewProps) {
           {role.icons && <TechIconRow icons={role.icons} size={22} />}
         </h2>
         <p className="role-page-subtitle">{role.subtitle}</p>
-        <div className="mt-md link-group mobile-start mobile-col-reverse">
-          <DownloadButton href={pdf.href} label={pdf.label} className="btn-solid-accent" />
+        <div className="mt-md link-group mobile-start">
           <Link href="/work" className="link-mono">
             View Portfolio
           </Link>
+          <DownloadButton href={pdf.href} label={pdf.label} className="btn-solid-accent" />
         </div>
       </header>
 

@@ -22,6 +22,7 @@ export function ThemePicker() {
     <div className="theme-picker" ref={pickerRef}>
       {open && <span className="theme-picker-label">{displayName}</span>}
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         className="theme-picker-btn"
         aria-label="Choose color theme"
@@ -44,6 +45,7 @@ export function ThemePicker() {
               <button
                 key={t.id}
                 role="option"
+                type="button"
                 aria-selected={isActive}
                 aria-label={t.name}
                 className={`theme-picker-option${isActive ? ' theme-picker-option--active' : ''}`}

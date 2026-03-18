@@ -19,20 +19,21 @@ export function ContactCTA({
     <section className="contact-section" aria-labelledby="contact-heading">
       <h2 id="contact-heading">{heading}</h2>
       {description && <p>{description}</p>}
-      <div className="link-group mobile-start mobile-col-reverse">
+      <div className="link-group mobile-start mobile-col">
+        <a
+          href={contact.linkedIn}
+          className="link-mono"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn (opens in new tab)"
+        >
+          LinkedIn ↗
+        </a>
+        <EmailLink from={slug} />
         {!hideContactLink && (
           <ContextLink href="/contact" className="btn-solid-accent">
             Send me a message
           </ContextLink>
-        )}
-        <EmailLink from={slug} />
-        <a href={contact.linkedIn} className="link-mono" target="_blank" rel="noopener noreferrer">
-          LinkedIn ↗
-        </a>
-        {hideContactLink && (
-          <a href={contact.gitHub} className="link-mono" target="_blank" rel="noopener noreferrer">
-            Check out the repo ↗
-          </a>
         )}
       </div>
     </section>

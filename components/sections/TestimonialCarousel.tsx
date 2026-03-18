@@ -60,6 +60,7 @@ export function TestimonialCarousel({
       <div className="testimonial-carousel">
         {testimonials.length > 1 && (
           <button
+            type="button"
             className="carousel-btn carousel-btn--prev"
             onClick={handlePrev}
             aria-label="Previous testimonial"
@@ -82,6 +83,7 @@ export function TestimonialCarousel({
 
         {testimonials.length > 1 && (
           <button
+            type="button"
             className="carousel-btn carousel-btn--next"
             onClick={handleNext}
             aria-label="Next testimonial"
@@ -92,17 +94,12 @@ export function TestimonialCarousel({
       </div>
 
       {testimonials.length > 1 && (
-        <ul
-          className="testimonial-dots"
-          role="tablist"
-          aria-label="Non-clickable testimonial index indicator"
-        >
+        <ul className="testimonial-dots" aria-label="Non-clickable testimonial index indicators">
           {testimonials.map((_, i) => (
             <li
               key={i}
-              role="tab"
               aria-selected={i === current}
-              aria-label={`Testimonial ${i + 1}`}
+              aria-label={`Testimonial progress: ${i + 1}`}
               className={`testimonial-dot${i === current ? ' testimonial-dot--active' : ''}`}
             />
           ))}

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export function ContactForm({ subject }: { subject?: string }) {
   const router = useRouter();
+  const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
@@ -21,7 +22,7 @@ export function ContactForm({ subject }: { subject?: string }) {
       });
       router.push('/contact/success');
     } catch {
-      alert('Something went wrong — try emailing me directly.');
+      setError('Something went wrong — try emailing me directly using the "Email Me" link below.');
       setSubmitting(false);
     }
   }
@@ -52,9 +53,15 @@ export function ContactForm({ subject }: { subject?: string }) {
           <textarea name="message" required rows={6} />
         </label>
 
+        {error && (
+          <p role="alert" className="form-error">
+            {error}
+          </p>
+        )}
+
         <div>
           <button type="submit" className="btn-solid-accent">
-            {submitting ? 'Sending...' : 'Message Dan →'}
+            {submitting ? 'Sending...' : 'Message Dan'}
           </button>
         </div>
       </fieldset>
