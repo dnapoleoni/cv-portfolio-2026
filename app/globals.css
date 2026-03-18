@@ -615,7 +615,7 @@ span.site-wordmark {
 /* === SECTIONS — Hero === */
 
 .hero {
-  padding-block: var(--space-sm);
+  padding-block: var(--space-md);
   min-height: 55dvh;
   display: flex;
   flex-direction: column;
@@ -1268,6 +1268,23 @@ span.site-wordmark {
   .link-group--stacked {
     flex-direction: column;
     align-items: center;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-sm);
+  }
+  .hero--compact {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .hero--compact .hero-sub {
+    margin-inline: auto;
+  }
+  .hero-tagline {
+    font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
   }
 
   /* Role Grid */
