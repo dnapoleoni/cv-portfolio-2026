@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   description:
     'Frontend developer with 15+ years across the full evolution of digital. A developer who thinks like a designer and communicates like a human.',
   metadataBase: new URL('https://dnapoleoni-cv-portfolio.netlify.app'),
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'Dan Napoleoni — A developer who thinks like a designer and communicates like a human',
     description:
