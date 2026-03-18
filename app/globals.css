@@ -313,6 +313,13 @@ ol {
   font-size: var(--text-sm);
 }
 
+.link-contrast {
+  color: var(--color-accent-hover);
+}
+.link-contrast:hover {
+  color: var(--color-accent);
+}
+
 /* --- Link Group: horizontal set of links with consistent spacing --- */
 .link-group {
   display: flex;

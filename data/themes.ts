@@ -104,36 +104,6 @@ export const themes: Theme[] = [
   },
 
   {
-    id: 'tailwind',
-    name: 'Tailwind',
-    // Sky blue accent, clean and bright
-    light: {
-      bg: '#F8FAFC',
-      bgElevated: '#F1F5F9',
-      bgHover: '#E2E8F0',
-      text: '#0F172A',
-      textSecondary: '#334155',
-      textTertiary: '#546580',
-      accent: '#0284C7',
-      accentHover: '#0369A1',
-      border: '#CBD5E1',
-      borderSubtle: '#E2E8F0',
-    },
-    dark: {
-      bg: '#0F172A',
-      bgElevated: '#1E293B',
-      bgHover: '#283548',
-      text: '#F1F5F9',
-      textSecondary: '#94A3B8',
-      textTertiary: '#7B8DA4',
-      accent: '#38BDF8',
-      accentHover: '#5CCBFA',
-      border: '#2D3E56',
-      borderSubtle: '#1E2D42',
-    },
-  },
-
-  {
     id: 'stripe',
     name: 'Stripe',
     // Deep indigo, blue-purple tints
@@ -223,36 +193,6 @@ export const themes: Theme[] = [
     },
   },
 
-  {
-    id: 'raycast',
-    name: 'Raycast',
-    // Purple-pink, vibrant and developer-loved
-    light: {
-      bg: '#FAF8FC',
-      bgElevated: '#F2EEF6',
-      bgHover: '#E8E2EE',
-      text: '#1C1428',
-      textSecondary: '#443660',
-      textTertiary: '#685888',
-      accent: '#B84ACF',
-      accentHover: '#9C3AB0',
-      border: '#D4C8E0',
-      borderSubtle: '#E4DAEA',
-    },
-    dark: {
-      bg: '#14101A',
-      bgElevated: '#1E1826',
-      bgHover: '#2C2438',
-      text: '#F0E8F6',
-      textSecondary: '#B8A8D0',
-      textTertiary: '#9484B0',
-      accent: '#D174E8',
-      accentHover: '#DC94F0',
-      border: '#342A44',
-      borderSubtle: '#261E32',
-    },
-  },
-
   // =============================================
   // COLOUR THEMES
   // =============================================
@@ -288,36 +228,6 @@ export const themes: Theme[] = [
   },
 
   {
-    id: 'coral',
-    name: 'Vibrant Coral',
-    // Lively coral-pink accent
-    light: {
-      bg: '#FFFAF8',
-      bgElevated: '#FFF0EB',
-      bgHover: '#FFE4DC',
-      text: '#2A1610',
-      textSecondary: '#5C3830',
-      textTertiary: '#7E5A52',
-      accent: '#D4532F',
-      accentHover: '#B84426',
-      border: '#E0C8C0',
-      borderSubtle: '#EEDCD6',
-    },
-    dark: {
-      bg: '#1A100E',
-      bgElevated: '#241816',
-      bgHover: '#322420',
-      text: '#F8E8E4',
-      textSecondary: '#C8A098',
-      textTertiary: '#A88078',
-      accent: '#FF785A',
-      accentHover: '#FF9478',
-      border: '#3E2A26',
-      borderSubtle: '#2C1E1A',
-    },
-  },
-
-  {
     id: 'grape',
     name: 'Vintage Grape',
     // Deep purple with a warm undertone
@@ -348,32 +258,122 @@ export const themes: Theme[] = [
   },
 
   {
-    id: 'tangerine',
-    name: 'Tangerine Dream',
-    // Warm orange, bold and energetic
+    id: 'linear',
+    name: 'Linear',
+    // Deep blue accent — clean developer aesthetic
     light: {
-      bg: '#FFFAF6',
-      bgElevated: '#FFF2E8',
-      bgHover: '#FFE6D6',
-      text: '#2A1C10',
-      textSecondary: '#5C4430',
-      textTertiary: '#7E6452',
-      accent: '#C86030',
-      accentHover: '#A84E26',
-      border: '#E0CCBA',
-      borderSubtle: '#EEDCCE',
+      bg: '#F8FAFC',
+      bgElevated: '#EFF4F8',
+      bgHover: '#E2EBF2',
+      text: '#0F172A',
+      textSecondary: '#334155',
+      textTertiary: '#5A6A7E',
+      accent: '#2563EB',
+      accentHover: '#1D4FCC',
+      border: '#CBD5E1',
+      borderSubtle: '#E2E8F0',
     },
     dark: {
-      bg: '#1A1210',
-      bgElevated: '#241A14',
-      bgHover: '#32261E',
-      text: '#F8EAE0',
-      textSecondary: '#C8A890',
-      textTertiary: '#A88870',
-      accent: '#FAAA8D',
-      accentHover: '#FFBEA6',
-      border: '#3E2C22',
-      borderSubtle: '#2C201A',
+      bg: '#0F172A',
+      bgElevated: '#1E293B',
+      bgHover: '#273449',
+      text: '#F1F5F9',
+      textSecondary: '#94A3B8',
+      textTertiary: '#6B7B94',
+      accent: '#60A5FA',
+      accentHover: '#7BB8FB',
+      border: '#2D3B50',
+      borderSubtle: '#1E293B',
+    },
+  },
+
+  {
+    id: 'plum',
+    name: 'Plum',
+    // Deep magenta-purple accent
+    light: {
+      bg: '#FAFAFA',
+      bgElevated: '#F3EFF5',
+      bgHover: '#E9E3ED',
+      text: '#1A1523',
+      textSecondary: '#433C4E',
+      textTertiary: '#695F76',
+      accent: '#86198F',
+      accentHover: '#6B1475',
+      border: '#D4CEDB',
+      borderSubtle: '#E2DEE8',
+    },
+    dark: {
+      bg: '#141118',
+      bgElevated: '#1D1923',
+      bgHover: '#2A2533',
+      text: '#EDEAF0',
+      textSecondary: '#B0AAB8',
+      textTertiary: '#877F95',
+      accent: '#E879F9',
+      accentHover: '#ED94FA',
+      border: '#322D3C',
+      borderSubtle: '#231F2C',
+    },
+  },
+
+  {
+    id: 'ember',
+    name: 'Ember',
+    // Deep red-orange accent
+    light: {
+      bg: '#FFFAF9',
+      bgElevated: '#FFF1EE',
+      bgHover: '#FFE5E0',
+      text: '#231515',
+      textSecondary: '#4E3838',
+      textTertiary: '#735858',
+      accent: '#B91C1C',
+      accentHover: '#991B1B',
+      border: '#DCCECE',
+      borderSubtle: '#EAE0E0',
+    },
+    dark: {
+      bg: '#1A1212',
+      bgElevated: '#221818',
+      bgHover: '#302222',
+      text: '#F0E6E5',
+      textSecondary: '#B5A4A2',
+      textTertiary: '#8E7A78',
+      accent: '#FCA5A5',
+      accentHover: '#FDB8B8',
+      border: '#3A2C2C',
+      borderSubtle: '#282020',
+    },
+  },
+
+  {
+    id: 'crimson-gold',
+    name: 'Crimson & Gold',
+    // Crimson in light mode, warm gold in dark — a deliberate transformation
+    light: {
+      bg: '#FDFCF9',
+      bgElevated: '#F5F3ED',
+      bgHover: '#EBE8E0',
+      text: '#1C1814',
+      textSecondary: '#443E36',
+      textTertiary: '#6A6258',
+      accent: '#991B1B',
+      accentHover: '#7F1616',
+      border: '#D4CFC6',
+      borderSubtle: '#E2DED6',
+    },
+    dark: {
+      bg: '#1A1714',
+      bgElevated: '#22201A',
+      bgHover: '#2E2C24',
+      text: '#EDE9E2',
+      textSecondary: '#B0AA9E',
+      textTertiary: '#8A8478',
+      accent: '#FBD38D',
+      accentHover: '#FCDC9F',
+      border: '#34302A',
+      borderSubtle: '#272420',
     },
   },
 ];

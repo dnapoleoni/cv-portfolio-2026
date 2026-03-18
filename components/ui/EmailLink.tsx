@@ -14,7 +14,7 @@ export function EmailLink({ from }: EmailLinkProps) {
   const href = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 
   return (
-    <a href={href} className="link-mono">
+    <a href={href} className="link-mono link-contrast">
       Email me
     </a>
   );

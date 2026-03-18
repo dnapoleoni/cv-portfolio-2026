@@ -22,7 +22,7 @@ export function ContactCTA({
       <div className="link-group mobile-start mobile-col">
         <a
           href={contact.linkedIn}
-          className="link-mono"
+          className="link-mono link-contrast"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn (opens in new tab)"
