@@ -1351,15 +1351,4 @@ span.site-wordmark {
     max-width: none;
     margin-bottom: 0;
   }
-
-  .page-wrapper,
-  .site-header-wrapper {
-    padding-inline: 2rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .page-wrapper,
-  .site-header-wrapper {
-    padding-inline: 3rem;
-  }
 }
