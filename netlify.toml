@@ -4,3 +4,13 @@
 
 [build.environment]
   # CONTACT_EMAIL and CONTACT_PHONE must be set in the Netlify dashboard environment variables
+
+[dev]
+  command = "npm run dev"
+  targetPort = 3000
+  framework = "#custom"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/___netlify-handler"
+  status = 200

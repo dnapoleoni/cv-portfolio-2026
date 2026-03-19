@@ -39,3 +39,9 @@ next-env.d.ts
 
 # claude
 .claude/
+
+# Local Netlify folder
+.netlify
+
+# reference config with personal details
+references/
