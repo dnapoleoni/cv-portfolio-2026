@@ -1,5 +1,6 @@
 'use client';
 
+import { lookupReference } from './actions';
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -23,23 +24,20 @@ function ReferencePageContent() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
+  // In handleCodeLookup, replace the fetch with:
   async function handleCodeLookup(value: string) {
     setLookingUp(true);
     setCodeError('');
 
-    try {
-      const res = await fetch(`/api/reference?code=${encodeURIComponent(value.trim().toLowerCase())}`);
-      if (!res.ok) {
-        setCodeError('That code doesn\'t look right. Double-check and try again.');
-        setLookingUp(false);
-        return;
-      }
-      const json = await res.json();
-      setData(json);
-    } catch {
-      setCodeError('Something went wrong. Please try again.');
+    const result = await lookupReference(value);
+
+    if (result.error) {
+      setCodeError("That code doesn't look right. Double-check and try again.");
+      setLookingUp(false);
+      return;
     }
 
+    setData(result.data);
     setLookingUp(false);
   }
 
@@ -49,7 +47,7 @@ function ReferencePageContent() {
       setCode(urlCode);
       handleCodeLookup(urlCode);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   async function handleCodeSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -144,17 +142,35 @@ function ReferencePageContent() {
 
           <label>
             Role title
-            <input type="text" name="role" required defaultValue={data.role} autoComplete="organization-title" />
+            <input
+              type="text"
+              name="role"
+              required
+              defaultValue={data.role}
+              autoComplete="organization-title"
+            />
           </label>
 
           <label>
             Company (at the time we worked together)
-            <input type="text" name="company" required defaultValue={data.company} autoComplete="organization" />
+            <input
+              type="text"
+              name="company"
+              required
+              defaultValue={data.company}
+              autoComplete="organization"
+            />
           </label>
 
           <label>
             Email
-            <input type="email" name="email" required defaultValue={data.email} autoComplete="email" />
+            <input
+              type="email"
+              name="email"
+              required
+              defaultValue={data.email}
+              autoComplete="email"
+            />
           </label>
 
           <label>
@@ -174,7 +190,8 @@ function ReferencePageContent() {
           <hr className="divider-subtle" />
 
           <p className="page-subheading">
-            A sentence or two is perfect. Write in whatever voice feels natural — these will appear as quotes on my site. Leave any blank if you'd prefer not to.
+            A sentence or two is perfect. Write in whatever voice feels natural — these will appear
+            as quotes on my site. Leave any blank if you'd prefer not to.
           </p>
 
           <label>
