@@ -503,6 +503,53 @@ ol {
   margin-bottom: 0;
 }
 
+.reference-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.reference-toggle-label {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  max-width: 40ch;
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  border-radius: 13px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-hover);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.toggle--on {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.toggle--on .toggle-thumb {
+  transform: translateX(22px);
+}
+
 /* === PRIMITIVES — Tags === */
 
 .skill-tags {

@@ -23,8 +23,8 @@ function ReferencePageContent() {
   const [lookingUp, setLookingUp] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [isReference, setIsReference] = useState(false);
 
-  // In handleCodeLookup, replace the fetch with:
   async function handleCodeLookup(value: string) {
     setLookingUp(true);
     setCodeError('');
@@ -63,6 +63,12 @@ function ReferencePageContent() {
 
     const formData = new FormData(e.currentTarget);
 
+    // Strip contact details if not opting in as a reference
+    if (!isReference) {
+      formData.set('email', '');
+      formData.set('phone', '');
+    }
+
     try {
       await fetch('/__forms.html', {
         method: 'POST',
@@ -87,9 +93,10 @@ function ReferencePageContent() {
         </header>
 
         <form onSubmit={handleCodeSubmit} className="contact-form">
-          <label>
+          <label htmlFor="ref-code">
             Code
             <input
+              id="ref-code"
               type="text"
               value={code}
               onChange={(e) => setCode(e.target.value)}
@@ -129,11 +136,16 @@ function ReferencePageContent() {
           <input type="hidden" name="code" value={code} />
           <p hidden>
             <label>
-              Don't fill this out: <input name="bot-field" />
+              Don&apos;t fill this out: <input name="bot-field" />
             </label>
           </p>
 
+          {/* Identity fields — always visible */}
           <h2 className="section-heading">Your details</h2>
+          <p className="reference-note">
+            (The details attributed to the quote - however you want them to appear)
+          </p>
+
           <label htmlFor="ref-name">
             Name
             <input
@@ -148,65 +160,28 @@ function ReferencePageContent() {
 
           <label htmlFor="ref-role">
             Role title
-            <input
-              id="ref-role"
-              type="text"
-              name="role"
-              required
-              defaultValue={data.role}
-              autoComplete="organization-title"
-            />
+            <input id="ref-role" type="text" name="role" required defaultValue={data.role} />
           </label>
 
           <label htmlFor="ref-company">
-            Company (at the time we worked together)
+            Company
             <input
               id="ref-company"
               type="text"
               name="company"
               required
               defaultValue={data.company}
-              autoComplete="organization"
             />
           </label>
 
-          <label htmlFor="ref-email">
-            Email
-            <input
-              id="ref-email"
-              type="email"
-              name="email"
-              required
-              defaultValue={data.email}
-              autoComplete="email"
-            />
-          </label>
-
-          <label htmlFor="ref-phone">
-            Phone (optional{data.phone ? '- delete to remove' : ''})
-            <input
-              id="ref-phone"
-              type="tel"
-              name="phone"
-              defaultValue={data.phone ?? ''}
-              autoComplete="tel"
-            />
-          </label>
-
-          <hr className="divider-subtle" />
-          <h2 className="section-heading">Reference</h2>
-
-          <label htmlFor="ref-optin" className="reference-checkbox">
-            <input id="ref-optin" type="checkbox" name="is-reference" value="yes" />
-            <span>I'm happy to be listed as a reference and contacted by potential employers</span>
-          </label>
-
+          {/* Testimonials — always visible */}
           <hr className="divider-subtle" />
           <h2 className="section-heading">Testimonials</h2>
 
-          <p className="page-subheading">
+          <p className="reference-note">
             A sentence or two is perfect. Write in whatever voice feels natural — these will appear
-            as quotes on my site. Leave any blank if you'd prefer not to.
+            as quotes on my site alongside your name and role. Leave any blank if you&apos;d prefer
+            not to.
           </p>
 
           <label htmlFor="ref-general">
@@ -234,15 +209,79 @@ function ReferencePageContent() {
             <textarea id="ref-vibes" name="quote-chief-vibes-officer" rows={3} />
           </label>
 
+          {/* Reference opt-in — toggle + conditional contact fields */}
+          <hr className="divider-subtle" />
+          <h2 className="section-heading">Reference</h2>
+
+          <div className="reference-toggle">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={isReference}
+              aria-label="Opt in as a reference"
+              className={`toggle ${isReference ? 'toggle--on' : ''}`}
+              onClick={() => setIsReference(!isReference)}
+              id="ref-confirm"
+            >
+              <span className="toggle-thumb" />
+            </button>
+            <label htmlFor="ref-confirm">
+              {isReference ? 'Yes please' : 'Do not'} list me as a reference
+            </label>
+          </div>
+
+          <input type="hidden" name="is-reference" value={isReference ? 'yes' : 'no'} />
+
+          {isReference && (
+            <>
+              <hr className="divider-subtle" />
+              <p className="reference-note">
+                These are the contact details that will be shared with hiring managers or recruiters
+                if they request a reference.
+              </p>
+
+              <label htmlFor="ref-email">
+                Email
+                <input
+                  id="ref-email"
+                  type="email"
+                  name="email"
+                  required
+                  defaultValue={data.email}
+                  autoComplete="email"
+                />
+              </label>
+
+              <label htmlFor="ref-phone">
+                Phone (optional)
+                <input
+                  id="ref-phone"
+                  type="tel"
+                  name="phone"
+                  defaultValue={data.phone ?? ''}
+                  autoComplete="tel"
+                />
+              </label>
+            </>
+          )}
+
+          {/* Privacy note + submit */}
+          <hr className="divider-subtle" />
+
+          <p className="reference-privacy">
+            Your information is only used for reference and testimonial purposes. Contact details
+            are never displayed publicly — they&apos;re only shared with hiring managers who
+            specifically request a reference, and only if you&apos;ve opted in above.
+          </p>
+
           {submitError && (
             <p role="alert" className="form-error">
               {submitError}
             </p>
           )}
-
           <div>
             <button type="submit" className="btn-solid-accent">
-              {submitting ? 'Sending...' : 'Submit reference'}
+              {submitting ? 'Sending...' : 'Submit'}
             </button>
           </div>
         </fieldset>
