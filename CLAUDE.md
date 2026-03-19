@@ -2,17 +2,7 @@
 
 ## Prompt Files
 
-Prompt files live in `/prompts/` and contain step-by-step instructions for specific changes. When Dan says "run prompt 07" or "implement 07-data-restructure-cv-as-role.md", read the file from the prompts directory and execute all changes described in it. Always read CLAUDE.md first (you're doing that now), then read the prompt file, then implement.
-
-Current prompt files:
-
-- `01-initial-one-shot-build.md` — original site generation
-- `02-structural-rework.md` — component architecture rebuild
-- `03-css-rename-sticky-header.md` — CSS class refactor, sticky header
-- `04-claude-code-restructure.md` — top-level routes, taglines, contact page
-- `05-new-themes.md` — 12-theme replacement
-- `06-first-pass-copy-changes.md` — copy audit fixes, metadata, skills updates
-- `07-data-restructure-cv-as-role.md` — centralised experiences, contentSection
+Prompt files live in `/prompts/` and contain step-by-step instructions for specific changes. When Dan says "run prompt 18" or "implement 18-reference-collection.md", read the file from the prompts directory and execute all changes described in it. Always read CLAUDE.md first (you're doing that now), then read the prompt file, then implement.
 
 These are historical records of how the site was built. New prompt files may be added as the project evolves.
 
@@ -52,21 +42,94 @@ Target roles: Frontend Developer, Digital Marketer, UX Engineer, Chief Vibes Off
 - Next.js 14 App Router, React 18, TypeScript
 - Single `globals.css` with modern CSS: custom properties, fluid `clamp()` type/spacing, CSS Grid
 - No Tailwind, no external CSS frameworks
-- Google Fonts via `<link>` tags in head (NOT `next/font` — build environment limitation): Outfit, JetBrains Mono, Cormorant Garamond, Caveat
-- Netlify Forms with honeypot for contact
+- Google Fonts via `<link>` tags in head (NOT `next/font` — build environment limitation): Outfit, JetBrains Mono, Libre Baskerville, Caveat
+- Netlify Forms with honeypot for contact and reference collection
+- Netlify Blobs for reference/testimonial data storage
+- `@react-pdf/renderer` for build-time PDF generation
 - No external JS libraries unless genuinely needed
 
 ## Architecture Rules
 
-- Server components by default. Only use `'use client'` when state, effects, or browser APIs are required. Current client components: ThemeProvider, Header, TestimonialCarousel.
-- CSS classes must be location-independent. NEVER use names like "header-link", "footer-controls", "cv-download". Use generic reusable names: `nav-link`, `btn-outline`, `btn-accent`, `btn-solid-accent`, `control-btn`, `control-select`, `link-muted`, `link-mono`, `link-group`, `nav-row`, `control-group`.
-- All content data in `/data/` (roles.ts, testimonials.ts, themes.ts). Components receive data as props.
-- Role pages are top-level routes: `/frontend-developer`, `/digital-marketing`, `/ux-engineer`, `/chief-vibes-officer`, `/the-full-picture`. NOT nested under `/role/`. Each page file wraps a shared `RolePageView` component.
+- Server components by default. Only use `'use client'` when state, effects, or browser APIs are required.
+- Current client components: ThemeProvider, Header, TestimonialCarousel, ContactPageContent, EmailLink, ContextLink, ConsoleGreeting, reference page.
+- CSS classes must be location-independent. NEVER use names like "header-link", "footer-controls", "cv-download". Use generic reusable names: `nav-link`, `btn-outline`, `btn-solid-accent`, `control-btn`, `link-mono`, `link-group`, `nav-row`, `control-group`.
+- All content data in `/data/` (roles.ts, testimonials.ts, themes.ts, contact.ts). Components receive data as props.
+- Role pages are top-level routes: `/frontend-developer`, `/digital-marketing`, `/ux-engineer`, `/chief-vibes-officer`, `/the-full-picture`. NOT nested under `/role/`. Each page file wraps a shared `RolePageView` component. `/cv` permanently redirects to `/the-full-picture`.
 - Always prefer simplicity. No JS when CSS works. No scroll listeners when structural CSS works. No blur when solid background works. No floating widgets when nav links work.
+
+## Directory Structure
+
+```
+app/
+  layout.tsx                  — Root layout, fonts, metadata, viewport, ThemeProvider
+  page.tsx                    — Home: Hero + RoleGrid + Testimonials + ContactCTA
+  globals.css                 — Full CSS design system
+  sitemap.ts                  — Auto-generated sitemap.xml
+  robots.ts                   — Auto-generated robots.txt
+  favicon.ico                 — Favicon (auto-served by Next.js)
+  not-found.tsx               — 404 page (hero--centered)
+  frontend-developer/         — Role-specific CV page
+  digital-marketing/          — Role-specific CV page
+  ux-engineer/                — Role-specific CV page
+  chief-vibes-officer/        — Role-specific CV page
+  the-full-picture/           — Complete CV (all roles combined)
+  work/                       — Portfolio & case studies page
+  contact/                    — Contact form with role-aware context
+    ContactPageContent.tsx    — Client component (reads ?from= param)
+    success/                  — Form submission success page
+  reference/                  — Reference/testimonial collection (code-protected)
+    success/                  — Reference submission success page
+  api/
+    reference/route.ts        — API route for Netlify Blobs lookup
+
+components/
+  layout/                     — Header, Footer
+  ui/                         — Icon, DownloadButton, ContextLink, EmailLink, SkillTags, Loading, ConsoleGreeting
+  sections/                   — Hero, RoleHero, Timeline, TestimonialCarousel, ContactCTA,
+                                RoleCrossNav, RoleGrid, RoleCard
+  theme/                      — ThemeProvider, ThemePicker, DarkModeToggle
+  RolePageView.tsx            — Shared role page template
+  ContactForm.tsx             — Netlify Forms contact form
+  TechIcons.tsx               — SVG tech icons with lookup
+
+data/
+  roles.ts                    — Role definitions, navRoleSlugs, experiences array
+  testimonials.ts             — Testimonial quotes (placeholder until real ones collected)
+  themes.ts                   — 12 theme definitions (light + dark)
+  contact.ts                  — Centralised contact URLs and email subject templates
+  content-items.ts            — Case study and content items referenced by ID
+
+lib/
+  roles.ts                    — getRoleBySlug, getDisplayRoles, getOtherRoles, getPdfForSlug
+  experiences.ts              — resolveVariant, getTimelineForRole
+  content.ts                  — getContentItems, getAllCaseStudies
+  testimonials.ts             — getTestimonialsForRole, getFeaturedTestimonials
+  themes.ts                   — getThemeById
+
+hooks/
+  useClickOutside.ts          — Click outside handler
+  useEscapeKey.ts             — Escape key handler
+  useMobileMenu.ts            — Mobile menu state
+  useFromContext.ts            — Reads ?from= URL param for contact page
+
+types/
+  index.ts                    — All shared TypeScript interfaces
+
+scripts/
+  generate-pdfs.tsx           — Build-time PDF generation
+  pdf/CVTemplate.tsx          — PDF template component
+
+public/
+  images/                     — Profile photo, OG image
+  pdfs/                       — Generated PDFs (gitignored, built at deploy)
+  __forms.html                — Netlify Forms detection (contact + reference forms)
+  apple-touch-icon.png        — iOS home screen icon
+  favicon.svg                 — SVG favicon
+```
 
 ## Navigation Architecture
 
-Which roles appear in the home page grid and cross-nav is controlled by a single `navRoleSlugs` array in `data/roles.ts`. This is an explicit allowlist — roles not in this array still exist as pages but won't appear in navigation. Currently:
+Which roles appear in the home page grid, mobile nav, and cross-nav is controlled by a single `navRoleSlugs` array in `data/roles.ts`.
 
 ```typescript
 export const navRoleSlugs = [
@@ -77,86 +140,107 @@ export const navRoleSlugs = [
 ];
 ```
 
-"The Full Picture" (`/the-full-picture`) is the complete CV role — it contains all experiences and a combined skills list. It is NOT in `navRoleSlugs` so it doesn't appear in the home grid or cross-nav, but it does show cross-nav links TO the other roles (because `getOtherRoles` returns the nav roles minus the current one). To add it to the home grid in future, just add its slug to `navRoleSlugs`.
+"The Full Picture" (`/the-full-picture`) is NOT in `navRoleSlugs` — it doesn't appear in the home grid, mobile nav, or cross-nav, but it shows cross-nav links TO the other roles.
+
+The `/work` page is NOT in `navRoleSlugs` but is linked from:
+- Home page hero (as "View Portfolio" text link)
+- Role page headers (as "View Portfolio" text link)
+- Mobile nav (as "View Portfolio" between dividers)
 
 Key helpers:
-
-- `getDisplayRoles()` — returns roles in `navRoleSlugs` order (for home grid)
-- `getOtherRoles(slug)` — returns display roles minus the current one (for cross-nav)
-- `getPdfForSlug(slug)` — returns the correct PDF href and label for any role
+- `getDisplayRoles()` — returns roles in navRoleSlugs order
+- `getOtherRoles(slug)` — returns display roles minus the current one
+- `getPdfForSlug(slug)` — returns the correct PDF href and label
 
 ## Data Architecture
 
 ### Centralised Experiences
 
-All experience entries live in a single `experiences` array in `data/roles.ts`. Each role references experiences by ID via `experienceIds: string[]`.
+All experience entries live in a single `experiences` array in `data/experiences.ts`. Each role references experiences by ID via `experienceIds: string[]`.
 
 Fields that vary by role use the `RoleVariant` type: either a plain string (same everywhere) or an array of `{ id, value }` pairs. The resolver tries: exact role slug match → `'default'` → first entry.
 
-```typescript
-type RoleVariant = string | { id: string; value: string }[];
-```
-
 ### ContentSection
 
-A single flexible section per role sits between Skills and Testimonials. Used for "How I work", "Also", case studies, achievements, or anything else. Optional — not all roles need one.
+A single flexible section per role sits between Skills and Testimonials. Uses `itemIds: string[]` referencing items in `data/content-items.ts`.
 
-```typescript
-interface ContentSection {
-  heading: string;
-  items: { title?: string; description: string }[];
-}
-```
+### Contact Data
 
-Items with a `title` render as titled blocks (case-study styling). Items without a `title` render as plain paragraphs.
+Centralised in `data/contact.ts`:
+- `contact.linkedIn` — LinkedIn URL
+- `contact.gitHub` — GitHub repo URL
+- `contact.site` — Site domain
+- `emailSubjects.default` — Default email subject
+- `emailSubjects.role(title)` — Role-specific email subject
 
-### Contact Page Customisation
+### ContactCTA
 
-Roles can optionally set `contactHeading` to override the default "Looking for a [title]?" heading on the contact page. Used by The Full Picture which sets `contactHeading: 'Read enough?'`.
+Universal contact call-to-action component used on every page. Props:
+- `heading` — defaults to "Let's talk"
+- `description` — defaults to general availability message
+- `slug` — passes role context to EmailLink
+- `hideContactLink` — hides the "Send me a message" button (used on contact page)
 
-### Shared Components
+Role-specific CTA copy lives in the role data as `ctaHeading` and `ctaDescription`.
 
-- `DownloadButton` — reusable download link with SVG icon. Accepts `href`, `label`, and `className`. Used in Header, Hero, and RolePageView. Includes `sr-only` "(PDF)" for screen readers.
+### Environment Variables
 
-### Key Roles
+- `CONTACT_EMAIL` — used by PDF generation script (build-time)
+- `CONTACT_PHONE` — used by PDF generation script (build-time)
+- `NEXT_PUBLIC_CONTACT_EMAIL` — used by EmailLink component (client-side)
 
-Five roles exist in the data:
+All set in Netlify dashboard, not committed to repo.
 
-| Role                | Slug                  | In navRoleSlugs | Variant | Notes                        |
-| ------------------- | --------------------- | --------------- | ------- | ---------------------------- |
-| Frontend Developer  | `frontend-developer`  | Yes             | —       | Primary technical role       |
-| Digital Marketer    | `digital-marketing`   | Yes             | —       | eDMs, banners, campaigns     |
-| UX Engineer         | `ux-engineer`         | Yes             | —       | UX-focused development       |
-| Chief Vibes Officer | `chief-vibes-officer` | Yes             | `vibes` | Dashed border card           |
-| The Full Picture    | `the-full-picture`    | No              | —       | Complete CV, all experiences |
+### PDF Generation
+
+5 PDFs generated at build time via `npm run generate-pdfs`:
+- `Dan-Napoleoni-CV.pdf` — full picture, categorised skills
+- `Dan-Napoleoni-CV-frontend-developer.pdf` — flat skills
+- `Dan-Napoleoni-CV-digital-marketing.pdf` — flat skills
+- `Dan-Napoleoni-CV-ux-engineer.pdf` — flat skills
+- `Dan-Napoleoni-CV-chief-vibes-officer.pdf` — flat skills
+
+PDFs are gitignored and generated at Netlify build time. Known limitation: `@react-pdf/renderer` does not produce tagged/accessible PDFs — note this in the README.
+
+### Reference Collection
+
+Reference/testimonial data stored in Netlify Blobs (store: "references"). Each entry keyed by a unique code. The `/reference` page validates codes via an API route and presents a pre-filled form for the referee to complete. Submissions go to Netlify Forms.
 
 ## Design System
 
-### Fonts (each has a specific purpose)
+### Fonts
 
 - **Outfit** = body, UI
 - **JetBrains Mono** = code, technical elements, skill tags, wordmark, mono buttons
-- **Cormorant Garamond** = editorial, testimonials, "designer" tagline segment
+- **Libre Baskerville** = editorial, testimonials, "designer" tagline segment
 - **Caveat** = warmth, personality, "human" tagline segment, accent colour
 
 ### Three-Font Tagline (signature element)
 
-Monospace / italic serif / handwritten Caveat. Role-specific variants:
-
-- Frontend Developer: "A developer" / "who thinks like a designer" / "and communicates like a human."
-- Digital Marketer: "A developer" / "who speaks marketing" / "and builds campaigns that actually work."
-- UX Engineer: "A developer" / "who asks why before asking how" / "and fights for the user."
-- Chief Vibes Officer: "A developer" / "who builds culture" / "as carefully as code."
-- Home page: general-purpose version, not role-specific.
-- The Full Picture: no tagline (tagline field is optional).
+Monospace / italic serif / handwritten Caveat. Role-specific variants exist for each role. The Full Picture has no tagline.
 
 ### Themes & Accessibility
 
-12 themes (Claude, GitHub, Linear, Vercel, Stripe, Spotify, Desert Sand, Coral, Vintage Grape, Tangerine, Sea Grass, Blush) x light/dark. All WCAG AAA: 7:1 normal text, 4.5:1 large text. `textTertiary` only for large text or decorative elements. Persisted to localStorage, defaults to `prefers-color-scheme`.
+12 themes × light/dark, all WCAG AAA compliant:
+
+Notion (default), Figma, Supabase, Linear, Spotify, Arc, Plum, Ember, Rust, Vintage Grape, Crimson & Gold, Spotify.
+
+`textTertiary` only for large text or decorative elements. Persisted to localStorage, defaults to `prefers-color-scheme`. Default theme: Notion.
+
+Use `.link-contrast` class for links on `bgElevated` backgrounds (uses accentHover for normal state, accent for hover — ensures contrast on elevated surfaces).
+
+### Hero Variants
+
+Three hero variants, all composing from `.hero` base:
+- `.hero--tagline` — dramatic full-height centered tagline (role pages)
+- `.hero--compact` — photo + text side by side (home page)
+- `.hero--centered` — centered text (404, success pages)
 
 ### Typography & Spacing
 
 Fluid typography: `clamp()` from `--text-xs` to `--text-hero`. Fluid spacing: `--space-xs` to `--space-2xl`.
+
+**Important:** Do not use `clamp()` with viewport units (`vw`/`vh`) in `padding` on `.page-wrapper` or `.site-header-wrapper` — this triggers a WebKit compositing bug that breaks `position: sticky` on iOS Safari. Use fixed values with media query steps instead.
 
 ### Animation
 
@@ -170,43 +254,56 @@ Never use inline styles. All styles go in `globals.css` as reusable classes.
 
 ### Header
 
-Sticky, always compact (small padding, hero padding creates breathing room), solid background (no blur/transparency). Contains: wordmark (`danielnapoleoni.dev` — non-clickable span on home, link elsewhere), "Download CV" (role-aware via `getPdfForSlug` — downloads role-specific PDF on role pages, full CV elsewhere), "Contact Dan" (links to `/contact?from=[current path]`). Mobile menu adds LinkedIn and GitHub links.
+Outside `.page-wrapper` (to avoid iOS Safari stacking context bug). Sticky with solid background. Contains wrapper → contents with: wordmark, "Download CV" (role-aware), "Contact Dan" button. Mobile menu contains role page links, divider, "View Portfolio", "Download CV", "Contact Dan".
+
+When mobile menu is open, `.page-wrapper` and `.skip-link` get `inert` and `aria-hidden="true"` attributes to trap focus within the menu.
 
 ### Footer
 
 Copyright + theme/mode controls only. No nav links.
 
-### Contact
+### Contact Page
 
-Dedicated `/contact` page. Reads `?from=` param to tailor heading and mailto subject. Roles can set `contactHeading` for custom headings (e.g., The Full Picture uses "Read enough?" instead of "Looking for a The Full Picture?"). Netlify Forms + honeypot. Email obfuscated via JS string assembly. Phone only in PDF, never on site. No floating widgets.
+Dedicated `/contact` page. Reads `?from=` param to tailor heading and email subject. Two-column layout when real testimonials exist (testimonials left 60%, form card right 40%). Falls back to single-column when testimonials are placeholder. ContactCTA at bottom with `hideContactLink`.
 
 ### Home Page
 
-Compact hero (no min-height) with profile image, subtitle, "Based in Melbourne, available now.", and a link group with "View CV" (links to `/the-full-picture`) and "Download CV" (downloads full PDF via `DownloadButton`). Role cards immediately below with minimal scroll. Cards are the primary interaction. Includes testimonial carousel.
+Compact hero with profile image. Link group: "View Portfolio" and "View CV" as text links, "Download CV" as solid button (button last in DOM for accessible tab order). Role cards immediately below. Testimonial carousel. ContactCTA.
 
 ### Role Pages
 
-Must stand alone (recruiter may never see home). Contains: role-specific tagline hero (if tagline exists), intro, experience (ABOVE skills always), skill tags, contentSection (if exists), role-specific testimonials, contact CTA linking to `/contact`, cross-nav to other roles at bottom (renders if `otherRoles.length > 0`). Each has a role-specific `DownloadButton` near the top.
+Must stand alone. Contains: tagline hero (if exists), role header with title/subtitle/download button/portfolio link, intro, experience (ABOVE skills always), skill tags, contentSection (if exists), testimonials, ContactCTA with role-specific copy, cross-nav.
 
-### The Full Picture (Full CV)
+### Work Page
 
-Uses `RolePageView` like any other role. Has no tagline hero (tagline field is undefined), no icons (icons field is undefined). Shows all experiences, combined curated skills list, and "Also" contentSection for non-dev interests. Cross-nav renders showing all four main roles. Contact CTA uses custom heading "Read enough?" via `contactHeading` field.
+Portfolio & case studies at `/work`. Not in navRoleSlugs but linked from home hero, role page headers, and mobile nav. Contains: intro explaining lack of visual portfolio, "This site" case study section with repo link, grouped case studies by role. ContactCTA and RoleCrossNav at bottom.
 
 ### Cards
 
-Equal-height role cards via CSS Grid (grid items `display:flex`, cards stretch). Vibes card: dashed border, solid on hover.
+Equal-height role cards via CSS Grid. Vibes card: dashed border, accent on hover.
 
-### Links
+### Links & External Indicators
 
-Styled consistently regardless of internal/external. External links distinguished only by arrow character. Visual hierarchy based on user intent, not destination.
+External links use `↗` character and `aria-label` with "(opens in new tab)". All external links have `target="_blank"` and `rel="noopener noreferrer"`.
 
-### Testimonials
-
-Placeholder data, will be replaced with real references (with consent). Supports homepage carousel and role-specific filtering.
+GitHub repo link appears on the work page and in a `console.log` greeting (ConsoleGreeting component). LinkedIn appears in ContactCTA on every page.
 
 ### Accessibility
 
-Skip link, ARIA labels, semantic HTML, `focus-visible`, keyboard nav, `.sr-only` utility class, AAA contrast throughout. `DownloadButton` uses `sr-only` to convey file format "(PDF)" to screen readers without cluttering visible text.
+- Skip link targeting `#main-content`
+- ARIA labels on all interactive elements
+- Semantic HTML throughout (`header`, `main`, `footer`, `nav`, `article`, `section`, `blockquote`)
+- `focus-visible` styles on links, buttons, cards
+- `.sr-only` utility class
+- AAA contrast on all 12 themes (verified with WAVE)
+- `inert` focus trap on mobile menu
+- Testimonial dots are decorative (no tablist/tab roles)
+- Form error messages use `role="alert"`
+- `type="button"` on all non-submit buttons
+- Heading hierarchy: h1 → h2 → h3 → h4 (work page uses deeper nesting)
+- iOS safe area handling: `env(safe-area-inset-top)` on body/header, `env(safe-area-inset-left/right)` on page-wrapper/header-wrapper
+
+Known limitation: Generated PDFs are not tagged for screen reader accessibility (limitation of `@react-pdf/renderer`).
 
 ## Copy and Tone
 
@@ -231,6 +328,7 @@ Warm, confident, self-aware, occasionally cheeky. Never at expense of clarity. U
 - Use `backdrop-filter` blur on header
 - Use scroll-based JS for CSS-achievable effects
 - Put skills above experience on any page
-- Duplicate contact links across multiple sections
 - Use Tailwind or external CSS frameworks
 - Add external dependencies without strong justification
+- Use `clamp()` with viewport units in padding on page-wrapper or header-wrapper (iOS Safari bug)
+- Use `flex-direction: column-reverse` or CSS `order` to reorder interactive elements (WCAG tab order mismatch)

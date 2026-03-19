@@ -381,6 +381,27 @@ ol {
   font-size: var(--text-sm);
 }
 
+.reference-checkbox {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: var(--space-sm) !important;
+  cursor: pointer;
+}
+
+.reference-checkbox input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.reference-checkbox span {
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
 .contact-testimonials {
   display: flex;
   flex-direction: column;
