@@ -27,9 +27,11 @@ export async function lookupReference(code: string) {
 
   try {
     const store = getStore('references');
-    const data = await store.get(trimmed, { type: 'json' });
+    const raw = await store.get(trimmed, { type: 'text' });
 
-    if (!data) return { error: 'Invalid code' };
+    if (!raw) return { error: 'Invalid code' };
+
+    const data = JSON.parse(raw);
     return { data };
   } catch (err) {
     console.error('Blobs lookup error:', err);
