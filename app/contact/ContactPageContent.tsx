@@ -29,7 +29,7 @@ export function ContactPageContent() {
   const showTestimonials = realTestimonials.length > 0;
 
   return (
-    <article className="role-page">
+    <article className="content-page">
       <header className="page-header">
         <h1 className="page-heading">{heading}</h1>
         <p className="page-subheading">{subheading}</p>

@@ -86,7 +86,7 @@ function ReferencePageContent() {
 
   if (!data) {
     return (
-      <article className="role-page">
+      <article className="content-page">
         <header className="page-header">
           <h1 className="page-heading">Reference Request</h1>
           <p className="page-subheading">Enter the code from the link I sent you.</p>
@@ -123,7 +123,7 @@ function ReferencePageContent() {
   }
 
   return (
-    <article className="role-page">
+    <article className="content-page">
       <header className="page-header">
         <h1 className="page-heading">Hi {firstName}!</h1>
         <p className="page-subheading">{data.message}</p>

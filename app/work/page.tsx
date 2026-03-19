@@ -37,7 +37,7 @@ const caseStudyGroups = [
 export default function WorkPage() {
   const allRoles = getDisplayRoles();
   return (
-    <article className="role-page">
+    <article className="content-page">
       <header className="page-header">
         <h1 className="page-heading">About that...</h1>
         <p className="page-subheading">

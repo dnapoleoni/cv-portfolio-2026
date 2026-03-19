@@ -629,6 +629,10 @@ ol {
   margin-top: var(--space-sm);
 }
 
+.content-page {
+  padding-block: var(--space-xl) var(--space-sm);
+}
+
 /* Shared section label used across multiple sections */
 .section-heading {
   font-size: var(--text-lg);
