@@ -122,8 +122,9 @@ function ReferencePageContent() {
         <p className="page-subheading">{data.message}</p>
       </header>
 
-      <form onSubmit={handleFormSubmit} name="reference" className="contact-form">
+      <form onSubmit={handleFormSubmit} name="reference" className="contact-form reference">
         <fieldset disabled={submitting}>
+          <legend className="sr-only">Reference and testimonial form</legend>
           <input type="hidden" name="form-name" value="reference" />
           <input type="hidden" name="code" value={code} />
           <p hidden>
@@ -133,16 +134,22 @@ function ReferencePageContent() {
           </p>
 
           <h2 className="section-heading">Your details</h2>
-          <hr className="divider-subtle" />
-
-          <label>
+          <label htmlFor="ref-name">
             Name
-            <input type="text" name="name" required defaultValue={data.name} autoComplete="name" />
+            <input
+              id="ref-name"
+              type="text"
+              name="name"
+              required
+              defaultValue={data.name}
+              autoComplete="name"
+            />
           </label>
 
-          <label>
+          <label htmlFor="ref-role">
             Role title
             <input
+              id="ref-role"
               type="text"
               name="role"
               required
@@ -151,9 +158,10 @@ function ReferencePageContent() {
             />
           </label>
 
-          <label>
+          <label htmlFor="ref-company">
             Company (at the time we worked together)
             <input
+              id="ref-company"
               type="text"
               name="company"
               required
@@ -162,9 +170,10 @@ function ReferencePageContent() {
             />
           </label>
 
-          <label>
+          <label htmlFor="ref-email">
             Email
             <input
+              id="ref-email"
               type="email"
               name="email"
               required
@@ -173,50 +182,56 @@ function ReferencePageContent() {
             />
           </label>
 
-          <label>
-            Phone (optional — only used if a hiring manager wants to verify)
-            <input type="tel" name="phone" defaultValue={data.phone ?? ''} autoComplete="tel" />
+          <label htmlFor="ref-phone">
+            Phone (optional{data.phone ? '- delete to remove' : ''})
+            <input
+              id="ref-phone"
+              type="tel"
+              name="phone"
+              defaultValue={data.phone ?? ''}
+              autoComplete="tel"
+            />
           </label>
 
-          <h2 className="section-heading">Reference</h2>
           <hr className="divider-subtle" />
+          <h2 className="section-heading">Reference</h2>
 
-          <label className="reference-checkbox">
-            <input type="checkbox" name="is-reference" value="yes" />
+          <label htmlFor="ref-optin" className="reference-checkbox">
+            <input id="ref-optin" type="checkbox" name="is-reference" value="yes" />
             <span>I'm happy to be listed as a reference and contacted by potential employers</span>
           </label>
 
-          <h2 className="section-heading">Testimonials</h2>
           <hr className="divider-subtle" />
+          <h2 className="section-heading">Testimonials</h2>
 
           <p className="page-subheading">
             A sentence or two is perfect. Write in whatever voice feels natural — these will appear
             as quotes on my site. Leave any blank if you'd prefer not to.
           </p>
 
-          <label>
+          <label htmlFor="ref-general">
             General quote (used on the home page and full CV)
-            <textarea name="quote-general" rows={3} />
+            <textarea id="ref-general" name="quote-general" rows={3} />
           </label>
 
-          <label>
-            Frontend Development (optional)
-            <textarea name="quote-frontend-developer" rows={3} />
+          <label htmlFor="ref-frontend">
+            Frontend Development
+            <textarea id="ref-frontend" name="quote-frontend-developer" rows={3} />
           </label>
 
-          <label>
-            Digital Marketing (optional)
-            <textarea name="quote-digital-marketing" rows={3} />
+          <label htmlFor="ref-marketing">
+            Digital Marketing
+            <textarea id="ref-marketing" name="quote-digital-marketing" rows={3} />
           </label>
 
-          <label>
-            UX Engineering (optional)
-            <textarea name="quote-ux-engineer" rows={3} />
+          <label htmlFor="ref-ux">
+            UX Engineering
+            <textarea id="ref-ux" name="quote-ux-engineer" rows={3} />
           </label>
 
-          <label>
-            Culture &amp; Vibes (optional)
-            <textarea name="quote-chief-vibes-officer" rows={3} />
+          <label htmlFor="ref-vibes">
+            Culture &amp; Vibes
+            <textarea id="ref-vibes" name="quote-chief-vibes-officer" rows={3} />
           </label>
 
           {submitError && (

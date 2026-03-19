@@ -499,6 +499,10 @@ ol {
   min-height: 9rem;
 }
 
+.contact-form.reference .section-heading {
+  margin-bottom: 0;
+}
+
 /* === PRIMITIVES — Tags === */
 
 .skill-tags {
