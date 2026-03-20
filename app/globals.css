@@ -401,6 +401,7 @@ ol {
 
 .reference-checkbox {
   flex-direction: row !important;
+  align-self: flex-start;
   align-items: center;
   gap: var(--space-sm) !important;
   cursor: pointer;
@@ -1556,6 +1557,10 @@ span.site-wordmark {
 
   .tech-icon-row {
     display: none;
+  }
+
+  .reference-checkbox {
+    gap: var(--space-md) !important;
   }
 }
 
