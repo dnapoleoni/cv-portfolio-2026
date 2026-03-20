@@ -6,9 +6,10 @@ import { ContactCTA } from '@/components/sections/ContactCTA';
 import { useFromContext } from '@/hooks/useFromContext';
 import { getContactTestimonials } from '@/lib/testimonials';
 import { emailSubjects } from '@/data/contact';
+import { useState } from 'react';
 
 export function ContactPageContent() {
-  const { value: from, backHref } = useFromContext();
+  const { value: from } = useFromContext();
   const fromRole = from ? getRoleBySlug(from) : null;
 
   const heading = fromRole?.contactHeading
@@ -23,9 +24,38 @@ export function ContactPageContent() {
 
   const subject = fromRole ? emailSubjects.role(fromRole.title) : emailSubjects.default;
 
-  const allTestimonials = getContactTestimonials();
+  const allTestimonials = getContactTestimonials(from ?? undefined);
   const realTestimonials = allTestimonials.filter((t) => t.contactable === true);
   const showTestimonials = realTestimonials.length > 0;
+
+  const [selectedRefs, setSelectedRefs] = useState<Set<string>>(new Set());
+
+  function toggleRef(name: string) {
+    setSelectedRefs((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  }
+
+  function removeRef(name: string) {
+    setSelectedRefs((prev) => {
+      const next = new Set(prev);
+      next.delete(name);
+      return next;
+    });
+  }
+
+  function toggleAll() {
+    if (selectedRefs.size === realTestimonials.length) {
+      setSelectedRefs(new Set());
+    } else {
+      setSelectedRefs(new Set(realTestimonials.map((t) => t.name)));
+    }
+  }
+
+  const allSelected = selectedRefs.size === realTestimonials.length;
 
   return (
     <article className="content-page">
@@ -39,18 +69,47 @@ export function ContactPageContent() {
           <hr className="divider-subtle" />
           <div className="contact-layout">
             <aside className="contact-testimonials">
-              <h2 className="section-heading">What people say</h2>
-              {realTestimonials.map((t, i) => (
-                <blockquote key={i}>
-                  <p className="contact-testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
-                  <footer className="contact-testimonial-attribution">
-                    — {t.name}, {t.role}, {t.company}
-                  </footer>
-                </blockquote>
-              ))}
+              <div className="contact-refs-header">
+                <h2 className="section-heading">References</h2>
+                {realTestimonials.length > 1 && (
+                  <button
+                    type="button"
+                    className="link-reference contact-refs-toggle"
+                    onClick={toggleAll}
+                  >
+                    {allSelected ? 'Remove' : 'Request'} all
+                  </button>
+                )}
+              </div>
+              {realTestimonials.map((t, i) => {
+                const isSelected = selectedRefs.has(t.name);
+                return (
+                  <div
+                    key={i}
+                    className={`contact-ref-card${isSelected ? ' contact-ref-card--selected' : ''}`}
+                  >
+                    <blockquote>
+                      <p className="contact-testimonial-name">{t.name}</p>
+                      <p className="contact-testimonial-bio">
+                        {t.role}, {t.company}
+                      </p>
+                      <footer className="contact-testimonial-quote">&ldquo;{t.quote}&rdquo;</footer>
+                    </blockquote>
+                    <div>
+                      <button
+                        type="button"
+                        className="btn-outline"
+                        onClick={() => toggleRef(t.name)}
+                      >
+                        {isSelected ? 'Remove' : 'Add'}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </aside>
             <div className="contact-form-card">
-              <ContactForm subject={subject} />
+              <ContactForm subject={subject} selectedRefs={selectedRefs} onRemoveRef={removeRef} />
             </div>
           </div>
         </>

@@ -37,13 +37,19 @@ export function getFeaturedTestimonials(limit: number): ResolvedTestimonial[] {
 export function getContactTestimonials(slug?: string): ResolvedTestimonial[] {
   return testimonials
     .filter((t) => t.contactable)
-    .filter((t) => (slug ? t.quotes.some((q) => q.relevantRoles.includes(slug)) : true))
     .map((t) => {
-      const matchingQuote = slug
-        ? t.quotes.find((q) => q.relevantRoles.includes(slug))
-        : t.quotes[0];
+      // Try role-specific quote first
+      const roleQuote = slug ? t.quotes.find((q) => q.relevantRoles.includes(slug)) : null;
+      // Fall back to general quote
+      const generalQuote = t.quotes.find((q) => q.relevantRoles.length === 0);
+      // Fall back to any quote
+      const randomIndex = Math.floor(Math.random() * t.quotes.length);
+      const anyQuote = t.quotes[randomIndex];
+      // Might have no quotes at all
+      const quote = roleQuote ?? generalQuote ?? anyQuote;
+
       return {
-        quote: matchingQuote?.text ?? t.quotes[0].text,
+        quote: quote?.text ?? '',
         name: t.name,
         role: t.role,
         company: t.company,

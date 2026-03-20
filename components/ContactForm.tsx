@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export function ContactForm({ subject }: { subject?: string }) {
+interface ContactFormProps {
+  subject?: string;
+  selectedRefs?: Set<string>;
+  onRemoveRef?: (name: string) => void;
+}
+
+export function ContactForm({ subject, selectedRefs, onRemoveRef }: ContactFormProps) {
   const router = useRouter();
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -27,14 +33,17 @@ export function ContactForm({ subject }: { subject?: string }) {
     }
   }
 
+  const refsArray = selectedRefs ? Array.from(selectedRefs) : [];
+
   return (
     <form onSubmit={handleSubmit} name="contact" className="contact-form">
       <fieldset disabled={submitting}>
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="subject" value={subject || 'General enquiry'} />
+        <input type="hidden" name="requested-references" value={refsArray.join(', ')} />
         <p hidden>
           <label>
-            Don't fill this out: <input name="bot-field" />
+            Don&apos;t fill this out: <input name="bot-field" />
           </label>
         </p>
 
@@ -52,6 +61,27 @@ export function ContactForm({ subject }: { subject?: string }) {
           Message
           <textarea name="message" required rows={6} />
         </label>
+
+        {refsArray.length > 0 && (
+          <div className="selected-refs">
+            <p className="selected-refs-label">Also requesting references from:</p>
+            <ul className="selected-refs-list">
+              {refsArray.map((name) => (
+                <li key={name} className="selected-refs-item">
+                  <span>{name}</span>
+                  <button
+                    type="button"
+                    className="selected-refs-remove"
+                    onClick={() => onRemoveRef?.(name)}
+                    aria-label={`Remove ${name} from selected references`}
+                  >
+                    ×
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {error && (
           <p role="alert" className="form-error">

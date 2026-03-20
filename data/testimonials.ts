@@ -10,7 +10,7 @@ export const testimonials: Testimonial[] = [
     name: 'Nick Zuccarelli',
     role: 'Fullstack Software Engineer',
     company: 'Mira',
-    contactable: false,
+    contactable: true,
     quotes: [
       {
         text: 'Dan is great, has a go-get-em attitude to all his work and great to collaborate with. Highly recommend.',
