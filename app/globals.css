@@ -401,7 +401,7 @@ ol {
 
 .reference-checkbox {
   flex-direction: row !important;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-sm) !important;
   cursor: pointer;
 }

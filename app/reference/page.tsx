@@ -142,9 +142,6 @@ function ReferencePageContent() {
 
           {/* Identity fields — always visible */}
           <h2 className="section-heading">Your details</h2>
-          <p className="reference-note">
-            (The details attributed to the quote - however you want them to appear)
-          </p>
 
           <label htmlFor="ref-name">
             Name
@@ -210,34 +207,30 @@ function ReferencePageContent() {
           </label>
 
           {/* Reference opt-in — toggle + conditional contact fields */}
+          {/* Reference opt-in — checkbox + conditional contact fields */}
           <hr className="divider-subtle" />
-          <h2 className="section-heading">Reference</h2>
+          <h2 className="section-heading">Can I put you down as a reference?</h2>
 
-          <div className="reference-toggle">
-            <button
-              type="button"
-              role="switch"
-              aria-checked={isReference}
-              aria-label="Opt in as a reference"
-              className={`toggle ${isReference ? 'toggle--on' : ''}`}
-              onClick={() => setIsReference(!isReference)}
+          <label htmlFor="ref-confirm" className="reference-checkbox">
+            <input
               id="ref-confirm"
-            >
-              <span className="toggle-thumb" />
-            </button>
-            <label htmlFor="ref-confirm">
-              {isReference ? 'Yes please' : 'Do not'} list me as a reference
-            </label>
-          </div>
+              type="checkbox"
+              checked={isReference}
+              onChange={(e) => setIsReference(e.target.checked)}
+            />
+            <span>Yes, I&apos;d like to be listed as a contactable reference for Dan</span>
+          </label>
 
           <input type="hidden" name="is-reference" value={isReference ? 'yes' : 'no'} />
 
           {isReference && (
             <>
               <hr className="divider-subtle" />
+              <h2 className="section-heading">Thanks for providing a reference!</h2>
               <p className="reference-note">
-                These are the contact details that will be shared with hiring managers or recruiters
-                if they request a reference.
+                Please ensure your preferred contact details are up-to-date, as these will be passed
+                on to prospective employers at their request. If you don't want to be contacted by a
+                specific channel, please leave that input blank.
               </p>
 
               <label htmlFor="ref-email">
@@ -246,14 +239,13 @@ function ReferencePageContent() {
                   id="ref-email"
                   type="email"
                   name="email"
-                  required
                   defaultValue={data.email}
                   autoComplete="email"
                 />
               </label>
 
               <label htmlFor="ref-phone">
-                Phone (optional)
+                Phone
                 <input
                   id="ref-phone"
                   type="tel"
