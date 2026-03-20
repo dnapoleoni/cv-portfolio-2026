@@ -1,11 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import { getRoleBySlug } from '@/lib/roles';
 import { ContactForm } from '@/components/ContactForm';
 import { ContactCTA } from '@/components/sections/ContactCTA';
 import { useFromContext } from '@/hooks/useFromContext';
-import { getFeaturedTestimonials } from '@/lib/testimonials';
+import { getContactTestimonials } from '@/lib/testimonials';
 import { emailSubjects } from '@/data/contact';
 
 export function ContactPageContent() {
@@ -24,7 +23,7 @@ export function ContactPageContent() {
 
   const subject = fromRole ? emailSubjects.role(fromRole.title) : emailSubjects.default;
 
-  const allTestimonials = getFeaturedTestimonials(5);
+  const allTestimonials = getContactTestimonials();
   const realTestimonials = allTestimonials.filter((t) => t.contactable === true);
   const showTestimonials = realTestimonials.length > 0;
 

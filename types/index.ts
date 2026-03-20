@@ -49,12 +49,22 @@ export interface ContentSection {
 
 /** Testimonial quote with role relevance tagging */
 export interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  contactable: boolean;
+  quotes: {
+    text: string;
+    relevantRoles: string[]; // ['frontend-developer', 'ux-engineer'] or ['general'] for homepage/full-picture
+  }[];
+}
+
+export interface ResolvedTestimonial {
   quote: string;
   name: string;
   role: string;
   company: string;
-  relevantRoles: string[];
-  contactable?: boolean;
+  contactable: boolean;
 }
 
 /** Color values for a single theme mode (light or dark) */

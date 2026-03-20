@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import type { Testimonial } from '@/types';
+import type { ResolvedTestimonial } from '@/types';
 import { Icon } from '@/components/ui/Icon';
 
 interface TestimonialCarouselProps {
-  testimonials: Testimonial[];
+  testimonials: ResolvedTestimonial[];
   heading?: string;
 }
 

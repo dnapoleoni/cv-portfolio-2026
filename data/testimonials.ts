@@ -7,48 +7,39 @@ import type { Testimonial } from '@/types';
  */
 export const testimonials: Testimonial[] = [
   {
-    quote:
-      "Dan is one of those rare developers who genuinely cares about the end user. He doesn't just build what's asked — he makes it better.",
-    name: 'Placeholder Name',
-    role: 'Product Manager',
-    company: 'Previous Company',
-    relevantRoles: ['frontend-developer', 'ux-engineer'],
-    contactable: true,
-  },
-  {
-    quote:
-      "Working with Dan felt like having a designer and developer in one seat. His UX instincts saved us from shipping things we'd have had to fix later.",
-    name: 'Placeholder Name',
-    role: 'Design Lead',
-    company: 'Previous Agency',
-    relevantRoles: ['ux-engineer', 'frontend-developer'],
-    contactable: true,
-  },
-  {
-    quote:
-      "He literally started a social club in his first week. Within a month the whole floor was involved. That's not something you can put in a job description but it changed the team.",
-    name: 'Placeholder Name',
-    role: 'People & Culture',
-    company: 'Previous Company',
-    relevantRoles: ['chief-vibes-officer'],
-    contactable: true,
-  },
-  {
-    quote:
-      "Dan's email templates were bulletproof. We'd send to millions of inboxes and the renders were consistent every time. He understood the platform better than most.",
-    name: 'Placeholder Name',
-    role: 'Marketing Manager',
-    company: 'Previous Client',
-    relevantRoles: ['digital-marketer'],
+    name: 'Nick Zuccarelli',
+    role: 'Fullstack Software Engineer',
+    company: 'Mira',
     contactable: false,
+    quotes: [
+      {
+        text: 'Dan is great, has a go-get-em attitude to all his work and great to collaborate with. Highly recommend.',
+        relevantRoles: [],
+      },
+      {
+        text: 'Great VueJS skills 👍',
+        relevantRoles: ['frontend-developer'],
+      },
+      {
+        text: 'Great UX skills. Did a great deep dive of the Mira application and help assisted with usability issues.',
+        relevantRoles: ['ux-engineer'],
+      },
+      {
+        text: 'Awesome culture fit and a really positive attitude.',
+        relevantRoles: ['chief-vibes-officer'],
+      },
+    ],
   },
   {
-    quote:
-      "The best thing about Dan is you can give him a problem and he'll come back with a solution you didn't think of. He thinks laterally in a way that makes everything better.",
-    name: 'Placeholder Name',
-    role: 'Tech Lead',
-    company: 'Previous Company',
-    relevantRoles: ['frontend-developer', 'ux-engineer'],
+    name: 'Juan Ojeda',
+    role: 'Consultant',
+    company: 'Everest Engineering',
     contactable: false,
+    quotes: [
+      {
+        text: "Dan brings an energy to a team that is hard to quantify, but very easy to love. He's a systems thinker, and has a deep conviction for great user experience backed by a strong attention to detail. He also has a strong sense of culture building, and knows how to bring the vibes.",
+        relevantRoles: ['ux-engineer', 'chief-vibes-officer'],
+      },
+    ],
   },
 ];
