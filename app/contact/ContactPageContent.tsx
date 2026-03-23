@@ -108,8 +108,14 @@ export function ContactPageContent() {
                 );
               })}
             </aside>
-            <div className="contact-form-card">
-              <ContactForm subject={subject} selectedRefs={selectedRefs} onRemoveRef={removeRef} />
+            <div>
+              <div className="contact-form-card">
+                <ContactForm
+                  subject={subject}
+                  selectedRefs={selectedRefs}
+                  onRemoveRef={removeRef}
+                />
+              </div>
             </div>
           </div>
         </>
