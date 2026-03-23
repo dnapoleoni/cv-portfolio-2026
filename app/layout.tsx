@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Dan Napoleoni — Developer, Designer-Thinker, Human Communicator',
   description:
     'Frontend developer with 15+ years across the full evolution of digital. A developer who thinks like a designer and communicates like a human.',
-  metadataBase: new URL('https://dnapoleoni-cv-portfolio.netlify.app'),
+  metadataBase: new URL('https://danielnapoleoni.dev'),
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },

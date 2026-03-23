@@ -175,7 +175,7 @@ function ReferencePageContent() {
           <hr className="divider-subtle" />
           <h2 className="section-heading">Testimonials</h2>
 
-          <p className="reference-note">
+          <p>
             A sentence or two is perfect. Write in whatever voice feels natural — these will appear
             as quotes on my site alongside your name and role. Leave any blank if you&apos;d prefer
             not to.
@@ -227,7 +227,7 @@ function ReferencePageContent() {
             <>
               <hr className="divider-subtle" />
               <h2 className="section-heading">Thanks for providing a reference!</h2>
-              <p className="reference-note">
+              <p>
                 Please ensure your preferred contact details are up-to-date, as these will be passed
                 on to prospective employers at their request. If you don't want to be contacted by a
                 specific channel, please leave that input blank.
@@ -260,7 +260,7 @@ function ReferencePageContent() {
           {/* Privacy note + submit */}
           <hr className="divider-subtle" />
 
-          <p className="reference-privacy">
+          <p>
             Your information is only used for reference and testimonial purposes. Contact details
             are never displayed publicly — they&apos;re only shared with hiring managers who
             specifically request a reference, and only if you&apos;ve opted in above.
