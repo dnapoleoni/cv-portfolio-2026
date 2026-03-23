@@ -82,4 +82,28 @@ export const testimonials: Testimonial[] = [
       },
     ],
   },
+  {
+    name: 'Sharath Nagaraj',
+    role: 'Senior developer',
+    company: 'Reece',
+    contactable: true,
+    quotes: [
+      {
+        text: "Dan is an amazing asset to have as part of any establishment. He's super energetic, very passionate about his work, has keen attention to detail and brings 115% vibes to the workplace.",
+        relevantRoles: [],
+      },
+      {
+        text: 'Dan comes with almost 15 years of experience in the front end development field. He is very thorough with his work, code quality is immaculate and makes sure the output is pixel perfect to the designs.',
+        relevantRoles: ['frontend-developer'],
+      },
+      {
+        text: "Although Dan is primarily a developer, he has vast knowledge of how users interact with the product and that comes from years of experience. He's not just about doing design to code - he brings the design to life in a way that'll be an easy and amazing experience for the end user.",
+        relevantRoles: ['ux-engineer'],
+      },
+      {
+        text: "Dan is the man to get the workplace together when it's time to wind down. From team events, social clubs, planning events and to get every person (including the shy developers) to come and socialise at the end of a busy work week, Dan has got you covered on all the fronts. 10/10 vibes.",
+        relevantRoles: ['ux-engineer'],
+      },
+    ],
+  },
 ];
