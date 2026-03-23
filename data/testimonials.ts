@@ -42,4 +42,44 @@ export const testimonials: Testimonial[] = [
       },
     ],
   },
+  {
+    name: 'Clint McIntyre',
+    role: 'CEO and Co-Founder',
+    company: 'Honest Fox',
+    contactable: false,
+    quotes: [
+      {
+        text: 'Dan is a joy to work with, great guy, works well with others.',
+        relevantRoles: [],
+      },
+      {
+        text: 'Solid front end developer, who excels when placed in orginsatiosn that have strong processses to get the best out of him.',
+        relevantRoles: ['frontend-developer'],
+      },
+      {
+        text: "Dan is always bringing the good vibes, he is a people person and always contributes to the vibe of the office. It's his superpower.",
+        relevantRoles: ['chief-vibes-officer'],
+      },
+    ],
+  },
+  {
+    name: 'Jim Yencken',
+    role: 'Head of Product Design',
+    company: 'Splose',
+    contactable: false,
+    quotes: [
+      {
+        text: 'Dan was a pleasure to work with. He brought openness and care to every interaction, communicated clearly and made the people around him feel like they were in safe hands.',
+        relevantRoles: [],
+      },
+      {
+        text: "One of the best frontend engineers I've had the privilege of working with.",
+        relevantRoles: ['frontend-developer'],
+      },
+      {
+        text: "Dan wasn't just executing tickets - he was thinking carefully about the visual output and sweating the details in a way that designers genuinely appreciate.",
+        relevantRoles: ['ux-engineer'],
+      },
+    ],
+  },
 ];
