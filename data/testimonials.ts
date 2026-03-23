@@ -46,7 +46,7 @@ export const testimonials: Testimonial[] = [
     name: 'Clint McIntyre',
     role: 'CEO and Co-Founder',
     company: 'Honest Fox',
-    contactable: false,
+    contactable: true,
     quotes: [
       {
         text: 'Dan is a joy to work with, great guy, works well with others.',
