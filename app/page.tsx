@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  const testimonials = getFeaturedTestimonials(5);
+  const testimonials = getFeaturedTestimonials(10);
 
   return (
     <>
