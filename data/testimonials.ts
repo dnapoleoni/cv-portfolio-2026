@@ -47,42 +47,6 @@ export const testimonials: Testimonial[] = [
     ],
   },
   {
-    name: 'Nick Zuccarelli',
-    role: 'Fullstack Software Engineer',
-    company: 'Mira',
-    contactable: true,
-    quotes: [
-      {
-        text: 'Dan is great, has a go-get-em attitude to all his work and great to collaborate with. Highly recommend.',
-        relevantRoles: [],
-      },
-      {
-        text: 'Great VueJS skills 👍',
-        relevantRoles: ['frontend-developer'],
-      },
-      {
-        text: 'Great UX skills. Did a great deep dive of the Mira application and help assisted with usability issues.',
-        relevantRoles: ['ux-engineer'],
-      },
-      {
-        text: 'Awesome culture fit and a really positive attitude.',
-        relevantRoles: ['chief-vibes-officer'],
-      },
-    ],
-  },
-  {
-    name: 'Juan Ojeda',
-    role: 'Consultant',
-    company: 'Everest Engineering',
-    contactable: false,
-    quotes: [
-      {
-        text: "Dan brings an energy to a team that is hard to quantify, but very easy to love. He's a systems thinker, and has a deep conviction for great user experience backed by a strong attention to detail. He also has a strong sense of culture building, and knows how to bring the vibes.",
-        relevantRoles: ['ux-engineer', 'chief-vibes-officer'],
-      },
-    ],
-  },
-  {
     name: 'Sharath Nagaraj',
     role: 'Senior developer',
     company: 'Reece',
@@ -107,6 +71,18 @@ export const testimonials: Testimonial[] = [
     ],
   },
   {
+    name: 'Juan Ojeda',
+    role: 'Consultant',
+    company: 'Everest Engineering',
+    contactable: false,
+    quotes: [
+      {
+        text: "Dan brings an energy to a team that is hard to quantify, but very easy to love. He's a systems thinker, and has a deep conviction for great user experience backed by a strong attention to detail. He also has a strong sense of culture building, and knows how to bring the vibes.",
+        relevantRoles: ['ux-engineer', 'chief-vibes-officer'],
+      },
+    ],
+  },
+  {
     name: 'Chris Kerr',
     role: 'Principal Product Designer',
     company: 'CheckWorkRights (CWR)',
@@ -115,6 +91,42 @@ export const testimonials: Testimonial[] = [
       {
         text: "Dan is the life and soul of every team he works with, bringing energy and enthusiasm to all that he does. He's a great addition to every team, whether working in modern frontend frameworks, or solving those subtle day to day interactions that frustrate your customers.",
         relevantRoles: [],
+      },
+    ],
+  },
+  {
+    name: 'Max Yendall',
+    role: 'Full Stack Software Engineer',
+    company: 'Mira',
+    contactable: true,
+    quotes: [
+      {
+        text: 'Dan is a legend and is always receptive to ideas and collaboration when developing. He was a joy to work with and offered a lot of great ideas and expertise when designing and coding UI/UX.',
+        relevantRoles: [],
+      },
+    ],
+  },
+  {
+    name: 'Nick Zuccarelli',
+    role: 'Fullstack Software Engineer',
+    company: 'Mira',
+    contactable: true,
+    quotes: [
+      {
+        text: 'Dan is great, has a go-get-em attitude to all his work and great to collaborate with. Highly recommend.',
+        relevantRoles: [],
+      },
+      {
+        text: 'Great VueJS skills 👍',
+        relevantRoles: ['frontend-developer'],
+      },
+      {
+        text: 'Great UX skills. Did a great deep dive of the Mira application and help assisted with usability issues.',
+        relevantRoles: ['ux-engineer'],
+      },
+      {
+        text: 'Awesome culture fit and a really positive attitude.',
+        relevantRoles: ['chief-vibes-officer'],
       },
     ],
   },
