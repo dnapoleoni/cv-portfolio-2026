@@ -39,7 +39,7 @@ Target roles: Frontend Developer, Digital Marketer, UX Engineer, Chief Vibes Off
 
 ## Tech Stack
 
-- Next.js 14 App Router, React 18, TypeScript
+- Next.js 16 App Router, React 19, TypeScript
 - Single `globals.css` with modern CSS: custom properties, fluid `clamp()` type/spacing, CSS Grid
 - No Tailwind, no external CSS frameworks
 - Google Fonts via `<link>` tags in head (NOT `next/font` — build environment limitation): Outfit, JetBrains Mono, Libre Baskerville, Caveat
@@ -460,5 +460,3 @@ Warm, confident, self-aware, occasionally cheeky. Never at expense of clarity. U
 - Use `flex-direction: column-reverse` or CSS `order` to reorder interactive elements (WCAG tab order mismatch)
 
 ## Known Issues / Tech Debt
-
-- Next.js 14 — should be upgraded to Next.js 16 when ready.
