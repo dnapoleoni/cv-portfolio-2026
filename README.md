@@ -22,15 +22,9 @@ All of this is powered by a single set of experiences and content blocks. Change
 
 ---
 
-> **⚠️ Next.js Version Notice**
->
-> This project runs on **Next.js 14** (App Router). Next.js 16 is now available and an upgrade is planned but not yet scheduled. Considerations for the upgrade include `@react-pdf/renderer` compatibility with newer React versions, the `next/font` limitation (currently working around it with `<link>` tags), and Netlify adapter support. The architecture is straightforward enough that the migration should be low-risk, but the PDF generation pipeline will need testing.
-
----
-
 ## Tech Stack
 
-- **Next.js 14** App Router, **React 18**, **TypeScript**
+- **Next.js 16** App Router, **React 19**, **TypeScript**
 - **Modern CSS** — custom properties, fluid `clamp()` typography and spacing, CSS Grid. No Tailwind, no component libraries, no external CSS frameworks.
 - **Google Fonts** — Outfit (body), JetBrains Mono (code/UI), Libre Baskerville (editorial), Caveat (personality)
 - **12 colour themes** × light/dark mode — all WCAG AAA compliant
