@@ -1,10 +1,4 @@
 import type { Testimonial } from '@/types';
-
-/**
- * PLACEHOLDER TESTIMONIALS
- * Replace these with real quotes once you've gotten consent from your references.
- * The structure supports both the homepage carousel and role-specific filtering.
- */
 export const testimonials: Testimonial[] = [
   {
     name: 'Clint McIntyre',
@@ -43,6 +37,22 @@ export const testimonials: Testimonial[] = [
       {
         text: "Dan wasn't just executing tickets - he was thinking carefully about the visual output and sweating the details in a way that designers genuinely appreciate.",
         relevantRoles: ['ux-engineer'],
+      },
+    ],
+  },
+  {
+    name: 'Tom Webster',
+    role: 'Client Engagement Director',
+    company: 'Everest Engineering',
+    contactable: true,
+    quotes: [
+      {
+        text: "Dan brings an energy and vibe that's infectious and uplifting to all around him. If you need a front-ender who can add immediate value to a project or your team, you'd be crazy not to chat with his legend!",
+        relevantRoles: [],
+      },
+      {
+        text: 'Outside of his front-end development capability, this is the bonus of Dan. He is a cultural and social machine who brings positive energy to any environment he enters.',
+        relevantRoles: ['chief-vibes-officer'],
       },
     ],
   },
