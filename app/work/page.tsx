@@ -42,9 +42,10 @@ export default function WorkPage() {
         <h1 className="page-heading">About that...</h1>
         <p className="page-subheading">
           Fifteen years of agency and enterprise work means most of what I&apos;ve built was
-          temporary by nature — marketing campaigns, client portals behind logins, sites that have
-          since been redesigned or no longer exist. Rather than fake portfolio pieces, here&apos;s
-          what I can share — the problems I solved, the systems I built, and the decisions I made.
+          temporary by nature: marketing campaigns, client portals behind logins, sites that have
+          since been redesigned or quietly disappeared. I&apos;m not going to fake portfolio pieces,
+          so here&apos;s what I can share instead — the problems I solved, the systems I built, and
+          the decisions I made.
         </p>
       </header>
 
@@ -54,31 +55,30 @@ export default function WorkPage() {
       <section className="role-section">
         <h3 className="section-heading">2026 CV & Portfolio website (yes, this one!)</h3>
         <p>
-          The site you're on right now started as a simple portfolio build and became a case study
-          in its own right. The brief I gave myself: build something that works as an online CV, a
-          code sample, a list of references and a personality test — for four different roles —
-          without feeling like four completely different sites.
+          The site you&apos;re on right now started as a simple portfolio build and became a case
+          study in its own right. The brief I gave myself: build something that works as an online
+          CV, a code sample, a list of references and a personality test, covering four different
+          roles, without it feeling like four completely different sites.
         </p>
         <p>
-          The core UX decision was making role pages the primary entry point, not the home page. A
-          recruiter clicking a link from a job application lands directly on the relevant role —
-          frontend, marketing, UX, or vibes — with tailored experience descriptions, skills, and
-          even a role-specific PDF. They never need to see the home page. But if they want the full
-          picture, it's one click away.
+          The core UX decision was making role pages the primary entry point rather than the home
+          page. A recruiter clicking a link from a job application lands directly on the relevant
+          role, with tailored experience descriptions, skills, and a role-specific PDF. They never
+          need to see the home page. If they want the full picture, it&apos;s one click away.
         </p>
         <p>
           Under the hood, all four roles (and the overall one) pull from a single shared data layer
-          — one set of experiences, one set of content blocks — with role-aware variant resolution.
-          Change a job description once, it updates everywhere. The whole thing runs on Next.js with
-          server components by default, vanilla CSS with fluid typography and spacing (no Tailwind,
-          no component libraries), 12 colour themes with AAA contrast, and PDF generation at build
-          time via React-PDF.
+          with role-aware variant resolution. One set of experiences, one set of content blocks.
+          Change a job description once and it updates everywhere. The whole thing runs on Next.js
+          with server components by default, vanilla CSS with fluid typography and spacing, no
+          Tailwind and no component libraries, 12 colour themes with AAA contrast, and build-time
+          PDF generation via React-PDF.
         </p>
         <p>
-          It was built in large parts with Claude — not copy-pasting AI output, but using it as a
-          design partner, architecture sounding board, copy editor and pair programmer — with the
-          prompts saved to the repo for your perusal. The code is the deliverable, but the process
-          is the interesting part.
+          Large parts of it were built with Claude. Not by copy-pasting output — I used it as a
+          design partner, architecture sounding board, copy editor and pair programmer, and the
+          prompts are saved in the repo if you want to see how. The code is the deliverable. The
+          process is where it gets interesting.
         </p>
         <div className="link-group mt-md">
           <a

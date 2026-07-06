@@ -6,7 +6,7 @@ export const contentItems: ContentItem[] = [
     id: 'fe-flow-modal',
     title: 'I see repetitive patterns and build systems instead.',
     description:
-      'At Splose, I was tasked with implementing new 2FA modal flows. The designs had multiple variations with repetitive elements and inconsistencies between them — building each one individually would have meant messy, redundant code and a maintenance headache for whoever came next. So instead of just building what was in front of me, I designed a reusable "FlowModal" engine that separated the data layer from the modal management from the individual steps. Future devs can now create new flows, edit existing ones, and run A/B tests without touching the underlying architecture. I wrote full documentation so the system would outlive my contract. It\'s a pattern I keep coming back to — I\'d rather spend a bit more time building something properly than contribute to technical debt.',
+      'At Splose, I was tasked with implementing new 2FA modal flows. The designs had multiple variations with repetitive elements and inconsistencies between them — building each one individually would have meant messy, redundant code and a maintenance headache for whoever came next. Building each variation individually would have meant redundant code and a maintenance headache for whoever came next, so I designed a reusable "FlowModal" engine instead, with the data layer, modal management, and individual steps all kept separate. Future devs can now create new flows, edit existing ones, and run A/B tests without touching the underlying architecture. I wrote full documentation so the system would outlive my contract. It\'s a pattern I keep coming back to — I\'d rather spend a bit more time building something properly than contribute to technical debt.',
   },
   {
     id: 'fe-honest-fox-cms',
@@ -32,7 +32,7 @@ export const contentItems: ContentItem[] = [
     id: 'dm-myer-edm',
     title: 'Running the Myer email machine solo.',
     description:
-      "At Clemenger, I was the sole developer on a relentless stream of Myer eDMs — full end-to-end ownership from receiving designs through to Salesforce deployment, testing, subscriber lists, scheduling and reporting. The client sent incomplete briefs, changed direction constantly, and had different teams sending conflicting instructions. I became the last quality check in the chain, catching issues and pushing back up the line before writing a single line of code. It wasn't glamorous work, but it taught me that half of production at scale is process discipline, not technical skill.",
+      'At Clemenger, I was the sole developer on a relentless stream of Myer eDMs — full end-to-end ownership from receiving designs through to Salesforce deployment, testing, subscriber lists, scheduling and reporting. The client sent incomplete briefs, changed direction constantly, and had different teams sending conflicting instructions. I became the last quality check in the chain, catching issues and pushing back up the line before writing a single line of code. Not glamorous work, but it taught me that production at scale is half process discipline and only half technical skill.',
   },
 
   // UX Engineer — "How I work"
@@ -46,7 +46,7 @@ export const contentItems: ContentItem[] = [
     id: 'ux-smith-family',
     title: "I build logic when the designs don't have any.",
     description:
-      "At Isobar, I was given a set of \"interactive\" designs for The Smith Family's donation portal — screens showing different states of a form, but with no clear logic connecting them. Actions led to dead ends, transitions were ambiguous, and the journey as a whole didn't hold together. Rather than sending it back for another round of revisions, I built a recursive state-machine under the hood: each user action triggered a lookup that could call functions, set states, activate other elements in sequence, and trigger sub-flows. It let me make the whole thing work as a coherent experience without needing the designs to tell me how. On the surface? Just a donation form. Underneath? Something I'm still proud of.",
+      "At Isobar, I was given a set of \"interactive\" designs for The Smith Family's donation portal — screens showing different states of a form, but with no clear logic connecting them. Actions led to dead ends, transitions were ambiguous, and the journey as a whole didn't hold together. Rather than sending it back for another round of revisions, I built a recursive state-machine under the hood: each user action triggered a lookup that could call functions, set states, activate other elements in sequence, and trigger sub-flows. It let me make the whole thing work as a coherent experience without needing the designs to tell me how. On the surface? The user sees a donation form. I see one of the pieces of work I'm still proudest of.",
   },
 
   // Chief Vibes Officer — "The vibes archive"
@@ -73,6 +73,6 @@ export const contentItems: ContentItem[] = [
   {
     id: 'full-picture-also',
     description:
-      "Beyond the day job: lifelong game design enthusiast with a trail of prototypes — from custom HeroQuest campaigns to mobile experiments with AI-assisted development. Puzzle and ARG designer who once built a city-spanning birthday treasure hunt involving a locked briefcase, a spy bag-swap on a park bench, black-light ink, mysterious packages hidden in local businesses and a casino mission. Creative writer — completed an AFTRS screenplay course, currently a member of Unsolicited Musings writing collective. Recently designed a variable-difficulty cryptic crossword system for a friend's D&D campaign. Self-appointed Chief Vibes Officer at every workplace I've been part of. I believe culture isn't a perk — it's infrastructure.",
+      "Beyond the day job: lifelong game design enthusiast with a trail of prototypes — from custom HeroQuest campaigns to mobile experiments with AI-assisted development. Puzzle and ARG designer who once built a city-spanning birthday treasure hunt involving a locked briefcase, a spy bag-swap on a park bench, black-light ink, mysterious packages hidden in local businesses and a casino mission. Creative writer — completed an AFTRS screenplay course, currently a member of Unsolicited Musings writing collective. Recently designed a variable-difficulty cryptic crossword system for a friend's D&D campaign. Self-appointed Chief Vibes Officer at every workplace I've been part of.I've come to think of culture as infrastructure rather than a perk. It holds everything else up.",
   },
 ];

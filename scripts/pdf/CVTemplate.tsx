@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function getTypeLabel(type?: 'contract' | 'redundancy' | 'permanent'): string | null {
+function getTypeLabel(type?: 'contract' | 'redundancy' | 'permanent' | 'freelance'): string | null {
   if (type === 'contract') return 'Contract';
   if (type === 'redundancy') return 'Role made redundant';
   return null;

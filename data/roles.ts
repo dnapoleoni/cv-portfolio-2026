@@ -22,9 +22,9 @@ export const roles: RoleData[] = [
     },
     icons: ['react', 'typescript', 'vue', 'nextjs'] as TechIconId[],
     intro: [
-      "I've been building for the web since Flash was king. That journey — through ActionScript, JavaScript, Vue, and now React and TypeScript — means I don't just know frameworks, I understand the web platform itself. I write semantic HTML, modern CSS, and accessible interfaces because I've seen enough trends come and go to know what actually matters: does it work, is it fast, can everyone use it?",
+      "I've been building for the web since Flash was king. Working through ActionScript, then JavaScript, then Vue, and now React and TypeScript means the frameworks sit on top of a solid understanding of the web platform itself. I write semantic HTML, modern CSS, and accessible interfaces because after fifteen years of watching trends come and go, I know what actually matters: does it work, is it fast, can everyone use it?",
       "My most recent work was React and TypeScript at Everest Engineering, building features for Splose — a healthcare management platform. Before that I spent years deep in Vue.js across multiple agencies and product teams. I'm framework-flexible because my fundamentals are strong.",
-      "What makes me different from other frontend developers is that I don't just implement designs — I interrogate them. I'll flag accessibility issues, question interaction patterns that don't serve users, and fill in the gaps the brief left out. I've been told this is both my greatest strength and occasionally annoying. I'm fine with that.",
+      "What sets me apart is that I treat a design as a starting point, not a contract. I'll flag accessibility issues, question interaction patterns that don't serve users, and fill in the gaps the brief left out. I've been told this is both my greatest strength and occasionally annoying. I'm fine with that.",
     ],
     skills: [
       'React',
@@ -49,6 +49,7 @@ export const roles: RoleData[] = [
       'AI-Assisted Development (Claude, Copilot, Cursor)',
     ],
     experienceIds: [
+      'sqt',
       'everest',
       'mira',
       'adtorque',
@@ -79,9 +80,9 @@ export const roles: RoleData[] = [
     },
     icons: ['salesforce', 'html', 'css', 'javascript'] as TechIconId[],
     intro: [
-      'Before I became a "frontend developer" I spent years deep in the trenches of digital marketing production — building eDM templates and campaigns in Salesforce Marketing Cloud (ExactTarget), creating dynamic HTML banners for Google DV360 and DoubleClick, and managing campaign deployments for some of Australia\'s biggest brands.',
+      'Before anyone called me a "frontend developer," I spent years in the trenches of digital marketing production: eDM templates and campaigns in Salesforce Marketing Cloud (back when it was ExactTarget), dynamic HTML banners for Google DV360 and DoubleClick, and campaign deployments for some of Australia\'s biggest brands.',
       "I ran the Myer eDM account at Clemenger and the Australia Post Salesforce offering at Isobar — including a full modular template overhaul. That means I know the pain of Outlook rendering (120 DPI scaling, anyone?), the art of responsive email design, and the operational reality of deploying to millions of inboxes. I've built template systems and debugged more rendering issues across more email clients than I'd like to admit.",
-      "This background gives me something most frontend developers don't have: a deep understanding of how marketing teams work, what they need from technology, and how to bridge the gap between creative intent and technical delivery.",
+      'That background gives me something most frontend developers never pick up: a working knowledge of how marketing teams operate, what they actually need from technology, and how to translate creative intent into something that renders correctly in Outlook.',
     ],
     skills: [
       'Salesforce Marketing Cloud / ExactTarget',
@@ -99,7 +100,14 @@ export const roles: RoleData[] = [
       'HTML / CSS / JavaScript',
       'Photoshop / Sketch / Figma',
     ],
-    experienceIds: ['world-vision', 'bower-house', 'clemenger', 'freelance-contract', 'isobar'],
+    experienceIds: [
+      'sqt',
+      'world-vision',
+      'bower-house',
+      'clemenger',
+      'freelance-contract',
+      'isobar',
+    ],
     contentSection: {
       heading: 'Achievements',
       itemIds: ['dm-auspost-overhaul', 'dm-aussuper-banners', 'dm-myer-edm'],
@@ -122,8 +130,8 @@ export const roles: RoleData[] = [
     icons: ['accessibility', 'figma', 'react', 'css'] as TechIconId[],
     intro: [
       "I'm not a UX designer by title, but I think like one. Every ticket I pick up, I'm asking: who's using this? What are they trying to do? What happens when it goes wrong? What did we forget?",
-      "This isn't theoretical — it comes from 15+ years of building things that real people use, watching what breaks, and learning that the spec is never the whole story. I've worked in agencies where speed matters and in product teams where getting the details right matters. Both taught me that the developer is often the last line of defence before something reaches the user, and I take that seriously.",
-      'I bring a perspective that sits between design and engineering. I can read a Figma file and implement it faithfully, but I\'ll also flag when a hover state is missing, when a loading state hasn\'t been considered, when the empty state is blank, or when the error message says "An error occurred" instead of something actually helpful.',
+      'None of this comes from a textbook. It comes from fifteen years of building things real people use, watching what breaks, and learning that the spec is never the whole story. Agencies taught me speed. Product teams taught me detail. Both taught me that the developer is often the last line of defence before something reaches a user, and I take that seriously.',
+      'I sit somewhere between design and engineering. I can take a Figma file and implement it faithfully, but I\'ll also notice when a hover state is missing, when nobody thought about loading, when the empty state is blank, or when the error message says "An error occurred" instead of anything useful.',
       'Some people find this annoying. Most come to appreciate it.',
     ],
     skills: [
@@ -162,8 +170,8 @@ export const roles: RoleData[] = [
     icons: ['sparkles', 'puzzle', 'users'] as TechIconId[],
     intro: [
       "This is the part of my CV that doesn't fit on a normal CV, but it's honestly some of the work I'm most proud of.",
-      'At every workplace I\'ve been part of, I\'ve ended up being the person who makes it fun to be there. Not in a "mandatory fun" corporate way — in a genuine, grassroots, "people actually look forward to this" way. I\'ve run social clubs, created alternate reality games for the office, designed and hosted events, built Slack bots for fun, organised creative challenges, and generally been the person who turns a group of colleagues into an actual community.',
-      "I take this seriously because I've seen what it does. Teams that enjoy being together do better work. People who feel connected to their workplace stay longer. Culture isn't a ping pong table — it's the feeling that someone gives a damn about making this place good.",
+      "At every workplace I've been part of, I've ended up as the person who makes it fun to be there. Never in the mandatory-fun corporate sense. I mean the grassroots kind, where people genuinely look forward to things. I've run social clubs, created alternate reality games for the office, designed and hosted events, built Slack bots for no reason, and organised creative challenges. Give me a group of colleagues and I'll turn them into a community.",
+      "I take this seriously because I've seen what it does. Teams that enjoy being together do better work. People who feel connected to a workplace stay longer. And culture has nothing to do with ping pong tables. It's the feeling that someone gives a damn about making this place good.",
       "If your company has an Employee Experience, Culture, Internal Comms, or Engagement role — or if you're an agency that knows the value of good vibes — I'm your guy.",
     ],
     skills: [
@@ -226,6 +234,7 @@ export const roles: RoleData[] = [
       'Photoshop / Sketch / Figma',
     ],
     experienceIds: [
+      'sqt',
       'everest',
       'mira',
       'world-vision',

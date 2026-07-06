@@ -23,7 +23,7 @@ export interface ResolvedTimelineEntry {
   date: string;
   role: string;
   company: string;
-  type?: 'contract' | 'redundancy' | 'permanent';
+  type?: 'contract' | 'redundancy' | 'permanent' | 'freelance';
   description: string;
 }
 

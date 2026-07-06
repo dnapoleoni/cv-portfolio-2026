@@ -5,11 +5,20 @@ interface Experience {
   date: RoleVariant;
   role: RoleVariant;
   company: string;
-  type?: 'contract' | 'redundancy' | 'permanent';
+  type?: 'contract' | 'redundancy' | 'permanent' | 'freelance';
   description: RoleVariant;
 }
 
 export const experiences: Experience[] = [
+  {
+    id: 'sqt',
+    date: '2026 - Current',
+    role: 'Software Engineer',
+    company: 'Saturday Quiz Time',
+    type: 'freelance',
+    description:
+      'Frontend UI updates and analytics integration for an interactive puzzle platform — GTM tracking for social sharing and communications, Mixpanel event fixes, plus Stripe and Supabase work across the stack.',
+  },
   {
     id: 'everest',
     date: '2025 - 2026',

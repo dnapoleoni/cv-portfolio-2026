@@ -41,6 +41,8 @@ export function getTimelineForRole(
 /** Get formatted role type label */
 export function getTypeLabel(type?: string) {
   switch (type) {
+    case 'freelance':
+      return 'Freelance';
     case 'contract':
       return 'Contract';
     case 'redundancy':
